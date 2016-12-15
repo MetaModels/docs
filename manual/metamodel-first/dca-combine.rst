@@ -3,22 +3,19 @@
 |img_dca_combine_32| Input / Output combinations
 ================================================
 
-In this step "Input / Output combinations" we will activate the input mask render setting for the back end. It is not necessary to to activate this render setting for the front end. 
+In this step "Input / Output combinations" we will activate the input mask render setting for the back end. 
+It is not necessary to to activate this render setting for the front end. 
 
-Go to the MetaModels overview in order to see the entry "employee list". Next click on the icon "|img_dca_combine| Input / Output combinations" and the view will switch to the options overview.
+Go to the MetaModels overview in order to see the entry "Employee list". Next click on the icon "|img_dca_combine| Input / Output combinations" and the view will switch to the options overview.
 
 The setting options are shown as a list which can be extended if required.
 For our example you just have to select "Administrator" in "Backend group". For "Input screen" select "Input" and for "The render setting" select "BE list" - see screenshot.
 
 |img_dca-combine_01_en|
 
-After you hit "Save and close" the view will show the Metamodels overview - and at the same time you should see a new icon with the label "Employee list" in the left Contao back end menu (see screenshot)
+After you hit "Save and close" the view will show the Metamodels overview - and at the same time you should see a new icon with the label "Employee list" in the left Contao back end menu (see screenshot):
 
 |img_dca-combine_02_en|
-
-Mit dem Schritt sind die Einstellungen der Komponenten für das Backend
-abgeschlossen und Daten können eingegeben bzw. die Frontendausgabe
-konfiguriert werden.
 
 This step completes the component settings for the back end. Now you should be able to enter data or configure the front end output.
 
