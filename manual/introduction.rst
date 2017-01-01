@@ -41,10 +41,10 @@ The input masks allow you to accurately specify which data has to be entered (or
 
 Before starting a new project you might wonder whether it is better to develop your own extension instead of using MetaModels. But there is no general answer to this question, because both solutions will enable you to solve various problems. The following aspects might help you to make your decision:
 
-** Pro developing own extension: ** Is it required to develop a product which can be marketed, as for example a commercial extension which can be made available to other Contao users at the push of a button? Then you should consider developing your own specific extension. 
+**Pro developing own extension:** Is it required to develop a product which can be marketed, as for example a commercial extension which can be made available to other Contao users at the push of a button? Then you should consider developing your own specific extension. 
 The basic requirements to do so are appropriate skills in PHP programming and knowledge of the Contao API.
 
-** Pro MetaModels: **
+**Pro MetaModels:**
 In case that you want to implement a very individual solution which can be quickly customised in the Contao backend, MetaModels is certainly a good choice. If you also need specific functions e.g. supporting multilingualism, MetaModels can play fully on its strengths. MetaModels supports users to develop a solution without programming. 
 But it should be noted that only with some basic knowledge in PHP, HTML, and SQL databases, you will be able to make fully use of the opportunities provided by MetaModels. 
 
