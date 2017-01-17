@@ -48,29 +48,26 @@ By using some CSS rules e.g. such as follows
 
 .. code-block:: css
    :linenos:
-   
+	 
 	.ce_metamodel_content .item {
 	    display: table;
 	    width: 100%;
-	}
-  
+	}  
 	.ce_metamodel_content .item.even {
 	    background-color: #f4f2f0;
 	    border-bottom: 1px solid #d4cbc5;
 	    border-collapse: collapse;
 	}
-  
 	.ce_metamodel_content .item.odd {
 	    background-color: #f6f6f6;
 	    border-bottom: 1px solid #d4cbc5;
 	    border-collapse: collapse;
 	}
-  
   .ce_metamodel_content .item .field {
     display: table-cell;
     width: 25%;
   }
-  
+
 
 the front end view looks better - see screenshot:
 
