@@ -46,8 +46,7 @@ For front end output the attributes are displayed within individual HTML div con
 
 By using some CSS rules e.g. such as follows
 
-.. code-block:: css
-   :linenos:
+.. code:: css
 	 
 	.ce_metamodel_content .item {
 	    display: table;
