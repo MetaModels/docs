@@ -48,7 +48,7 @@ By using some CSS rules e.g. such as follows
 
 .. code-block:: css
    :linenos:
-	
+   
 	.ce_metamodel_content .item {
 	    display: table;
 	    width: 100%;
@@ -70,6 +70,7 @@ By using some CSS rules e.g. such as follows
     display: table-cell;
     width: 25%;
   }
+  
 
 the front end view looks better - see screenshot:
 
