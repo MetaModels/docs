@@ -23,7 +23,7 @@ To test the front end view it is necessary to create some data entries in the em
 You will then see the input screen with the fields you have defined (attributes). Now you can fill them with initial data (see screenshot).
 
 |img_contentelements_02_en|
-.
+
 After you have hit "Save and close" you will see the new data record. Only the attributes that you have activated in your render setting "BE list" ("Name" and "First name") will be visible here.
 
 |img_contentelements_03_en|
@@ -44,7 +44,7 @@ and it will look similar like this in the front end
 
 For front end output the attributes are displayed within individual HTML div container elements including specific CSS classes using the standard template. Now you can format the output by using CSS or by customising the standard template, so that the output takes place in form of a HTML table.
 
-By using some CSS rules e.g. such as follows..
+By using some CSS rules e.g. such as follows
 
 .. code-block:: css
    :linenos:
