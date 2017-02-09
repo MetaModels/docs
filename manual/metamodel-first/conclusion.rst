@@ -31,5 +31,5 @@ Additionally here is a customized template in use for the render setting for the
 In the chapter :ref:`mm_second_index` we will set up a more complex data structure and in the chapter :ref:`mm_special_index` we will cover some aspects such as multilingualism, variants, child tables etc.
 
 .. |img_conclusion_01_en| image:: /_img/screenshots/metamodel_first/conclusion_01_en.png
-.. |img_conclusion_02| image:: /_img/screenshots/metamodel_first/conclusion_02.png
-.. |img_conclusion_03| image:: /_img/screenshots/metamodel_first/conclusion_03_en.png
+.. |img_conclusion_02_en| image:: /_img/screenshots/metamodel_first/conclusion_02_en.png
+.. |img_conclusion_03_en| image:: /_img/screenshots/metamodel_first/conclusion_03_en.png
