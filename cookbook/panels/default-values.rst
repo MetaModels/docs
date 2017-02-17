@@ -9,7 +9,7 @@ The metamodels input fields can be (almost) used in the same way as the input fi
 There are some differences because MetaModels generates fields dynamically by the dc-general.
 
 You can create pre-defined values with the key "default" added to the dc-array.
-The dc-array can be amended either by an entry in the file "dcaconfig.php" in the folder "/system/config/" or there is an own module folder in the file "config.php". 
+The dc-array can be amended either by an entry in the file "dcaconfig.php" in the folder "/system/config/" or if there is an own module folder in the file "config.php". 
 
 Appropriate entries are already set up in the module `"Metamodels-Boilerplate" <https://github.com/MetaModels/boilerplate>`_
 in the file "config.php".
