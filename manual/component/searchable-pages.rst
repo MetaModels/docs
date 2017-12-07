@@ -14,6 +14,16 @@ Unlike the standard list views, this "special treatment" of the MetaModel detail
 
 The "normal list views" do not need this special treatment. These pages are automatically included with the help of the Contao functions into the Contao search engine or the sitemap.
 
+If you go to "Maintenance" and click the "Rebuilt index" button, all the detail pages are going to be included in the list of URLs and loaded. Additionally the URLs are entered in sitemap.xml. 
+
+If you have checked only "Recreate the XML files" in "Maintenance", only the URLs are going to be entered into the sitemap.xml file.
+
+The detail pages will not be integrated in the FE module "Sitemap".
+
+Please note that URLs containing special keywords as "keys", such as `id`, `file`,
+`year` etc. will not be indexed by Contao; E.g. the URL details/id/my-detailpage-123.html - the keywords are listed in the array `$GLOBALS['TL_NOINDEX_KEYS'] <https://github.com/contao/core/blob/master/system/modules/core/config/config.php#L419>`_
+.
+
 Options
 -------
 
