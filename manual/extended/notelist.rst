@@ -174,37 +174,37 @@ As an example for a feedback you can insert the following code to a custom Conta
 
    <?php
 
-use MetaModels\NoteList\Event\ManipulateNoteListEvent;
-use MetaModels\NoteList\Event\NoteListEvents;
+   use MetaModels\NoteList\Event\ManipulateNoteListEvent;
+   use MetaModels\NoteList\Event\NoteListEvents;
 
-return [
-    NoteListEvents::MANIPULATE_NOTE_LIST => [
-        function (ManipulateNoteListEvent $event) {
-            // Only handle note list "1".
-            if ('1' !== ($listId = $event->getNoteList()->getStorageKey())) {
-                return;
-            }
+   return [
+       NoteListEvents::MANIPULATE_NOTE_LIST => [
+           function (ManipulateNoteListEvent $event) {
+               // Only handle note list "1".
+               if ('1' !== ($listId = $event->getNoteList()->getStorageKey())) {
+                   return;
+               }
 
-            switch ($event->getOperation()) {
-                case ManipulateNoteListEvent::OPERATION_ADD:
-                    Message::addConfirmation('Added ' . $event->getItem()->get('id') . ' to ' . $listId);
-                    // Add your own notes in metaData.
-                    $metaData = $event->getNoteList()->getMetaDataFor($event->getItem());
-                    $metaData['tstamp'] = time();
-                    $event->getNoteList()->updateMetaDataFor($event->getItem(), $metaData);
-                    break;
-                case ManipulateNoteListEvent::OPERATION_REMOVE:
-                    Message::addConfirmation('Removed ' . $event->getItem()->get('id') . ' to ' . $listId);
-                    break;
-                case ManipulateNoteListEvent::OPERATION_CLEAR:
-                    Message::addConfirmation('Cleared ' . $listId);
-                    break;
-                default:
-                    throw new \RuntimeException('Unknown note list operation: ' . $event->getOperation());
-            }
-        }
-    ]
-];
+               switch ($event->getOperation()) {
+                   case ManipulateNoteListEvent::OPERATION_ADD:
+                       Message::addConfirmation('Added ' . $event->getItem()->get('id') . ' to ' . $listId);
+                       // Add your own notes in metaData.
+                       $metaData = $event->getNoteList()->getMetaDataFor($event->getItem());
+                       $metaData['tstamp'] = time();
+                       $event->getNoteList()->updateMetaDataFor($event->getItem(), $metaData);
+                       break;
+                   case ManipulateNoteListEvent::OPERATION_REMOVE:
+                       Message::addConfirmation('Removed ' . $event->getItem()->get('id') . ' to ' . $listId);
+                       break;
+                   case ManipulateNoteListEvent::OPERATION_CLEAR:
+                       Message::addConfirmation('Cleared ' . $listId);
+                       break;
+                   default:
+                       throw new \RuntimeException('Unknown note list operation: ' . $event->getOperation());
+               }
+           }
+       ]
+   ];
 
 On the front end the feedback can be shown in a template with the output of the Contao message - e.g.
 
