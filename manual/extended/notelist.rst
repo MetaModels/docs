@@ -221,7 +221,6 @@ Known Issues and Next Features
 
 * Translation in DE (if project is released via Transifex)
 * Data transfer to a form as HTML (currently only available as text)
-* 
 
 Donations
 ---------
