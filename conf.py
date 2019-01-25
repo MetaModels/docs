@@ -51,7 +51,6 @@ latex_elements = {
   'papersize': 'a4paper',
   'pointsize': '10pt',
   'classoptions': ',openany,oneside',
-  'babel' : '\\usepackage[english]{babel}',
 }
 
 latex_documents = [
