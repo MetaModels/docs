@@ -7,6 +7,7 @@
 
 import sys
 import os
+import sphinx_rtd_theme
 from datetime import date
 
 #sys.path.append(os.path.abspath('_ext/phpdomain'))
@@ -24,6 +25,7 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
 project = u'MetaModels'
+#copyright = u'{:d}, <a href="https://now.metamodel.me/de/ueber-uns/team" title="Team MetaModels" target="_blank">Team MetaModels</a>'.format(date.today().year)
 copyright = u'{:d}, Team MetaModels'.format(date.today().year)
 version = '2.0'
 release = '2.0.0'
@@ -33,18 +35,23 @@ pygments_style = 'sphinx'
 
 # -- Options for HTML output ----------------------------------------------
 
-html_theme = 'default'
-html_theme = "sphinx_rtd_theme"
-html_theme_path = ["_themes", ]
-html_static_path = ['_static']
+html_theme = 'sphinx_rtd_theme'
+html_theme_path = ['_themes', ]
+# html_static_path = []
 html_use_modindex = False
 htmlhelp_basename = 'MetaModelsdoc'
+html_favicon = '_img/favicon.ico'
+html_last_updated_fmt = '%d.%m.%Y'
+html_show_sphinx = False
+html_show_copyright = True
 
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {
-'papersize': 'a4paper',
-'pointsize': '10pt',
+  'papersize': 'a4paper',
+  'pointsize': '10pt',
+  'classoptions': ',openany,oneside',
+  'babel' : '\\usepackage[german]{babel}',
 }
 
 latex_documents = [
