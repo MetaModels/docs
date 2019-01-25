@@ -41,7 +41,7 @@ html_theme_path = ['_themes', ]
 html_use_modindex = False
 htmlhelp_basename = 'MetaModelsdoc'
 html_favicon = '_img/favicon.ico'
-html_last_updated_fmt = '%d.%m.%Y'
+html_last_updated_fmt = '%m-%d-%Y'
 html_show_sphinx = False
 html_show_copyright = True
 
@@ -51,7 +51,7 @@ latex_elements = {
   'papersize': 'a4paper',
   'pointsize': '10pt',
   'classoptions': ',openany,oneside',
-  'babel' : '\\usepackage[german]{babel}',
+  'babel' : '\\usepackage[english]{babel}',
 }
 
 latex_documents = [
