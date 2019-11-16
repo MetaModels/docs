@@ -3,34 +3,77 @@
 Install and update MetaModels
 ==============================
 
-You will need a Contao-LTS-version to be able to install MetaModels
-- the current version is Contao 3.5.x
+The current MetaModels 2.1 for Contao 4 is used as usual for the current LTS (4.4)
+tested extensively and is released for it - after the previous tests, MM 2.1 is running.
+but also without problems under 4.6.
+
+The installation of MM 2.1 requires PHP version 7.1 or higher - PHP 7.2 is recommended.
+
+MetaModels 2.1 can be installed via the Contao-Manager or via the console via Composer.
+see the following section.
+
+.. seealso:: For a re-financing of the extensive work, the MM team asks for financial
+   Gift. The scope of the project to be realised should be taken as a guideline.
+   and about 10% will be taken into account - based on the experience of the last grants, are
+   the amounts between 100€ and 500€ (net) - an invoice incl. VAT will of course always be
+   is on display. `More... <https://now.metamodel.me/de/unterstuetzer/spenden>`_
 
 
-Installation via Composer
--------------------------
+Installing MM 2.1
+-----------------
 
-MetaModels and all its dependencies can be installed with the `Composer package manager <https://c-c-a.org/ueber-composer>`_
-in the Contao backend.
+The installation requirements for MetaModels 2.1 are:
 
-If your Contao installation is already using the new Composer package manager, you can easily install MetaModels by selecting, respectively typing in the package name into the search field, as follows:
+* a running Contao 4.4.x (LTS) and
+* PHP 7.1/7.2
+* MySQL from 5.5.5 (InnoDB), MariaDB (without `strict mode`)
 
-* `metamodels/bundle_all <https://packagist.org/packages/MetaModels/bundle_all>`_
+Higher versions of Contao and/or PHP are possible, but not officially supported.
 
-Regarding the bundle, you will have to select version "2.0.x" at the moment - this bundle will automaticaly install the complete "MetaModels core" with it. While selecting restrictions you can choose between different stages, such as "bugfix release", "feature release" etc. - the current MetaModels functions will be activated with "feature release".
+In the Contao manager you can enter `metamodels/` to get all available packages
+are listed. The basic package `metamodels/core` has to be installed - and in addition 
+additional attributes and filters can be added depending on the task.
 
-In case that you don't need all filters and attributes, you can also install them separately or you can select another `Bundle package <https://github.com/MetaModels?query=bundle>`_. The packages mentioned above are grouped together and should meet most requirements.
+In addition to the individual packages, there are `bundles` which contain different packages for a
+simplified installation.
 
-You can find an overview of your already installed packages in the display of the dependency graph (checkbox) in the Contao Composer client ("Package management"). 
+For an introduction to MetaModels we recommend the bundle `metamodels/bundle_start` - herewith
+the core as well as the most important attributes and filters are defined without e.g. the packages for multilingualism
+installed.
 
-Installaton via Nightly build
-------------------------------
+As in MetaModesls 2.0, there is also the `metamodels/bundle_all` bundle, which is installed next to the
+`bundle_start` will also install the multilanguage packages (note: the `translatedselect` packages are also installed).
+`translated tags` are no longer included here, as they are only to be used for special cases).
 
-Alternatively to the installation via Composer, you can install MetaModels via FTP. To do this, you will have to download the current version of MetaModels from the `project website http://now.metamodel.me/ <http://now.metamodel.me/>`_
-unzip it and upload it via FTP to your server. Most of the folders have to be saved into the folder `/system/module` - only two PHP files which are supporting the Ajax functions have to be saved into the Contao root directory.
+Further modules like "Register filter", "Radius search", "Rating" etc. are available as separate packages
+to add.
 
-Afterwards you will have to update the database in the "extension manager".
-If the following error message appears  ``Fatal error: Class 'MetaModels\Helper\UpgradeHandler' ....!metamodels-tng-branch/config/runonce_0.php`` you should purge the internal cache. This option can be found in the menu item "Maintenance" of the Contao backend.
+In addition to the Contao Manager, the installation of packages and bundles can be done directly via the console via
+Composer possible - e.g. with
+
+``php web/contao-manager.phar.php composer require metamodels/core``
+
+or
+
+``php web/contao-manager.phar.php composer require metamodels/bundle_start``
+
+Instead of `php` you may have to specify the path to the corresponding PHP binary.
+
+After the installation a **update of the database is not possible via the install tool of Contao.
+to forget!**
+
+With a conversion (2.0 -> 2.1) or a new installation it is a good opportunity to only use the attributes and filters
+which are necessary for the project. Was previously e.g. `metamodels/bundle_all` in use,
+you can query the really used attributes and filters with the following SQL commands:
+
+.. code-block:: sql
+   :linenos:
+   
+   -- Attribute
+   SELECT type FROM `tl_metamodel_attribute` GROUP BY type ORDER BY type
+   
+   -- Filter
+   SELECT type FROM `tl_metamodel_filtersetting` GROUP BY type ORDER BY type
 
 
 Testing of special packages via Composer
@@ -45,8 +88,8 @@ For the selection in the package management, check the checkbox "dependencies i 
 After "Reserve package for installation" you'll have to make some small changes to Composer-JSON. To do this go to the package manager to "settings" and there click onto "expert mode". The displayed JSON file has to be extended with the entry "as 2.0.0" within the node "require". If you happen to have several extra packages you have to do this for every entry.
 
 for example: |br|
-``"metamodels/core": "dev-hotfix-xyz"`` modify to |br|
-``"metamodels/core": "dev-hotfix-xyz as 2.0.0"``
+``"metamodels/core": "^2.1"`` modify to |br|
+``"metamodels/core": "dev-hotfix/2.1.25 as 2.1.25"``
 
 After the installation via "update packages" you should delete the Composer cache in the "settings" of the package management.
 
@@ -58,40 +101,6 @@ To come back to the initial version , just delete the package in the package man
 Please never forget to provide the MetaModels developer team with your valuable feedback after your test on  
 `Github <https://github.com/MetaModels>`_. 
 
-
-Update MetaModels 
------------------
-
-If you installed MetaModels via Composer you will also have to update it that way.
-
-With the manual MetaModel installation you have to consider several aspects.
-The following procedure has shown itself to be the most efficient: 
-
-* delete ALL old MetaModel folders (you can check which folders these are by double-checking the previous download) - really **ALL**
-* Clear the Contao cache -> /system/cache (everything there within this folder)
-* **NEVER EVER** do a database update (otherwise all will be gone)
-* download the new nightly build files, unzip and upload them (via FTP)
-* update the database via /contao/install.php
-
-You can find the most current information in the `forum <https://community.contao.org/de/showthread.php?56725-MetaModels-aktualisieren-%28ohne-Composer%29>`_
-
-Switch MetaModels from "Nightly build" to "Composer"
------------------------------------------------------
-
-The procedure is similar to "Update MetaModels". By switching to Composer you should consider that Composer is a memory intensive application. Based on experience, you should have at least 100MB. The exact required memory size is dependent on other installed packages and also on the server configuration of your provider.
-
-The following procedure has shown itself to be the most efficient: 
-
-* install Composer
-* delete ALL old MetaModel folders (you can see which folders these are by double-checking your previous "nightly" download) - really **ALL**
-* Clear the Contao cache -> /system/cache (everything there within this folder)
-* **NEVER EVER** do a database update (otherwise all will be gone)
-* in Composer select the desired MetaModel version, reserve for installation, then install
-* the database update should then automatically being proposed and done
-
-You can find the most current information in the
-`forum <https://community.contao.org/de/showthread.php?59961-MetaModels-aktualisieren-%28von-Nightly-Build-zu-Composer%29>`_
-.
 
 .. |br| raw:: html
 
