@@ -1,6 +1,8 @@
 Welcome to MetaModels!
 ======================
 
+.. warning:: `Please note that the latest version is the German one! <https://metamodels.readthedocs.io/de/latest>`_
+
 This is the official documentation of *MetaModels*, an extension for the `Contao Content Management System`_.
 
 .. _Contao Content Management System: https://contao.org
