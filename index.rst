@@ -7,6 +7,9 @@ it possible to store structured data in the Contao CMS and display it on the web
 about the structure and usage can be found under :ref:`introdution_was-ist-metamodels`. The common
 abbreviation for MetaModels is 'MM'.
 
+.. warning:: Please note that the latest version is the German one! See
+   `https://metamodels.readthedocs.io/de/latest/ <https://metamodels.readthedocs.io/de/latest/>`_
+
 
 This documentation is divided into three sections:
 
