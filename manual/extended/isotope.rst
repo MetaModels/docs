@@ -5,7 +5,7 @@ MetaModels-2-Isotope
 
 .. warning:: MetaModels-2-Isotope is still in fundraising and will only be released
    once the target amount of currently 7,374 € is reached. |br|
-   Early installation via the "Early Adopter Program" is possible — `see below <#early-adopter-program>`_
+   Early installation via the "Early Adopter Program" is possible — `see below <#rst-extended-isotope-early-adopter-program>`_
 
 The "MetaModels-2-Isotope" project provides various components for MetaModels (from
 2.1) to pass items (articles, products) from MetaModels to the online shop
@@ -24,6 +24,8 @@ A demo shop was set up for testing and comparing the extension against standard 
 
 The project was implemented by Richard Henkenjohann, Carsten Merz, and Ingolf Steinhardt.
 
+
+.. _rst_extended_isotope_early-adopter-program:
 
 Early Adopter Program
 ---------------------
@@ -48,6 +50,8 @@ For interest or further questions, please email info@e-spin.de — see also the
 
 *1 Net — plus VAT if applicable.
 
+
+.. _rst_extended_isotope_features:
 
 Features
 --------
@@ -75,6 +79,8 @@ If variants are created in MetaModels, these can also be passed to Isotope. Note
 in MetaModels, the (child) variants are each independent records.
 
 
+.. _rst_extended_isotope_components:
+
 Components
 ----------
 
@@ -85,6 +91,8 @@ The project provides three different components:
 * attribute_isotopebaseprice: attribute for selecting the base price type and quantity input
 * attribute_isotopeshippingweight: attribute for passing the weight
 
+
+.. _rst_extended_isotope_configuration:
 
 Configuration and Use
 ---------------------
@@ -153,6 +161,8 @@ as shopping cart and checkout are done in Isotope.
 Once an item has been purchased, it can no longer be deleted in the backend, as in
 Isotope.
 
+.. _rst_extended_isotope_demo-shop:
+
 Demo Shop
 ---------
 
@@ -175,6 +185,8 @@ Some notes on the individual product groups:
 * Downloads are also multilingual
 
 
+.. _rst_extended_isotope_prerequisites:
+
 Prerequisites
 -------------
 
@@ -185,11 +197,15 @@ The following prerequisites currently apply for installation of the modules:
 * PHP from 7.2/7.4 || PHP from 8.1
 
 
+.. _rst_extended_isotope_known-issues:
+
 Known Issues and Next Features
 ------------------------------
 
 * Translations in DE (when project is released via Transifex)
 
+
+.. _rst_extended_isotope_donations:
 
 Donations
 ---------

@@ -5,7 +5,7 @@ File-Metadata-Extractor for MetaModels
 
 .. warning:: The File-Metadata-Extractor tool is still in fundraising and will only be released
    once the target amount of currently 4,200.00 € is reached. |br|
-   Early installation via the "Early Adopter Program" is possible — `see below <#early-adopter-program>`_
+   Early installation via the "Early Adopter Program" is possible — `see below <#rst-extended-metadata-extractor-early-adopter-program>`_
 
 The File-Metadata-Extractor reads so-called metadata from files — metadata is additional
 information that is "hidden" inside a file. Well-known examples include EXIF and IPTC data, which
@@ -38,6 +38,8 @@ field. In each mapping row, a data conversion can also be specified. Currently a
 * format: for converting date/time values
 
 
+.. _rst_extended_metadata_extractor_early-adopter-program:
+
 Early Adopter Program
 ---------------------
 
@@ -57,6 +59,8 @@ For interest or further questions, please send an email to info@e-spin.de
 *1 Net — plus VAT if applicable.
 
 
+.. _rst_extended_metadata_extractor_installation:
+
 Installation via Composer
 -------------------------
 
@@ -64,6 +68,8 @@ Prerequisites for installation:
 
 * MetaModels Core from version 2.1
 
+
+.. _rst_extended_metadata_extractor_supported-metadata:
 
 Supported Metadata
 ------------------
@@ -87,6 +93,8 @@ The module is designed so that additional file formats and metadata types can be
 implemented.
 
 
+.. _rst_extended_metadata_extractor_configuration:
+
 Creating and Configuring the File-Metadata-Extractor
 -----------------------------------------------------
 
@@ -109,6 +117,8 @@ only saved in MetaModels once the record is saved.
 
 |img_item_inputmask|
 
+
+.. _rst_extended_metadata_extractor_donations:
 
 Donations
 ---------

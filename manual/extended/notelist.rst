@@ -29,6 +29,8 @@ The note list also works with translated MetaModels so that note list records ar
 preserved when the language is switched.
 
 
+.. _rst_extended_notelist_installation:
+
 Installation via Contao Manager or Composer
 --------------------------------------------
 
@@ -54,6 +56,8 @@ Prerequisites for installation:
 * optional Notification Center 1.7 or 2.3
 
 
+.. _rst_extended_notelist_create-note-list:
+
 Creating a Note List
 ---------------------
 
@@ -78,6 +82,8 @@ The list view provides access to all created note lists.
 
 |img_notelist_overview|
 
+
+.. _rst_extended_notelist_activating:
 
 Activating the Note List in a MetaModels List
 ----------------------------------------------
@@ -105,6 +111,8 @@ following code (number corresponds to the note list ID):
 
 |img_notelist_fe_list|
 
+
+.. _rst_extended_notelist_filter-display:
 
 Displaying the Note List via Filter
 -------------------------------------
@@ -248,6 +256,8 @@ The data is also processed by the form and, for example, sent by email
 |img_notelist_fe_list_with_form|
 
 
+.. _rst_extended_notelist_insert-tags:
+
 Insert Tags
 -----------
 
@@ -336,6 +346,8 @@ Additionally, this event can also be used to store extra information — see
 `OPERATION_ADD`.
 
 
+.. _rst_extended_notelist_known-issues:
+
 Known Issues and Next Features
 ------------------------------
 
@@ -344,6 +356,8 @@ Known Issues and Next Features
   created in the Templates section, as Contao no longer supports this — create these
   files via SSH/SFTP or locally
 
+
+.. _rst_extended_notelist_donations:
 
 Donations
 ---------

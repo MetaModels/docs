@@ -13,12 +13,12 @@ More on the topic :ref:`Multilingualism in MetaModels <component_multi-language>
 .. note:: The Translator-Bridge extension is still in fundraising and will only be released once
    the target amount of currently 3,442.50 € is reached. |br|
    Early installation via the "Early Adopter Program" is possible —
-   `see below <#early-adopter-program>`_
+   `see below <#rst-extended-translator-bridge-early-adopter-program>`_
 
 Currently **DeepL** is supported as a translation provider — both the free Free-Tier API and the
 Pro API. The extension is designed to be open, so additional providers (e.g. ChatGPT,
 LibreTranslate) can be added as custom Symfony services —
-`see below <#custom-translation-providers>`_.
+`see below <#rst-extended-translator-bridge-custom-translation-providers>`_.
 
 The button only appears when:
 
@@ -27,7 +27,10 @@ The button only appears when:
 * the attribute field is translatable and not read-only.
 
 .. note:: As an option, translation can also be enabled for Contao content —
-   `see below <#translating-contao-content-elements>`_
+   `see below <#rst-extended-translator-bridge-translating-contao-content-elements>`_
+
+
+.. _rst_extended_translator-bridge_prerequisites:
 
 Prerequisites
 -------------
@@ -37,6 +40,8 @@ Prerequisites
 * A valid API key from the respective translation provider (e.g. DeepL Free or Pro)
 
 
+.. _rst_extended_translator-bridge_installation:
+
 Installation via Contao Manager or Composer
 -------------------------------------------
 
@@ -44,6 +49,8 @@ Installation via Contao Manager or Composer
 
    composer require metamodels/translator-bridge
 
+
+.. _rst_extended_translator-bridge_configuration:
 
 Configuration
 -------------
@@ -67,6 +74,8 @@ it from being published e.g. via a repository):
    ``api-free.deepl.com``. Pro keys without this suffix use ``api.deepl.com``. The extension
    detects the key type automatically.
 
+
+.. _rst_extended_translator-bridge_usage:
 
 Usage in a Record's Input Mask
 -------------------------------
@@ -96,6 +105,8 @@ an already saved value; it only populates the input field in the browser.
    fields in the current editing mask at once — without having to click each button individually.
 
 
+.. _rst_extended_translator-bridge_supported-attributes:
+
 Supported Attributes
 --------------------
 
@@ -110,6 +121,8 @@ The button is displayed for the following translated attribute types:
 * :ref:`Translated content article <component_attribute_translatedcontentarticle>`
   — buttons appear in the popup window of the content element
 
+
+.. _rst_extended_translator-bridge_content-elements-popup:
 
 Translating Content Elements in the Popup
 ------------------------------------------
@@ -135,6 +148,8 @@ following rules apply:
   receive a button.
 
 
+.. _rst_extended_translator-bridge_multilingual-administration:
+
 MetaModels Administration with Multilingual Inputs
 ----------------------------------------------------
 
@@ -154,6 +169,8 @@ Clicking the button |deepl_icon| in a language row:
 .. tip:: The keyboard shortcut :kbd:`Alt+T` (macOS: :kbd:`Option+T`) also translates all rows
    of such multilingual tables on the current page at once.
 
+
+.. _rst_extended_translator-bridge_translating-contao-content-elements:
 
 Translating Contao Content Elements
 -------------------------------------
@@ -185,6 +202,8 @@ Then clear the Symfony cache:
    is nothing to translate in the fallback tree.
 
 
+.. _rst_extended_translator-bridge_error-messages:
+
 Error Messages
 --------------
 
@@ -207,6 +226,8 @@ Typical causes and messages:
    * - Server unreachable
      - *DeepL: Unable to connect to the translation service.*
 
+
+.. _rst_extended_translator-bridge_custom-translation-providers:
 
 Custom Translation Providers
 -----------------------------
@@ -232,6 +253,8 @@ The interface requires the following methods:
   message must be thrown (no raw HTTP exceptions)
 * ``getSupportedLanguages(): array`` — list of supported target language codes
 
+
+.. _rst_extended_translator-bridge_order-multiple-providers:
 
 Order of Multiple Providers
 -----------------------------
@@ -259,6 +282,8 @@ The provider's icon is injected into the input mask via a CSS rule:
    }
 
 
+.. _rst_extended_translator-bridge_early-adopter-program:
+
 Early Adopter Program
 ----------------------
 
@@ -274,6 +299,8 @@ For interest or further questions, please send an email to info@e-spin.de
 
 *1 Net — plus VAT if applicable.
 
+
+.. _rst_extended_translator-bridge_donations:
 
 Donations
 ---------

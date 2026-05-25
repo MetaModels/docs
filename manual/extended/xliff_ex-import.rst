@@ -11,7 +11,7 @@ More on the topic :ref:`Multilingualism in MetaModels <component_multi-language>
 
 .. note:: The XLIFF Export/Import tool is still in fundraising and will only be released once
    the target amount of currently 5,397.50 € is reached. |br|
-   Early installation via the "Early Adopter Program" is possible — `see below <#early-adopter-program>`_
+   Early installation via the "Early Adopter Program" is possible — `see below <#rst-extended-xliff-ex-import-early-adopter-program>`_
 
 The export generates an `XLIFF file <https://en.wikipedia.org/wiki/XLIFF>`_ that can be read
 by common translation tools — for example `Poedit <https://poedit.net/>`_. XLIFF is the standard
@@ -32,8 +32,10 @@ The following modules/extensions are currently supported:
 * Isotope 2.x
 * RockSolid Custom Elements
 
-More on further plans and development `see below <#extension-possibilities>`_
+More on further plans and development `see below <#rst-extended-xliff-ex-import-extension-possibilities>`_
 
+
+.. _rst_extended_xliff_ex-import_early-adopter-program:
 
 Early Adopter Program
 ---------------------
@@ -52,6 +54,8 @@ For interest or further questions, please send an email to info@e-spin.de
 *1 Net — plus VAT if applicable.
 
 
+.. _rst_extended_xliff_ex-import_installation:
+
 Installation via Contao Manager or Composer
 -------------------------------------------
 
@@ -60,6 +64,8 @@ Prerequisites for installation:
 * MetaModels core 2.1/2.2/2.3/2.4
 * Contao 4.4.x/4.9.x/4.13.x/5.3.x
 
+
+.. _rst_extended_xliff_ex-import_configuration:
 
 Configuration
 -------------
@@ -76,7 +82,7 @@ imported — e.g. only Contao, only MM, or both — and individual jobs are defi
 started via console commands.
 
 The configuration file is divided into the sections ``dictionaries`` and ``jobs`` — the
-parameters are as follows (`see also example <#example>`_):
+parameters are as follows (`see also example <#rst-extended-xliff-ex-import-example>`_):
 
 .. note:: If the following message appears during `composer update` |br|
    `No default map builder defined, please install an extension that provides "cyberspectrum_i18n.contao.default_map_builder".` |br|
@@ -96,7 +102,7 @@ dictionaries
   * ``xliff``: ``*`` freely assignable
 
 Dictionaries of type ``compound`` can in turn contain existing dictionaries and extend them with
-additional sources — `see example <#example>`_
+additional sources — `see example <#rst-extended-xliff-ex-import-example>`_
 
 jobs
 ....
@@ -134,6 +140,8 @@ Type ``batch``
 * ``jobs``: list of job names to be processed
 
 
+.. _rst_extended_xliff_ex-import_export:
+
 Export
 ------
 
@@ -149,6 +157,8 @@ The ``--help`` parameter outputs all available parameters — e.g. the verbose p
 (``-v, -vv -vvv``) for more detailed output, or ``--dry-run`` for a "dry run".
 
 
+.. _rst_extended_xliff_ex-import_import:
+
 Import
 ------
 
@@ -160,6 +170,8 @@ or
 
 ``php vendor/bin/contao-console i18n:process import-en-ru -c`pwd`/.translation-jobs.yml``
 
+
+.. _rst_extended_xliff_ex-import_debug:
 
 Debug
 -----
@@ -204,6 +216,8 @@ main language, the following message appears:
    WARNING   [app] Content element 7956 has no mapping in main. Element skipped.
    ["id" => 7956,"msg_type" => "article_content_no_main"]
 
+
+.. _rst_extended_xliff_ex-import_example:
 
 Example
 -------
@@ -296,6 +310,8 @@ An exported XLIFF file can be opened and edited in an XLIFF editor such as
 |img_poedit|
 
 
+.. _rst_extended_xliff_ex-import_extension-possibilities:
+
 Extension Possibilities
 -----------------------
 
@@ -305,6 +321,8 @@ Output types
 * csv
 * xml
 
+
+.. _rst_extended_xliff_ex-import_donations:
 
 Donations
 ---------
