@@ -1,43 +1,70 @@
 .. _component_searchable-pages:
 
-|img_searchable_pages_32| Define search settings
-================================================
+|img_searchable_pages_32| Indexing
+====================================
 
-.. note:: How to include the detail pages of a MetaModel both into the Contao search index and sitemap.xml
+.. note:: Include detail pages of a MetaModel in the sitemap.xml of Contao
 
 Introduction
 ------------
 
-With the menu item "Define search settings" you can include the detail pages of a MetaModel rendering (list) into the frontend module of Contao's search engine as well as into the sitemap.xml.
+Indexing allows the detail pages of a MetaModel rendering (list) to be included in the
+generation of sitemap.xml.
 
-Unlike the standard list views, this "special treatment" of the MetaModel detail pages results from their way to be called. The pages that have been created in the Contao page tree have to be called with specific GET or URL routing parameters in order to output a (useful) detail page with values. The functions for the Contao search engine and the sitemap.xml generator are not able to access those parameters. That's why they need special support.
+This "special treatment" of detail pages compared to normal list views arises from how they
+are called. Detail pages created in the Contao page tree must always be called with specific
+GET or URL routing parameters to output a (meaningful) detail page with values. The Contao
+function for generating sitemap.xml cannot access these parameters from MetaModels and therefore
+requires appropriate support.
 
-The "normal list views" do not need this special treatment. These pages are automatically included with the help of the Contao functions into the Contao search engine or the sitemap.
+"Normal list views" do not require this special treatment, and the pages are automatically and
+correctly included in search or sitemap via Contao functions.
 
-If you go to "Maintenance" and click the "Rebuilt index" button, all the detail pages are going to be included in the list of URLs and loaded. Additionally the URLs are entered in sitemap.xml. 
+The "base page" as created by Contao is removed from sitemap.xml, i.e. the page
+``domain.tld/my-project/detail.html`` does not appear in sitemap.xml but only the URLs with the
+filter parameter, e.g. ``domain.tld/my-project/detail/alias-1.html``, ``.../alias-2.html``, etc.
 
-If you have checked only "Recreate the XML files" in "Maintenance", only the URLs are going to be entered into the sitemap.xml file.
+Detail pages are not included in the "Sitemap" frontend module.
 
-The detail pages will not be integrated in the FE module "Sitemap".
+Note that Contao does not index URLs with certain keywords as "keys" such as `id`, `file`,
+`year`, etc.; e.g. as URL details/id/my-details-123.html — the keywords are listed in the
+array `$GLOBALS['TL_NOINDEX_KEYS'] <https://github.com/contao/core/blob/master/system/modules/core/config/config.php#L419>`_.
 
-Please note that URLs containing special keywords as "keys", such as `id`, `file`,
-`year` etc. will not be indexed by Contao; E.g. the URL details/id/my-detailpage-123.html - the keywords are listed in the array `$GLOBALS['TL_NOINDEX_KEYS'] <https://github.com/contao/core/blob/master/system/modules/core/config/config.php#L419>`_
-.
+Detail pages are more easily included in the (normal) Contao search via links in sitemap.xml —
+see `contao:crawl <https://docs.contao.org/manual/en/cli/crawl/>`_.
 
 Options
 -------
 
 * **Name**: |br|
-  Designation for the backend
-* **Filtersetting**: |br|
-  Selection of the filter set for the detail view
-* **Rendersetting**: |br|
-  Selection of the render setting for the detail view
+  Label for the backend
+* **Render settings**: |br|
+  Selection of the render settings for the list view that also leads to the detail view
+* **Filter set**: |br|
+  Selection of a filter set to narrow down the detail pages — e.g. to only output published
+  records or include them in sitemap.xml
 
-Workflow
---------
+Procedure
+---------
 
-You can create a new indexation with a click on the icon "|img_new| New searchable page". After choosing a name you can select a filter setting and a render settings. The indexation will be done by the automatic update mechanism of Contao or you can go to the "Maintenance" area, purge data and then click "Rebuild index".
+A new indexing is created via the icon "|img_new| New indexing" and after entering the name,
+the render setting is selected. The render setting is usually the same as the one chosen for
+the CE/module MetaModel list of the frontend output of the "overview list" — but a separate
+render setting can also be created.
+
+A filter must be selected if certain detail page URLs should not appear in sitemap.xml —
+e.g. to only include published records.
+
+Since Contao 4.11, sitemap.xml is generated dynamically when called and is no longer stored
+in the `share` folder.
+
+Tips
+----
+
+* :ref:`rst_cookbook_filter_exclude-url-from-search-index`
+* :ref:`rst_cookbook_tips_seo_structured-data` or
+* :ref:`rst_cookbook_templates_fe_template_schema_org`
+* :ref:`rst_cookbook_specials_add_items_at_navigation`
 
 
 .. |img_searchable_pages_32| image:: /_img/icons/searchable_pages_32.png

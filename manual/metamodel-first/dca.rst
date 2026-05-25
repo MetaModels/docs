@@ -1,30 +1,43 @@
 .. _mm_first_dca:
 
-|img_dca_32| Input screens
-==========================
+|img_dca_32| Input Masks
+=========================
 
-In this step we will create the input screen for the MetaModel "Employee list", which will enable us to store attribute data in our database.
+In this step, the input mask for the MetaModel "Employee List" is created, through which the
+attribute data is stored in the database.
 
-First go to the MetaModels overview in the back end to see your MetaModel "Employee list". Next, click onto  the icon "|img_dca| Define input screens". The view will change to the overview of input screens which is actually empty.
+To access the input masks, activate the MetaModels overview again so that the "Employee List"
+entry is visible. Then click the icon "|img_dca| Input masks" and the view switches to the input
+masks overview — which is currently still empty.
 
-Click "|img_new| New input screen" and the input mask for the input screen settings will open. For the input field "Name" you might want to enter a name such as "Input". Another important setting is "Integration": Here you should select "Standalone" for our example. Then another drop-down menu named "Backend section" appears beneath. Here you select "MetaModels".
-Additionally you should activate all the three checkboxes under "Data manipulation permissions" -  see screenshot. Then hit "Save and close" to save your setting.
+After clicking "|img_new| New input mask", the mask for the input mask settings opens immediately.
+In the "Name" input field, enter a name such as "Input". Another important setting is the
+"Integration" selection, where "Independent" should be selected, and in the "Backend section"
+dropdown that appears, "MetaModels" should be selected. Additionally, all three checkboxes of the
+"Data manipulation permissions" block should be activated — see screenshot. Save the entry with
+"Save and close".
 
-|img_dca_01_en|
+|img_dca_01|
 
-Now you should be able to see your first entry "Input" in the input screens overview - see screenshot.
+The input masks overview should now show the first entry "Input" — see screenshot.
 
-|img_dca_02_en|
+|img_dca_02|
 
-Click onto the icon "|img_dca_setting| Settings" in order to open the next screen to add some attributes. Hee you can select and activate the attributes which you want to be shown in your input screen.
+Clicking the icon "|img_dca_setting| Settings" opens the next level for the attributes. Here,
+the attributes to be displayed in the input mask are selected or activated.
 
-Just like in the render settings you can also here add all attributes with one step. In the header click on the icon "|img_dca_add| Add all", then hit the button "Continue" and then "Save and close". Now you have added all available attributes to your input screen. Note that the attributes are not activated by default -  you can do this easily by clicking on the "eye icon".
+As with the render settings, the created attributes can be added in one step here too. To do
+this, click the header icon "|img_dca_add| Add all" and then confirm the "Continue" and "Save
+and close" buttons. All existing attributes are now added to the input mask. By default, the
+attributes are not activated — this can easily be done via the "eye icon".
 
-For this example we will activate all the attributes - the list should now look like in the screenshot below.
+In this example, all attributes are activated — the attribute list should now look like the
+screenshot.
 
-|img_dca_03_en|
+|img_dca_03|
 
-Note that the input mask is not visible in the back end yet. You'll be able to see it when the next step :ref:`component_dca-combine` is finished.
+The input mask is still not visible in the backend. This only happens once the
+:ref:`component_dca-combine` step is completed.
 
 
 .. |img_dca_32| image:: /_img/icons/dca_32.png
@@ -37,6 +50,6 @@ Note that the input mask is not visible in the back end yet. You'll be able to s
 .. |img_new| image:: /_img/icons/new.gif
 .. |img_edit| image:: /_img/icons/edit.gif
 
-.. |img_dca_01_en| image:: /_img/screenshots/metamodel_first/dca_01_en.png
-.. |img_dca_02_en| image:: /_img/screenshots/metamodel_first/dca_02_en.png
-.. |img_dca_03_en| image:: /_img/screenshots/metamodel_first/dca_03_en.png
+.. |img_dca_01| image:: /_img/screenshots/metamodel_first/dca_01.png
+.. |img_dca_02| image:: /_img/screenshots/metamodel_first/dca_02.png
+.. |img_dca_03| image:: /_img/screenshots/metamodel_first/dca_03.png

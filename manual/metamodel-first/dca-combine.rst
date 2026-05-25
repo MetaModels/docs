@@ -1,27 +1,34 @@
 .. _mm_first_dca-combine:
 
-|img_dca_combine_32| Input / Output combinations
-================================================
+|img_dca_combine_32| Input/Render Assignments
+==============================================
 
-In this step "Input / Output combinations" we will activate the input mask render setting for the back end. 
-It is not necessary to to activate this render setting for the front end. 
+In the "Input/Render assignments" step, for this simple example, the render setting is activated
+together with the input mask for the backend. Activation for a frontend output of the render
+setting is not necessary here.
 
-Go to the MetaModels overview in order to see the entry "Employee list". Next click on the icon "|img_dca_combine| Input / Output combinations" and the view will switch to the options overview.
+To access the input/render assignments, activate the MetaModels overview again so that the
+"Employee List" entry is visible. Then click the icon
+"|img_dca_combine| Input/Render assignments" and the view switches to the options overview.
 
-The setting options are shown as a list which can be extended if required.
-For our example you just have to select "Administrator" in "Backend group". For "Input screen" select "Input" and for "The render setting" select "BE list" - see screenshot.
+The settings options are displayed as a list that can be extended as needed. For the example,
+select "Administrator" for "User group", "Input" for "Input mask", and "BE List" for "Render
+setting" — see screenshot.
 
-|img_dca-combine_01_en|
+|img_dca-combine_01|
 
-After you hit "Save and close" the view will show the Metamodels overview - and at the same time you should see a new icon with the label "Employee list" in the left Contao back end menu (see screenshot):
+After "Save and close", the view switches back to the MetaModels overview — at the same time, a
+new icon labelled "Employee List" should have appeared in the left Contao navigation (see
+screenshot).
 
-|img_dca-combine_02_en|
+|img_dca-combine_02|
 
-This step completes the component settings for the back end. Now you should be able to enter data or configure the front end output.
+With this step, the component settings for the backend are complete and data can be entered, or
+the frontend output can be configured.
 
 
 .. |img_dca_combine_32| image:: /_img/icons/dca_combine_32.png
 .. |img_dca_combine| image:: /_img/icons/dca_combine.png
 
-.. |img_dca-combine_01_en| image:: /_img/screenshots/metamodel_first/dca-combine_01_en.png
-.. |img_dca-combine_02_en| image:: /_img/screenshots/metamodel_first/dca-combine_02_en.png
+.. |img_dca-combine_01| image:: /_img/screenshots/metamodel_first/dca-combine_01.png
+.. |img_dca-combine_02| image:: /_img/screenshots/metamodel_first/dca-combine_02.png

@@ -1,96 +1,143 @@
 .. _component_dca:
 
-|img_dca_32| Input screens
-==========================
+|img_dca_32| Input Forms
+=========================
 
-.. note:: Create input screens for data input;
-  Add, activate and configure attributes; define display conditions of an input field; Definition of grouping and sorting of the stored items is possible
+.. note:: Create input forms for data entry;
+  add, activate and configure attributes; optionally define
+  display conditions for input fields; definition of
+  grouping and sorting of stored items possible
 
 Introduction
 ------------
 
-To be able to fill the database via the backend, input screens are required. Each input screen can include the attributes, which are defined for each MetaModel, as input elements.
+Input forms are necessary to populate the database from the backend. Each input form can
+include the attributes defined per MetaModel as input elements.
 
-You can create one or more different input screens for each MetaModel. That input screens can be equipped with different attribute input fields. This enables you to cover various user permissions or workflows.
+One or more different input forms can be created for each MetaModel, equipped with different
+attribute input fields. This allows different permissions or workflows to be covered.
 
-Here too, the creation of the input screens is divided into the basic settings of the input screen, the part for the activation of the attributes as well as the selection of specific options of the individual attributes, such as mandatory field, arrangement, validation or similar.
-Most of the settings options reflect the possibilities of the "DCA" of the "Contao framework" (see `DCA <https://docs.contao.org/books/api/dca/index.html>`_)
-Read more about the options under the item "Procedure".
+The creation of input forms is also divided into the basic settings of the input form, the
+activation of attributes, and the selection of specific options for individual attributes
+such as required field, arrangement, validation, etc. Most configuration options reflect the
+possibilities of the "DCA" of the "Contao framework" (see `DCA <https://docs.contao.org/books/api/dca/index.html>`_).
+More about the options under "Procedure".
 
-One of the most important things in the basic settings is the selection of the option integration where you can select either "Standalone" or "As child table". With "Standalone" the input screen will be integrated into one of the navigation blocks in Contao and with "As child table" it will be matched to an existing MetaModel table or Contao table.
+One of the most important points in the basic settings is the selection of the "Integration"
+option with the options "Standalone" or "Child table". With "Standalone", the input form is
+integrated into one of the navigation blocks in Contao, and with "Child table" it is assigned
+to an existing MetaModel or Contao table.
 
-The display of the input field in the backend can be influenced by further control parameters. Each input mask has an editing icon to create dependencies on when to display it and for the visibility dependencies ("Manage the visibility conditions").
-This enables you e.g. to show one or more input fields only if a special checkbox is checked.
+When selecting "Child table", note that the "Render mode" must be set to "Parent element exists"
+if items are to be clearly assigned to a parent item. Otherwise, all child items are listed
+for all parent items.
 
-In order to obtain a clear display of the saved items you can define one or more grouping or sorting settings for each input mask.
+The display of the input field can be influenced via additional control parameters. Each render
+setting has an edit icon for creating dependencies for the display and visibility ("visibility
+conditions"). This allows one or more input fields in the input form to be visible only when,
+for example, a specific checkbox is checked.
+
+For each input form, one or more groupings and sortings can be defined for a clear display of
+the stored items.
+
+If you want the display of items in the list view as a tree structure or hierarchy, two basic
+settings are necessary:
+
+* in the input form properties, set the "Render mode" to "Hierarchy" (table view off)
+* in the input form sorting, add a sorting as default with "Activate manual sorting"
 
 
-Options of input screens
--------------------------
-* **Name**: |br|
-  Designation
-* **Panel layout**: |br|
-  Configuration of the tools, which you can find in the header of the page where you will add new entries, such as for searching, sorting, filtering and limiting the data records in the backend. To be able to search and filter the attributes, you will have to check this options inside the input screen settings ("Input screens in x" > "Edit the settings of input screen ID x" > "Edit setting ID x" then see at the bottom the section "Backend listing, filtering and sorting")
-* **Integration**: |br|
-  With the option "Standalone" you can choose the backend section, where the input screen should appear, with the option "As child table" you can select a parent table.
-* **Render-Mode**: |br|
-  Output mode of the listing as "Flat (without hierarchy)" or "Hierarchical", respectively when you use a child table also as "Parented".
-* **Use column based layout**: |br|
-  Select this option if you want to display the attributes as a table
-* **Allow editing/creating/deleting of items**: |br|
-  If checked the input screen will allow editing/creating/deleting of items
-
-Options of an input field
+Options of the Input Form
 --------------------------
-You will find the following options by clicking on the "|img_dca_setting| Edit the settings of input screen ID x" and then on "|img_edit| Edit setting ID x" of the desired attribute.
-
-* **Type**: |br|
-  Legend: Dividers for the input panels ("Green lines") |br|
-  Attribute: Display of the attribute options |br|
-* **Functionality related options**: |br|
-  Activation of "Read only" or "Mandatory" |br|
-  further options are dependent on the chosen attribute type
-* **Widget appearance related options**: |br|
-  Specification of the Contao CSS backend classes, such as "w50" for a 50% width
-* **Backend listing, filtering and sorting**: |br|
-  Checkboxes "Filterable" and "Searchable" that allow you to make your attributes filterable and searchable in the backend (see also under the section above "Options of input screens" > "Panel layout").
-
-Manage the visibility conditions of a property
-----------------------------------------------
-* **Type**: |br|
-  Type of visibility condition: AND/OR/NOT for linking, respectively to set a    dependency on other attributes based on a property
-* **Attribute/Value** |br|
-  Selection of the attribute in case there is a dependency to another attribute
-
-Options for grouping and sorting
---------------------------------
 * **Name**: |br|
-  Designation
-* **Enable manual sorting**: |br|
-  If this is enabled, the user will be able to perform manual sorting; 
-  If this checkbox is not checked the user can set the following options:
-* **Sorting attribute**: |br|
-  Choose the attribute to sort by.
+  Label
+* **Panel layout**: |br|
+  Configuration of tools in the header: search, sort, filter, limit;
+  for search and filtering of attributes, the option must be set in the input widgets
+* **Integration**: |br|
+  "Standalone" with selection of the backend section; "As child table" with selection
+  of the parent table
+* **Render mode**: |br|
+  Output mode of the listing as "Flat (without hierarchy)" or "Hierarchy",
+  or additionally as "Parent element exists" for child tables
+* **Display in table form**: |br|
+  Option to display attributes as a table
+* **Allow editing/creating/deleting**: |br|
+  Permission to modify, create, delete entries
+
+Options of the Input Field
+---------------------------
+* **Type**: |br|
+  Legend: subdivision of the input panel ("green line") |br|
+  Attribute: display of attribute options
+* **Function-related settings**: |br|
+  Activation of "read only" or "required field" |br|
+  Further options depending on attribute type, e.g. input validation, TinyMCE activation, etc.
+* **Display options**: |br|
+  Specification of Contao CSS backend classes, e.g. "w50" for 50% width
+* **Listing, filtering and sorting in backend**: |br|
+  Checkboxes for filterable and/or searchable — depending on attribute type
+
+Options of the Visibility Conditions of the Input Widget
+---------------------------------------------------------
+* **Type**: |br|
+  Type of visibility conditions: AND/OR/NOT for linking or
+  dependency via property from other attributes
+* **Attribute/value** |br|
+  Selection for dependency on another attribute
+
+Options of Grouping and Sorting
+---------------------------------
+* **Name**: |br|
+  Label
+* **Activate manual sorting**: |br|
+  When the value is set, items can be sorted manually; if the checkbox is not set,
+  the following options can be set:
+* **Grouping attribute**: |br|
+  Selection of the attribute by which to group
+* **Grouping length**: |br|
+  The number of letters used for grouping (when grouping type is set)
 * **Grouping type**: |br|
-  Grouping type e.g. initial letter, numeric order or such as "Group by day of date" or "Group by week of year"
+  Grouping type such as by initial letter or by time period such as week, month
+* **Sorting attribute**: |br|
+  Selection of the attribute by which to sort (optionally within a grouping)
 * **Sorting direction**: |br|
-  Sorting direction: ascending (ASC) or descending (DESC)
+  Sort direction: Ascending (ASC) or Descending (DESC)
 
-Workflow
---------
+A language key can be used to customize the display for grouping by week. With
+``$GLOBALS['TL_LANG']['MSC']['week_format'] = 'K\W W. Y';``, for example, the output
+``KW 43. 2023`` is generated (using `PHP date formatting <https://www.php.net/manual/en/datetime.format.php>`_,
+the first ``W`` is escaped with ``\`` to output it instead of using it for PHP date formatting).
 
-To create a new input screen click on "|img_new| New input screen".
-After you have entered/chosen all the required options you can save your setting and your entry will appear in the list of available input screens of a MetaModel.
-You can see the "|img_edit| pencil icon" and also an icon "|img_dca_setting| Edit the settings of input screen".
-With a click onto this icon, a list of all attributes, which are activated for that input screen appears. If there are no attributes in this list available, you'll have to add some with a click onto the icon "|img_dca_setting_add| Add all". Alternatively you can click on "|img_new| New". If you choose to use "Add all" you will need to confirm twice.
+Procedure
+---------
 
-After that, the attributes will be available to the input screen and, if appropriate, they also have to be activated.
+A new input form entry is created via "|img_new| New input form". After all necessary options
+have been entered or selected, the setting is saved and appears in the list of existing input
+forms for a MetaModel.
 
-You are able to add an individual CSS class for particular attributes with "|img_edit| Edit".
+In addition to the "|img_edit| pencil icon", there is the icon for
+"|img_dca_setting| Input form settings". Clicking on the icon opens a list of attributes
+activated for the input form. If no attributes are present or need to be added, this can be
+done via the "|img_dca_setting_add| Add all" icon — alternatively via "|img_new| New". The
+"Add all" route requires confirmation twice.
 
-You can set the visibility of the input widget within an input screen with "|img_dca_condition| Manage the visibility conditions".
+The attributes of the input form are then available and may need to be activated.
 
-Finally you can create various settings for grouping and sorting for a saved item in the list view of the input screens with a click onto the icon "|img_dca_groupsortsettings| Edit the grouping and sorting settings".  
+For individual attributes, the template to be used can be changed and/or a special CSS class
+entered ("|img_edit| Edit").
+
+Via "|img_dca_condition| Visibility conditions" the visibility of the input widget in the
+input form can be configured.
+
+In the list view of input forms, various entries for sorting and grouping the stored items can
+then be created via the "|img_dca_groupsortsettings| Sorting and grouping" icon.
+
+.. seealso:: In the cookbook:
+
+   * :ref:`rst_cookbook_inputmask_dca`
+   * :ref:`rst_cookbook_inputmask_default-values`
+   * :ref:`rst_cookbook_inputmask_regex`
 
 
 .. |img_dca_32| image:: /_img/icons/dca_32.png

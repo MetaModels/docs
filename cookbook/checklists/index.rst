@@ -1,10 +1,9 @@
 .. _rst_cookbook_checklists_index:
 
-MetaModels checklists
-=====================
+MetaModels "Checklists"
+========================
 
-Short checklists for you to review if s.th. doesn't work as expected.
-
+Short checklists for troubleshooting when something does not work as expected.
 
 
 .. toctree::
@@ -12,6 +11,7 @@ Short checklists for you to review if s.th. doesn't work as expected.
 
     mm-start.rst
     filter.rst
-    attribut.rst
+    attribut-new.rst
+    attribut-change.rst
 
 

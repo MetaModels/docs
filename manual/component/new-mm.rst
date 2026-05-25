@@ -1,46 +1,65 @@
 .. _component_new-mm:
 
 |img_new| New MetaModel
-===========================
+========================
 
-.. note:: create a new MetaModel (database table),
-  if necessary activate translations and variants
+.. note:: Create a new MetaModel (database table), optionally enable translation or variants |br|
+   To create the mm_* table, run a DB migration — :ref:`see schema manager <component_schema-manager>`
+
 
 Introduction
 ------------
+Clicking on the "|img_new| New MetaModel" icon opens an input form for creating a new MetaModel.
+When the new MetaModel is saved, a new, separate table is created in the database to store the values.
 
-A click on the icon "|img_new| New MetaModel" opens an input mask to create a new MetaModel. With a click on save, a new particular database table will be created for this new MetaModel to store its values.
+Two input fields are therefore mandatory for saving the new MetaModel: the name of the MetaModel
+and the table name.
 
-For this, two input fields are mandatory to save a new MetaModel: the name of the MetaModel and the name of the table.
+The name of the MetaModel is used as the label in the backend and can be freely chosen. However,
+the label should meaningfully indicate the content, e.g. "Addresses".
 
-The name of the MetaModel is used for the designation in the backend and is freely selectable. But it is recommended for subsequent work to choose a name which is indicative of the content of the MetaModel, e.g. "adresses".
+The same applies to the table name, where the prefix "mm\_" can be entered as part of the table name
+or is automatically added. The table could then be named "mm_address" for example — whether the name
+should be singular or plural is a matter of different "opinions".
 
-Same for the table name, whereby the prefix "mm\_" in the table name may be added, respectively is automatically added. The table may be named e.g "mm_adress". Opinions differ over whether one should use singular or plural for the name.
+When the table is created, only some columns necessary for interaction with the MetaModels extension,
+such as id, pid, timestamp, etc., are created in it. The additional, individual columns are created as
+so-called "attributes" and given their specific options. More about this under :ref:`component_attribute`.
 
-Only some of the columns, which are needed to interact with the MetaModels extension are setup within the table, at the time when you save it. These columns are e.g. id, pid, timestamp etc. Other individual columns can be added as so-called "attributes" provided with their specific options. Read more at :ref:`component_attribute`.
 
 Options
 -------
 
-When you create a new MetaModel you have further options, called "translation" and "variants".
+When creating a new MetaModel, there are additional options for "Translation" and "Variants".
 
-If the option "translation" is checked, a selection of multiple languages will be available to you after a reload of the page. You should activate one of those languages as the fallback language - if you don't do so, the first selected language will be used as the fallback language.
-If the option "translation" is activated in the MetaModel, there will be additionally special, multilingual attributes made available to you. 
+If the "Translation" option was selected, after reloading the page, several languages are available for
+selection. One of the languages should be activated as "Fallback" — if this is not done, the first
+selected language is used as the fallback. If the "Translation" option is activated in the MetaModel,
+special multilingual attributes are additionally offered as options.
 
-If multilingualism is activated at a later point in time, the existing attributes, respectively the entered values will not be passed automatically. Therefore it should be clarified in advance, whether multilingualism is required or not.
+When multilingual support is activated retroactively, the existing attributes and entered values are
+not automatically transferred. Whether multilingual support is required should therefore be clarified
+in advance if possible.
 
-If the option "variants" has been selected you will first not see any change of the MetaModel. If the option has been selected, it is possible to activate the option "overwrite variants" in the attributes.
-You can create additional input masks for entering data of variants - e.g. to "overwrite parent values" - with every attribute for which you have selected the option "overwrite variants".
-You can find the input mask for the variants with a click on the icon "|img_variants| New Variant" within the list view of the parent elements.
+If the "Variants" option was selected, you initially see no further change to the MetaModel. When the
+option is set, attributes can have the "Override variants" option activated. With all attributes that
+have the "Override variants" option set, additional input forms can be created for variant input, e.g.
+for "overriding" "parent values". The input forms for variants are accessed via the
+"|img_variants| New variant" icon in the list view of the parent elements.
 
-The use of variants results in a "parent-child relationship" within a MetaModel database table, which is traceable over different values within the table - e.g with an own SQL filter.
-Parent data records are characterised by the fact that the values within the database table of the parent records are equal to 1 for varbase. Values for vargroup are the same as their own ID.
-The child records are characterised by having the values for varbase equal to 0 and the values for vargroup equal to the ID of the parent data record.  
+Variants create a "parent-child relationship" within a MetaModel database table, which can be tracked
+via various values in the table — e.g. in a custom SQL filter. Parent records are characterized by the
+fact that in the database table, the values for varbase equal 1 and vargroup equal the record's own ID.
+Child records have varbase equal 0 and vargroup equal the ID of the parent record.
 
 
 .. |img_variants| image:: /_img/icons/variants.png
 .. |img_new| image:: /_img/icons/new.gif
 
-   
-.. |nbsp| unicode:: 0xA0 
+
+.. |nbsp| unicode:: 0xA0
    :trim:
+
+.. |br| raw:: html
+
+   <br />

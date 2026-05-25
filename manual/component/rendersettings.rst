@@ -1,61 +1,89 @@
 .. _component_rendersettings:
 
-|img_rendersettings_32| Render settings
-============================================
+|img_rendersettings_32| Render Settings
+========================================
 
-.. note:: How to create list views for back end and front end; how to add attributes and activate them
+.. note:: Create list views for backend and frontend;
+  add and activate attributes
 
 Introduction
 ------------
 
-"Render settings" allow you to determine the basic parameters for the listings and the views of the data records, which have to be input and output. This can be done separately for the front end as well as for the backend. The individual data records, which are stored into a MetaModel are also called "items".
+"Render settings" define the basic parameters for listing and displaying records both for the
+backend and for the frontend — separately for each. The individual records stored in a MetaModel
+are also referred to as "items".
 
-In the back end you will have to list those items for further input or to make changes. For the front end you also have to create lists for front end views / output. Some aspects are different between back end and front end, but there are still a lot of similarities. That's why those settings are combined within the "render settings" component.
+In the backend, items must be listed for further input or changes, and in the frontend for
+display or output. Although various aspects differ between backend and frontend, many things are
+similar, so the settings are summarized in the "Render settings" component.
 
-Each MetaModel requires a render setting for the back end, because only this input mask can be used for data input and changes.
+Every MetaModel requires a render setting for the backend, since only through render settings
+can an input form for data entry and changes be accessed.
 
-Regarding the front end, you only need to create a render setting for a MetaModel, whose items as such have to be listed and displayed. Thus, MetaModel which are linked by a relation (attribute "Select" or "Multiselect) to another MetaModel, do not necessarily need a render setting for the front end.
+For the frontend, render settings only need to be created for MetaModels whose items are to be
+listed or displayed as such. MetaModels connected to another MetaModel via a relation (attributes
+"Select" or "Tags/Multi-select") therefore do not necessarily require a render setting for the
+frontend.
 
-Among different requirements for back end and front end, you can meet further demands with the render settings. You can create many different render settings for each MetaModel, e.g. to generate differentiated outputs. That way one render setting could process a list with basic informations and another render setting a detail view (remember that a detail view is also just a list but with one single item!). Further you can grant access onto particular render settings from user groups or member groups by using :ref:`component_dca-combine`.
+In addition to different requirements for backend and frontend, render settings can also cover
+further requirements. Any number of different render settings can be created for each MetaModel,
+for example to produce differentiated outputs. So one render setting could prepare a list with
+basic information and another render setting a detail view (a detail view is "a list with one
+item"). Furthermore, individual render settings can be granted access for user and/or member
+groups via :ref:`component_dca-combine`.
 
-Once a render setting is created and the basic settings are entered, you will have to activate the attributes for that render setting in a next step.
-More about that below, under the topic "Workflow". A further setting option for each attribute in a render setting allows you to select an individual template (if you created one before) and a custom CSS class, e.g. to put emphasis on it in the back end. 
+Once a render setting has been created and the basic settings have been entered, the attributes
+must be activated for the setting as a further step. More about this under "Procedure". As a
+further option, an individual template can be selected for each attribute in a render setting
+(if it has been created beforehand) and a custom CSS class, e.g. for highlighting in the backend.
 
 Options
 -------
 
 * **Name** |br|
-  the name can be chosen freely; but to distinguish more effectively you will find often the abbreviations "BE" and "FE"  for back end and front end preceding the name. 
-  E.g "BE list", "BE collection" oder "FE list complete". 
+  The name can be freely chosen; for better distinction, the abbreviations "BE" and "FE" for
+  backend and frontend are often placed before the name, e.g. "BE list", "BE entry" or
+  "FE full list"
 * **Template** |br|
-  here you can select a template, in which all items are output in loop; 
-  the template can be overwritten easily in the usual way you are used to from Contao.
-  Just note, that a template for the back end should not be created within a template subfolder;
-  all attributes are passed to the template as a type of "raw" - only activated attributes are passed on as type "html" and "text".
+  Here a template is selected in which all items are output in a loop; the template is very
+  easy to override in the Contao-typical way; note that templates for the backend must not
+  be created in a template subdirectory; the template receives all attributes in "raw" type
+  and only the active attributes in "html" and "text" types
 * **Output format** |br|
-  you can choose HTML5, XHTML and text; if there are no special requirements you can leave this field empty
-* **JumpTo page** |br|
-  this is the page which will be used for the front end output, for example to show a "details page".
-  There should be a list element provided on this detail page with an appropriate filter setting; when using a multilingual MetaModel you will have a setting for link and filter for each language.
-* **Hide empty values** |br|
-  Empty values are skipped - a useful setting, if you want to display also the labels of the attributes
+  Possible selections are HTML5 and Text; unless there are special requirements, the selection
+  can be left empty; the XHTML format is no longer supported with MM 2.2
+* **Redirect page** |br|
+  The redirect page with page selection and filter is only for frontend output, e.g. to link
+  to a detail page; a list element with an appropriate filter should be present on the detail
+  page; for multilingual MetaModels there is a setting for page selection and filter per language
+* **Hide empty entries** |br|
+  Empty attribute entries are skipped — important when attribute labels are also output
 * **Hide labels** |br|
-  The attribute names are not displayed as a "label"
-* **Additional CSS/Javascript files** |br|
-  For output formatting and interaction you can use additional CSS and/or JS files
+  The attribute names are not output as "labels"
+* **Additional CSS/JavaScript files** |br|
+  CSS and/or JavaScript files can be output with the list for output formatting and interaction;
+  they are only included if at least one item is output in the list
 
-Workflow
---------
+Procedure
+---------
 
-To add a render setting, open a new input screen with a click on "|img_new| New".
-After you have entered and selected all the required options, save your setting. It will then appear in the list of existing render settings of the MetaModel.
+A new render setting is created via "|img_new| New". After all necessary options have been
+entered or selected, the setting is saved and appears in the list of existing render settings
+for a MetaModel.
 
-Besides the "|img_edit| pencil icon" there is also the icon "|img_rendersetting| Define attribute settings".
-A click on the icon shows a list with the attributes that are activated for this render setting. If there are no attributes available you can add them with a click onto the icon "|img_rendersettings_add| Add all"  - alternatively you can click on "|img_new| New". If you use "|img_rendersettings_add| Add all" you will have to confirm twice.
+In addition to the "|img_edit| pencil icon", there is the icon for the
+"|img_rendersetting| Render settings of the attributes". Clicking on the icon opens a list
+of attributes activated for the render settings. If no attributes are present or need to be
+added, this can be done via the "|img_rendersettings_add| Add all" icon — alternatively
+via "|img_new| New". The "Add all" route requires confirmation twice.
 
-Then the attributes will be available for the render setting. You might have to activate them, if you want them to be visible in the list view. 
+The attributes of the render setting are then available and may need to be activated, or only
+those that should be displayed in the list view should be activated.
 
-You can change the applied template for each attribute and/or you can apply a custom CSS class ("|img_edit| Edit").
+For individual attributes, the template to be used can be changed and/or a special CSS class
+entered ("|img_edit| Edit").
+
+.. seealso:: :ref:`rst_cookbook_rendering_encrypt-email`
 
 
 .. |img_rendersettings_32| image:: /_img/icons/rendersettings_32.png

@@ -1,26 +1,25 @@
 .. _rst_cookbook_checklists_filter:
 
-Filter is not displayed
-=======================
+Filter Not Displayed
+====================
 
 A desired filter is not displayed on the website.
 
 Checklist:
 
-   |box| Did you create the filter setting?
-   
-   |box| Did you enable the filter setting?
-   
-   |box| Is the filter setting selected in your FE or CE module ("Filter settings to apply")?
-   
-   |box| Is the filter rule activated in your FE or CE module (attributes)?
-   
-   |box| Is the FE or CE module set to activated/visible?
+   |box| Filter rule created
+
+   |box| Filter rule activated
+
+   |box| Filter set selected in FE CE/module (Filter settings to apply)
+
+   |box| Filter rule activated in FE CE/module (Attributes) — after changes to the filter rule, it may need to be reactivated
+
+   |box| FE CE/module set to active/visible
 
 
 .. |box| raw:: html
 
    <span>&#9634;</span>
-
 
 

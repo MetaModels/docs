@@ -1,26 +1,41 @@
 .. _component_dca-combine:
 
-|img_dca_combine_32| Input/output combinations 
-================================================
+|img_dca_combine_32| Input/Render Assignments
+==============================================
 
-.. note::  Define access options for render settings and input screens; Permissions for the backend group should be at least activated for the user group "administrator"
+.. note:: Define access options for render settings and input forms;
+  backend input access should be enabled at minimum for the 'Administrator' user group
 
 Introduction
 ------------
 
-Input/output combinations allow you to set user rights for created render settings. For each entry there are the following select options available to you:
+Input/render assignments set the permissions for the created render settings.
+The following select fields are available for each entry:
 
-* Frontend group
-* Backend group
-* The input screen
-* The render setting
+* Member group
+* User group
+* Render setting
+* Input form
 
-For the view and to obtain access in the backend you should activate at least the user group "administrator" for the backend group by default below "Permissions for input screen and views".
+As a standard, an input form and a render setting should be enabled for the "Administrator"
+user group for display and access in the backend.
 
-Workflow
---------
+It is possible to create multiple assignments and thereby control access to list output and
+input forms. Input forms for members are only relevant for frontend editing.
 
-Select your options in the given columns of the input screen and render setting combinations and save them. Now, in the backend there should be new MetaModel input options availabe to you.
+When multiple assignments (rows) are created, they are processed "from top to bottom", i.e.
+for the member or user group, the first specified group is evaluated as valid. Note that the
+entry "*" represents a "catch all" and represents the settings for all remaining groups.
+
+If you want, for example, that no "catch all" is applied in a row, or no group is matched,
+you can create a member or user group, e.g. "empty", to which no member or user is assigned.
+
+
+Procedure
+---------
+
+Make the selections in the predefined columns of the input/render assignments and save. The
+MetaModel input options should now be visible in the backend.
 
 
 .. |img_dca_combine_32| image:: /_img/icons/dca_combine_32.png

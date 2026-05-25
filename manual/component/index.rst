@@ -1,18 +1,27 @@
 .. _component_index:
 
 Components of a MetaModel
-===========================
+==========================
 
-.. warning:: The manual is still under construction! |br|
-   Starting 4. December 2015 the MetaModels designations and icons will be adjusted - see also :ref:`manual_new_labels`
+The following chapters describe the structure of MetaModels to help understand the "logic" of
+how the extension is built.
 
-The following chapter will show you the structure of MetaModels to understand the "logic" behind the extension.
+First, a clarification of two terms: **MetaModel** (singular) will refer to a data table with its
+attributes, input/output options, filters, etc. A MetaModel is written without "s" in the following
+texts, even if this would be required grammatically.
 
-First of all we should understand two terms:
-with **MetaModel** (singular) we are hereafter talking about a data table with its attributes, input/output possibilities, filters etc.
-The term "MetaModels" (plural) will be exclusively used to describe the extension package for Contao.
+The term **MetaModels** (plural) stands alone as the name for the extension package for Contao.
 
-After you have created a MetaModel, there are the following components available for you for editing:
+For newcomers or those returning to MetaModels, it may be somewhat difficult to find a suitable
+workflow for creation. For this audience, there is a :ref:`simple workflow for working with MetaModels
+<component_workflow>`. There are also some :ref:`tips for getting started <component_workflow_tips>` and
+an :ref:`overview of which attributes can store what data <component_data-in-attributes>`.
+
+Before creating more complex data structures in MetaModels, you should definitely think about an
+"elegant" structure — especially the relations between models. There is an overview page
+":ref:`component_relations`" for this.
+
+After creating a MetaModel, the following main components are available for editing:
 
  |img_fields|  :ref:`component_attribute` |br|
  |img_rendersettings|  :ref:`component_rendersettings` |br|
@@ -21,32 +30,59 @@ After you have created a MetaModel, there are the following components available
  |img_filter|  :ref:`component_filter` |br|
  |img_dca_combine|  :ref:`component_dca-combine`
 
-In case that you are creating a (simple) MetaModel you can work through the the components one after another in the order as shown above.
-But with growing complexity of a MetaModel - e.g if multiple MetaModel interact with each other - it can not be avoided to further modify and enhance particular data inputs in a MetaModel, which has been already created.
+When creating a (simple) MetaModel, the components can be worked through in the order listed. As the
+complexity of the MetaModel increases — i.e. when multiple MetaModels interact with each other — you
+will inevitably need to supplement or modify individual entries in an existing MetaModel.
 
-The MetaModels extension makes two new content elements, respectively modules available for the front-end.
-The content element "MetaModel list" enables you to display data records individually or as a list on your website. 
-The content element / module "MetaModel frontend filter" provides you with a front-end filter. Find out more on  :ref:`component_contentelements`.
+In addition to the main components, there are further configuration options, such as creating grouping/
+sorting of items in a backend list or :ref:`display conditions for input widgets in an input form
+<component_dca_visibility-conditions>`.
+
+.. _rst_component_index_mm_lageplan:
+For an easier overview of where to find what, there is the
+:download:`"MM layout map" </_download/MM_Lageplan_e-spin-Berlin.pdf>` available for download.
+
+The MetaModels extension adds two new content elements and modules to Contao for frontend output.
+The content element/module "MetaModel list" allows records to be displayed individually or as a list
+on the website, and the content element/module "MetaModel frontend filter" provides a filter for the
+frontend — more about this under :ref:`component_contentelements`.
+
+How the individual templates interact is described on the :ref:`component_templates` page.
+
+MetaModels is very well suited for working with multilingual content —
+:ref:`more about multilingual support in MM. <component_multi-language>`
+
+To output individual values of a record (item) or the number of all records in the Contao context,
+various :ref:`insert tags <component_inserttags>` are available.
+
 
 .. toctree::
     :hidden:
     :maxdepth: 1
-    
+
+    workflow
     new-mm
     attribute
     rendersettings
     dca
+    dca-visibility-conditions
     searchable-pages
     filter
     dca-combine
     contentelements
-
+    relations
+    schema-manager
+    translations
+    templates
+    data-in-attributes
+    multi-language
+    inserttags
 
 .. |br| raw:: html
 
    <br />
-   
-.. |nbsp| unicode:: 0xA0 
+
+.. |nbsp| unicode:: 0xA0
    :trim:
 
 .. |img_fields| image:: /_img/icons/fields.png

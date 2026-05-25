@@ -1,240 +1,383 @@
 .. _rst_extended_notelist:
 
-MetaModels watch list
-=====================
+Note List (Wishlist) for MetaModels
+====================================
 
-.. warning:: The watch list feature is still in fundraising stage. It will not be published until the fundraising target of x.000 € is reached. |br|
-   We have a beta program for early installations. If you are interested please contact info@e-spin.de
+The note list (Notelist) extends MetaModels with the ability to add individual records
+(items) to a note list in the frontend output.
 
-The watch list feature (Note list) extends MetaModels and enables you to add individual data records (items) to a watch list.
+Use cases for the note list range from a "normal watchlist" to comparison lists of
+product properties and shopping cart functionality.
 
-Watchlist enables you to create e.g. a normal reminder list, comparison lists for product properties or even shopping cart functionalities.
+Once a record is stored in a note list, it can of course also be removed from the list.
 
-If you have saved a data record in the watch list, you can of course also remove it again.
+The note list comes with a new filter rule that can filter a MetaModels list by existing
+note list records.
 
-With the watch list comes a new filter rule, which enables you to filter for existing watch list data records. 
+A new widget was created for the form generator that lists the records of the note list
+and includes them in emails — sending emails via the Notification Center is also
+possible.
 
-There is also a new widget for the form generator that enables you to list data records from the watch list and transfer them via email. It is also possible to send the email via Notification Center.
+Multiple note lists can be created for each MetaModel. This allows, for example,
+adding a record to two note lists like "Favorites" and "Order", or transferring a
+record from one note list like "Watchlist" to another note list "Order".
 
-You can create several watch lists in each MetaModels. This allows to add a data record to two watch lists at the same time, e.g. to a "like list" and to an "order list". You can also transfer a data record from a "like list" to an "order list".
+A filter can be set in the note list configuration so that only certain records can be
+added to the note list — e.g. only employees from the "Sales" department.
 
-In the configuration of a watch list you can set up a filter, which ensures that only specific data records can be added to the watch list, e.g. only employees from the sales department.
+The note list also works with translated MetaModels so that note list records are
+preserved when the language is switched.
 
-Watch list also works with translated MetaModels. This means that data records of a watch list will remain preserved, when you switch the language.
 
-
-Installation via Composer
--------------------------
+Installation via Contao Manager or Composer
+--------------------------------------------
 
 Prerequisites for installation:
 
-* PHP 7.x
-* Contao 3.5.x or Contao 4.4.x
-* MetaModels from core 2.0.0-alpha16 respecively 2.1 and DCG 2.0.0-beta39
-* (Zip file of the extension, pls send a request to info@e-spin.de)
+**Contao 5.3:**
 
-In the package manager type `metamodels/notelist` into the search field, then install and update the database. 
+.. note:: The note list is ready to use but will only be released once the current
+   fundraising target of 3,685€ is reached. |br|
+   For access please send an email to info@e-spin.de
 
+* ^PHP 8.2
+* MetaModels 2.4
+* Notelist 2.4
+* optional Notification Center 2.3 or NCPro
+* Access to the protected repository — credentials after donation
 
-Create a watch list
--------------------
+**Contao 4.13:**
 
-After you have successfully installed watch list, you will see a new icon in the row of metaModels icons. Click on it to set up and edit watch lists.
-
-|img_notelist_icon_en|
-
-When you create a new watch list choose a name first. 
-At the moment you can select the PHP session or Contao session as "storage adapter".
-If you select Contao session, the values of a watch list of logged in users will automatically be saved in the session values of the database. They are made available again, when the user logs in again.
-
-You can restrict the recording of data records to only records with certain properties, e.g. the "department" or particular member groups with the filter selection. Filtering for member groups is possible by using the following extension "`condition membergroup filter
-<https://github.com/cboelter/metamodels-filter_condition_membergroup>`_". 
-
-|img_nodelist_config_en|
-
-Via the list view you'll get access to all watch lists that have been set up.
-
-|img_notelist_overview_en|
+* ^PHP 8.1
+* MetaModels 2.3
+* Notelist 2.3
+* optional Notification Center 1.7 or 2.3
 
 
-Activate watch list in MetaModels list
---------------------------------------
+Creating a Note List
+---------------------
 
-You will find a new section called "note list" in the CE MetaModels list, respectively in the FE module, where you can activate one or more of the watch lists, which you have set up.
+After successful installation, a new icon appears in the MetaModels icon row, which
+leads to creating and editing note lists.
 
-|img_notelist_ce_mm-list_en|
+|img_notelist_icon|
 
-You can change the order of the "action outputs" by drag & drop via the watch list sorting.
+When creating a new note list, a name can be assigned. Currently available "storage
+adapters" are PHP session and Contao session. With the Contao session, the values of a
+note list are automatically stored in the session values of the database for logged-in
+members and are available again after re-login.
 
-If you are using the default template for output you don't have to make any further changes. You should then see a new link in the FE list view to add data records to the watch list.
+The filter selection allows restricting which records can be added — e.g. based on
+"Department" or member groups. Filtering by member groups is possible, for example, via
+the "`condition membergroup filter <https://github.com/cboelter/metamodels-filter_condition_membergroup>`_"
+extension.
 
-If you are using a customized template you'll have to make some changes to be able to add the new watch list links.
-The links are available in the `action` node and can be output with the following code:
+|img_nodelist_config|
+
+The list view provides access to all created note lists.
+
+|img_notelist_overview|
+
+
+Activating the Note List in a MetaModels List
+----------------------------------------------
+
+In the MetaModels list CE or FE module, there is a new "Notelist" section where one or
+more of the created note lists can be activated.
+
+|img_notelist_ce_mm-list|
+
+The order of the "action outputs" can be changed by sorting the note lists via
+drag & drop.
+
+If the default template is used for output, no further changes are needed and the
+frontend list view should show an additional link for adding to the note list next to
+each record.
+
+If a custom template is used, an appropriate adjustment is needed for the new links.
+The links are contained in the `action` node and can be output, for example, with the
+following code (number corresponds to the note list ID):
 
 .. code-block:: html
    :linenos:
 
    <a href="<?= $arrItem['actions']['notelist_1']['href'] ?>" class="<?= $arrItem['actions']['notelist_1']['class'] ?>"><?= $arrItem['actions']['notelist_1']['label'] ?></a>
 
-|img_notelist_fe_list_en|
+|img_notelist_fe_list|
 
 
-Watch list output via filter
-----------------------------
+Displaying the Note List via Filter
+-------------------------------------
 
-You can output the watch list on the front end with a normal MetaModels list, which filters out elements from the watch list.
+The frontend display of the note list is done via a standard MetaModels list that is
+filtered to the note list elements.
 
-To be able to filter you just need to create a filter with the new filter setting  "Notelist". In the filter settings just select the watch list with the elements you'd like to output.
+For the filtering, a filter with the new "Notelist" filter rule must be created. In the
+filter rule, simply select the note list whose elements should be displayed.
 
-|img_notelist_filterrule_en|
+|img_notelist_filterrule|
 
-In the filtered list on the front end you should now see only employees from the  watch list.
+In the frontend output of the filtered list, only the employees from the note list are
+shown.
 
-|img_notelist_filtered_list_en|
+|img_notelist_filtered_list|
 
-In the list view it would be e.g. possible to activate a second watch list, to transfer elements from one watch list to another - e.g. from a "like" list to an "order" list.
+In the list output, it would be possible, for example, to activate another note list
+to transfer elements from one list to another — e.g. from "Watchlist" to "Order".
 
-In the settings for a watch list you can optionally set a filter for the inclusion onto a watch list. E.g if there are only employees allowed who belong to the sales department, the list looks as folllows:
+In the note list settings, an optional filter can be set for adding to a note list.
+If only employees belonging to Sales are allowed, the list looks as follows:
 
-|img_notelist_fe_list_with_filter_en|
-
-
-Data display and inclusion into the form
-----------------------------------------
-
-There is also a new widget `MetaModels note list` available in the form generator. With its settings you can control the display in the form as well as in the email.
-
-You can activate one or more watch lists and select a render setting for the FE output as well as for the email output.
-Additionally, by checking the checkbox "clear list", you can define for each watch list whether the list should be cleared after the form processing.
-
-|img_nodelist_form_widget_en|
-
-„Custom email template“ is an optional template which contains all renderings of the mail output of a watch list and "encloses" them.
-Please note that you have to specify the extension "text2 for " Supported template formats" in the Contao settings!
-Watch list data can only be sent as (plain) text in an email at the moment - the render setting "output format" for the listing within the email has to be set to "text" respectively.
-
-In the form the respective data records are output with the selected render setting.
+|img_notelist_fe_list_with_filter|
 
 
-|img_nodelist_form_fe_list_en|
+.. _rst_extended_notelist_show_at_form:
+Data Display and Submission in Forms
+-------------------------------------
 
-It is not possible e.g. to delete elements of the watch list within the form, because by reloading the page all the data already entered in the form would be lost .
+A new "MetaModels Note List" widget is available in the form generator. This widget
+controls both the display of note list records in the form and in the email. If multiple
+note lists were created for a MetaModel, multiple can also be output.
 
-You can output a list with all elements of the watch list before you output the form. There you could edit theme seprately or delete the whole list.
+The configuration options had to be integrated into the possible interfaces of a Contao
+widget, so selections must be made in several places.
+
+In the "Template settings" section, there is a template for both the form output
+(form field template) and the email (email template), which wraps the output list as a
+"wrapper". In the templates, all note lists are output in a loop with display of the
+name and the records within (see "Field configuration" section). Note that the template
+for the form ``form_metamodels_notelist.html5`` is still an "old" template — while the
+email already uses a Twig template ``email_metamodels_notelist.text.html.twig``.
+
+In the "Field configuration" section, you can select which note list(s) should be
+output. For list output in the form as well as in the email, corresponding render
+settings must be set up to output the desired attributes. Additionally, for each note
+list the "Clear list" checkbox determines whether the list should be cleared after form
+processing.
+
+|img_nodelist_form_widget|
+
+For the render settings, note that for output in a standard Contao form email, only
+text format is supported — for HTML email output, the
+`Notification Center <https://github.com/terminal42/contao-notification_center>`_
+extension should be used. As templates for render settings, the extension provides
+``metamodel_prerendered_notelists_form.html5`` and
+``metamodel_prerendered_notelists_form.text``.
+
+The templates also automatically output data that can be passed additionally to each
+note list record (payload). This is possible via a :ref:`"mini" form <rst_extended_notelist_additional_form>`
+or :ref:`event listeners <rst_extended_notelist_additional_events>`.
+
+In the list templates, in addition to the usual ``raw`` and ``text`` nodes, ``notelists_names``
+is also present as a list of note list names.
+
+The payload is passed via the ``notelists_payload_values`` and ``notelists_payload_labels`` nodes.
+
+Template hierarchy overview:
+
+Form output on the website:
+
+- ``form_metamodels_notelist.html5`` — wrapper from form widget with output of all note lists including name
+    - ``metamodel_prerendered.html5`` — list template from the selected render settings; alternatively select template
+      ``metamodel_prerendered_notelists_form.html5`` for payload output
+
+Email output:
+
+- ``email_metamodels_notelist.text.html.twig`` — wrapper for email with output of all note lists including name
+    - ``metamodel_prerendered.html5`` — list template from the selected render settings; alternatively select template
+      ``metamodel_prerendered_notelists_form.html5`` for payload output
+
+.. note:: This option is available from MM 2.4 with Contao 5.3
+
+For HTML email output, the
+`Notification Center <https://github.com/terminal42/contao-notification_center>`_
+extension should be used. Dedicated
+`Simple Tokens <https://docs.contao.org/5.x/manual/de/artikelverwaltung/simple-tokens/>`_
+are available that start with "##mm::" — these are:
+
+- ``##mm::notelist_name::<id-notelist>##`` — output of the note list title for the ID as text
+- ``##mm::notelist::<id-notelist>::<id-rendersetting>##`` — output of note list items for ID with render setting ID as text
+- ``##mm::notelist::<id-notelist>::<id-rendersetting>::html##`` — output of note list items for ID with render setting ID as HTML
+
+When you type "##mm", the available tokens are displayed.
+
+These values allow individual customization of the output in the form widget as well as
+in the email. The existing templates can be overridden with custom variants as usual.
+
+.. note:: Editing (e.g. deleting) note list elements within the form is not possible,
+   as reloading the page would lose data already entered in the form.
+
+Before the form is displayed, a list of all note list elements can be shown where they
+can be individually edited or the entire list can be cleared — see link:
 
 .. code-block:: html
    :linenos:
 
-   <p><a href="de/metamodels/note-list-contact-form.html?notelist_2_action=clear">Clear List 2</a></p></a>
-   
-|img_nodelist_form_fe_list_edit_items_en|
+   <p><a href="de/metamodels/note-list-contact-form.html?notelist_2_action=clear">Clear List 2</a></p>
 
-Data is sent by email and output can be customized with the email template. The Contao form options or the Notification Center are available to you for transmission.
+|img_nodelist_form_fe_list_edit_items|
 
-|img_notelist_email_list_en|
+Data is transmitted by email and the output can be customized via the email template.
+For sending, the Contao form option or the "Notification Center (NC)" are available.
+
+|img_notelist_email_list|
+
+When using the NC, the text output of email rendering can also be converted to HTML via
+a custom simple token, e.g. newlines to ``<br>`` tags. In
+`NCpro <https://extensions.terminal42.ch/docs/notification-center-pro/de/eigene-tokens/>`_
+it is very easy to define custom tokens in the backend — the Twig filters ``nl2br`` and
+``raw`` help with output.
 
 
-Transfer of additional data for each item
+.. _rst_extended_notelist_additional_form:
+Submitting Additional Data for Each Item
 -----------------------------------------
 
-Optionally you can transfer additional data to the watchlist for each item, such as a number, tet or similar. To do this you'll have to create a form using the form generator, which contains the fields to display, e.g. field for a number and text field for a short information text - a submit button is not necessary and will be generated automatically.
+Optionally, additional data can be submitted to the note list for each item, such as a
+quantity, free text, etc. For this, a form is created via the form generator containing
+the fields to be displayed — e.g. a select field for a quantity and a text field for a
+brief note. A submit field is not required and is generated automatically.
 
-This form will then be available in the watchlist settings - forms which already contain a watchlist formelement wll not be displayed (recursion!).
+This created form is now available in the note list settings — forms that already
+contain a note list form element are not displayed (to avoid recursion!).
 
-In the list view the form will be displayed with an "add/edit button" beneath each item. Data will be processed with the form and e.g. sent by email.
+In the list display, the form is now shown for each item along with an "Add/Edit" button.
+The data is also processed by the form and, for example, sent by email
+(:ref:`see above <rst_extended_notelist_show_at_form>`).
 
-|img_notelist_fe_list_with_form_en|
-
-
-
-InsertTags
-----------
-
-There are different InsertTags implemented for the output of the number of items in the watch lists. They output the number as follows ('mm_mitarbeiterliste' 
-is the respective MetaModels):
-
-* Number of all items: {{metamodels_notelist::sum::mm_employeelist}}
-* Number of all items of the watch list with ID 1: {{metamodels_notelist::sum::mm_employeelist::1}}
-* Number of all items of the watch list with ID 1 and 2: {{metamodels_notelist::sum::mm_employeelist::1,2}}
-
-If there is no item on the watch list, 0 (Null) will be output.
+|img_notelist_fe_list_with_form|
 
 
+Insert Tags
+-----------
+
+Various insert tags are implemented for outputting the number of items in note lists.
+These output the count as follows ('mm_employeelist' is the corresponding MetaModel):
+
+* Count of all items: {{metamodels_notelist::sum::mm_employeelist}}
+* Count of all items in note list ID 1: {{metamodels_notelist::sum::mm_employeelist::1}}
+* Count of all items in note lists ID 1 and 2: {{metamodels_notelist::sum::mm_employeelist::1,2}}
+
+If no item is in the note list, 0 (zero) is output.
+
+
+.. _rst_extended_notelist_additional_events:
 Events
 ------
 
-There is an event listener available, if you need to monitor manipulation of a watch list (add, remove, clear).
+To monitor manipulation of a note list (add, remove, clear), an event listener is
+available.
 
-The event listener allows you to trigger feedback to the website or logging /tracking of actions.
+The event listener can be used, for example, to send feedback to the website or to
+log/track the actions.
 
-As an example for a feedback you can insert the following code to a custom Contao module e.g. at ``/system/modules/myModule/config/event_listeners.php`` 
+As an example, a listener for feedback can be created as follows (see also
+:ref:`rst_cookbook_specials_register-services`):
 
 .. code-block:: php
    :linenos:
 
    <?php
+   // src/EventListener/ManipulateNoteListListener.php
+   namespace App\EventListener;
 
-   use MetaModels\NoteList\Event\ManipulateNoteListEvent;
-   use MetaModels\NoteList\Event\NoteListEvents;
+   use Contao\Message;
+   use MetaModels\NoteListBundle\Event\ManipulateNoteListEvent;
+   use Terminal42\ServiceAnnotationBundle\Annotation\ServiceTag;
 
-   return [
-       NoteListEvents::MANIPULATE_NOTE_LIST => [
-           function (ManipulateNoteListEvent $event) {
-               // Only handle note list "1".
-               if ('1' !== ($listId = $event->getNoteList()->getStorageKey())) {
-                   return;
-               }
-
-               switch ($event->getOperation()) {
-                   case ManipulateNoteListEvent::OPERATION_ADD:
-                       Message::addConfirmation('Added ' . $event->getItem()->get('id') . ' to ' . $listId);
-                       // Add your own notes in metaData.
-                       $metaData = $event->getNoteList()->getMetaDataFor($event->getItem());
-                       $metaData['tstamp'] = time();
-                       $event->getNoteList()->updateMetaDataFor($event->getItem(), $metaData);
-                       break;
-                   case ManipulateNoteListEvent::OPERATION_REMOVE:
-                       Message::addConfirmation('Removed ' . $event->getItem()->get('id') . ' to ' . $listId);
-                       break;
-                   case ManipulateNoteListEvent::OPERATION_CLEAR:
-                       Message::addConfirmation('Cleared ' . $listId);
-                       break;
-                   default:
-                       throw new \RuntimeException('Unknown note list operation: ' . $event->getOperation());
-               }
+   /**
+    * @ServiceTag("kernel.event_listener", event="metamodels.note-list.manipulate")
+    */
+   class ManipulateNoteListListener
+   {
+       public function __invoke(ManipulateNoteListEvent $event)
+       {
+           // Only handle note list "1".
+           if ('1' !== ($listId = $event->getNoteList()->getStorageKey())) {
+               return;
            }
-       ]
-   ];
 
-On the front end the feedback can be shown in a template with the output of the Contao message - e.g.
+           switch ($event->getOperation()) {
+               case ManipulateNoteListEvent::OPERATION_ADD:
+                   Message::addConfirmation('Added ' . $event->getItem()->get('id') . ' to ' . $listId);
+                   // Add your own notes in metaData.
+                   $metaData = $event->getNoteList()->getMetaDataFor($event->getItem());
+                   $metaData['tstamp'] = time();
+                   $event->getNoteList()->updateMetaDataFor($event->getItem(), $metaData);
+                   break;
+               case ManipulateNoteListEvent::OPERATION_REMOVE:
+                   Message::addConfirmation('Removed ' . $event->getItem()->get('id') . ' to ' . $listId);
+                   break;
+               case ManipulateNoteListEvent::OPERATION_CLEAR:
+                   Message::addConfirmation('Cleared ' . $listId);
+                   break;
+               default:
+                   throw new \RuntimeException('Unknown note list operation: ' . $event->getOperation());
+           }
+       }
+   }
+
+On the website, the feedback can be output in a template via Contao Message — e.g.
+with the following code in a custom template as ce_html_message.html5:
 
 .. code-block:: php
    :linenos:
-   
+
    <?php
-   echo Message::generate();
+   $message = \Contao\Message::generateUnwrapped(null, true);
    ?>
+   <?php if ($message): ?>
+   <div class="alert alert-primary" role="alert">
+       <p class="mb-0"><?= $message?></p>
+   </div>
+   <?php endif; ?>
+
+Additionally, this event can also be used to store extra information — see
+`OPERATION_ADD`.
 
 
 Known Issues and Next Features
 ------------------------------
 
-* Translation in DE (if project is released via Transifex)
-* Data transfer to a form as HTML (currently only available as text)
+* Page(s) with note lists must not be cached
+* From Contao 4.9, templates with ``.text`` and ``.twig`` extensions can no longer be
+  created in the Templates section, as Contao no longer supports this — create these
+  files via SSH/SFTP or locally
+
 
 Donations
 ---------
 
-Thanks for the donations * for this extension to:
+Thanks for the donations* for the extension to:
+
+**Version 2.4:**
+
+* `dpmed GmbH <https://www.dpmed.de>`_: 350 €
+* `afm werbestudio & agentur <https://www.afm-werbestudio.de/>`_: 350 €
+
+
+**Version 2.0 to 2.3:**
 
 * `Sebastian Krull <http://www.sebastiankrull.de>`_: 350 €
-* `Carsten Merz <http://www.fitkurs.de>`_: 350 € 
-* `Westwerk GmbH & Co. KG: <https://www.westwerk.ac>`_: 350 €
-* `Niels Hegmanns <http://www.heimseiten.de>`_: 350 € 
-* `Hofer Werbung <http://www.hofer-werbung.de>`_: 350 € 
+* `Westwerk GmbH & Co. KG <https://www.westwerk.ac>`_: 350 €
+* `Carsten Merz <http://www.fitkurs.de>`_: 350 €
+* Next Home Creation: 350 €
+* `Niels Hegmanns <http://www.heimseiten.de>`_: 350 €
+* `Hofer Werbung <http://www.hofer-werbung.de>`_: 350 €
+* `Nationalfonds AT <https://www.nationalfonds.org>`_: 350 €
+* `AFM-Werbestudio <https://www.afm-werbestudio.de>`_: 350 €
+* `PITSol <https://www.pitsol.de/>`_: 350 €
+* `ghost.company <https://www.ghostcompany.com/>`_: 350 €
+* Druckhaus S+F: 350 €
+* w3scout: 350 €
+* `Nationalfonds AT <https://www.nationalfonds.org>`_: 350 €
+* `Nationalfonds AT <https://www.nationalfonds.org>`_: 350 €
+* `AFM-Werbestudio <https://www.afm-werbestudio.de>`_: 350 €
+* `Ulf Spethmann <https://derdigitalist.de>`_: 350 €
+* `Sienos <https://www.sineos.de>`_: 350 €
 
 
-(donations are stated at their net value)
+(*Donations are net amounts)
 
 
 .. |br| raw:: html
@@ -242,16 +385,16 @@ Thanks for the donations * for this extension to:
    <br />
 
 
-.. |img_notelist_icon_en| image:: /_img/screenshots/extended/notelist/notelist_icon_en.png
-.. |img_nodelist_config_en| image:: /_img/screenshots/extended/notelist/nodelist_config_en.png
-.. |img_notelist_overview_en| image:: /_img/screenshots/extended/notelist/notelist_overview_en.png
-.. |img_notelist_ce_mm-list_en| image:: /_img/screenshots/extended/notelist/notelist_ce_mm-list_en.png
-.. |img_notelist_fe_list_en| image:: /_img/screenshots/extended/notelist/notelist_fe_list_en.png
-.. |img_notelist_filterrule_en| image:: /_img/screenshots/extended/notelist/notelist_filterrule_en.png
-.. |img_notelist_filtered_list_en| image:: /_img/screenshots/extended/notelist/notelist_filtered_list_en.png
-.. |img_notelist_fe_list_with_filter_en| image:: /_img/screenshots/extended/notelist/notelist_fe_list_with_filter_en.png
-.. |img_nodelist_form_widget_en| image:: /_img/screenshots/extended/notelist/nodelist_form_widget_en.png
-.. |img_nodelist_form_fe_list_en| image:: /_img/screenshots/extended/notelist/nodelist_form_fe_list_en.png
-.. |img_notelist_email_list_en| image:: /_img/screenshots/extended/notelist/notelist_email_list_en.png
-.. |img_notelist_fe_list_with_form_en| image:: /_img/screenshots/extended/notelist/notelist_fe_list_with_form_en.png
-.. |img_nodelist_form_fe_list_edit_items_en| image:: /_img/screenshots/extended/notelist/nodelist_form_fe_list_edit_items_en.png
+.. |img_notelist_icon| image:: /_img/screenshots/extended/notelist/notelist_icon.png
+.. |img_nodelist_config| image:: /_img/screenshots/extended/notelist/nodelist_config.png
+.. |img_notelist_overview| image:: /_img/screenshots/extended/notelist/notelist_overview.png
+.. |img_notelist_ce_mm-list| image:: /_img/screenshots/extended/notelist/notelist_ce_mm-list.png
+.. |img_notelist_fe_list| image:: /_img/screenshots/extended/notelist/notelist_fe_list.png
+.. |img_nodelist_form_fe_list_edit_items| image:: /_img/screenshots/extended/notelist/nodelist_form_fe_list_edit_items.png
+.. |img_notelist_filterrule| image:: /_img/screenshots/extended/notelist/notelist_filterrule.png
+.. |img_notelist_filtered_list| image:: /_img/screenshots/extended/notelist/notelist_filtered_list.png
+.. |img_notelist_fe_list_with_filter| image:: /_img/screenshots/extended/notelist/notelist_fe_list_with_filter.png
+.. |img_nodelist_form_widget| image:: /_img/screenshots/extended/notelist/nodelist_form_widget.png
+.. |img_nodelist_form_fe_list| image:: /_img/screenshots/extended/notelist/nodelist_form_fe_list.png
+.. |img_notelist_email_list| image:: /_img/screenshots/extended/notelist/notelist_email_list.png
+.. |img_notelist_fe_list_with_form| image:: /_img/screenshots/extended/notelist/notelist_fe_list_with_form.png

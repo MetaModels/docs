@@ -1,13 +1,18 @@
-Filter cookbook
-===============
+.. _rst_cookbook_filter_index:
 
-.. phpautoclass:: DummyFilter
-    :filename: ./php/DummyFilter.php
-    :members:
-    :undoc-members:
+Filter
+======
+
+Tipps zum Filtern von MM Listen.
+
 
 .. toctree::
-    :glob:
-    :maxdepth: 2
+    :maxdepth: 1
 
-    *
+    custom-sql.rst
+    expression-rule.rst
+    filter-with-forwarding.rst
+    exclusion.rst
+    search-text-at-two-fields.rst
+    filter-with-static-parameter.rst
+    exclude-url-from-search-index.rst

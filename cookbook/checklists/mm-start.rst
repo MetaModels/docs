@@ -1,26 +1,31 @@
 .. _rst_cookbook_checklists_mm-start:
 
-Start with MetaModels
-=====================
+Getting Started with MetaModels
+================================
 
-You should consider some basic things when you start with MetaModels.
+Some basic things should be observed when getting started with MetaModels.
 
-The MetaModels project is running quite stable - nevertheless it is in constant development. In interaction with other components, such as the DC_general (DCG) or the Contao core, there may be a data loss. That's why it is highly recommended to set up a regular backup.
+The "MetaModels" project is `stable` — but is still under continuous development.
+Despite unit tests and functional checks, data loss could still occur — so regular
+backups should be set up.
 
 Checklist:
 
-   |box| Did you install the current version of MetaModels and DCG (preferably via Composer)?
-   
-   |box| In Contao "System settings" activate the checkboxes "Bypass the internal cache" in the section "Global configuration" and also "Display error messages" in the section "Security settings". Subsequently purge all the caches.
-   
-   |box| Set up a regular backup
-   
-   |box| For known bugs and errors take a look on our `forum <https://community.contao.org/en/forumdisplay.php?184-MetaModels>`_ or on `Github <https://github.com/issues?user=MetaModels>`_
+   |box| Set up regular backups
+
+   |box| Contao installed as an LTS version with a matching MM version — for initial testing, `bundle_start <https://extensions.contao.org/?p=metamodels%2Fbundle_start>`_ or `bundle_all <https://extensions.contao.org/?p=metamodels%2Fbundle_all>`_ can be used, or more selectively just the `MM core plus required attributes and filters <https://extensions.contao.org/?q=metamodels>`_
+
+   |box| Overview of `which MM version is compatible with which Contao version <https://metamodels.readthedocs.io/de/latest/manual/install.html#ubersicht-der-versionen>`_
+
+   |box| Check for known errors/bugs e.g. on `GitHub <https://github.com/issues?user=MetaModels>`_
+
+   |box| For problems or errors, consult `the forum info <https://community.contao.org/de/showthread.php?62440-Tipps-bei-Problemen-Fehlern-Bugs-in-MetaModels>`_
+
+   |box| For getting started, review the :ref:`workflow <component_workflow>` and :ref:`component info <component_index>`
 
 
 .. |box| raw:: html
 
    <span>&#9634;</span>
-
 
 

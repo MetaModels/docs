@@ -1,33 +1,38 @@
 .. _mm_first_index:
 
-The first MetaModel
+The First MetaModel
 ===================
 
-.. warning:: Under construction!
+Building the first MetaModel is intended to provide an easy introduction to the implementation.
+The task for the first project is a simple employee list with only a few content fields. The list
+should be maintainable in the backend and can be displayed as a table in the frontend. Some
+aspects such as sorting, filtering, etc. have been intentionally omitted.
 
-We want you to have an easy start with MetaModels. To better understand the structure, let's begin with a simple employee list with only very few informations.
-Our list shall be filled in the back end and it can be displayed in the front end as a table. To keep it simple in the beginning, we will skip any filtering and sorting options.
+The implementation is based on the :ref:`component_index` — more notes on the templates used
+and possible relations can also be found there. If you are unsure about the best way to start,
+take a look at the :ref:`article on the workflow <component_workflow>`.
 
-The implementation will be guided by the :ref:`component_index`.
+For an easier overview of where to find what, the
+:download:`"MM site map" </_download/MM_Lageplan_e-spin-Berlin.pdf>` is available for download.
 
-**The task:**
+**Task:**
 
-* Creation of an employee list which can be maintained in the back end
-* Storage of the following values: Last name, first name, email, department
-* An additional field to publish a data record
-* Output the list as a table in the front end
+* Create an employee list that can be maintained in the backend
+* Store the values: last name, first name, email, department
+* Additional field for publishing a record
+* Output the list as a table in the frontend
 
-**Requirements:**
+**Prerequisites:**
 
-* Actual version of Contao (preferably the LTS version)
-* Actual MetaModels - see :ref:`manual_install`
-* Familiarity with Contao
+* Current Contao (LTS) — see :ref:`manual_install`
+* Current MetaModels matching the Contao version — see :ref:`manual_install` and :ref:`rst_cookbook_checklists_mm-start`
+* Confident use of Contao
 * Understanding of :ref:`component_index`
 
 .. toctree::
     :hidden:
     :maxdepth: 1
-    
+
     new-mm
     attribute
     rendersettings

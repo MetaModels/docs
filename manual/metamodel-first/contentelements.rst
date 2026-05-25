@@ -1,57 +1,72 @@
 .. _mm_first_contentelements:
 
-Content elements / Modules for front end output
-===============================================
+Content Elements/Modules for Frontend Output
+=============================================
 
-After you have configured all the components for data input, you can set up the data output. There are several options available for data output - in this example we will use the article content element "MetaModel list".
+Once all components for data entry are configured, the data output can be set up. Various
+options are available for data output — in this example, the output will use the article content
+element "MetaModel list".
 
-First you need to prepare a page in Contao with an article which will contain the content element "MetaModel list". Create this new content element with the following settings:
+As a preparation for the output, a corresponding page must exist in Contao with an article that
+contains the content element. A new content element is created with the following settings
+activated (see screenshot):
 
 * Element type: MetaModel list
-* Order by: Name
-* Filter settings to apply: Published
-* Render settings to apply FE list
+* Sort by: Name
+* Filter setting to apply: Published
+* Render setting to apply: FE List
 
-|img_contentelements_01_en|
+|img_contentelements_01|
 
-Hit "Save and close" and the content element will be available and you can check it in the front end view.
+After "Save and close", the content element is available and the display can be checked in the
+frontend.
 
-You should see the sentence "There are no items matching your search" in the front end preview, because you didn't enter data yet. 
+The display should now show the message "Your search returned no results." since no data has
+been entered yet.
 
-To test the front end view it is necessary to create some data entries in the employee list. To do this, go to the left menu in the back end and click on the icon "|img_metamodels| Employee list" and then on the icon "|img_new| New item".
+To test the display, it is necessary to create some records in the employee list. To do this,
+click the icon "|img_metamodels| Employee List" under "MetaModels" in the left backend
+navigation, and then click the icon "|img_new| New record".
 
-You will then see the input screen with the fields you have defined (attributes). Now you can fill them with initial data (see screenshot).
+The input mask opens with the predefined fields (attributes), which can be filled with initial
+data (see screenshot).
 
-|img_contentelements_02_en|
+|img_contentelements_02|
 
-After you have hit "Save and close" you will see the new data record. Only the attributes that you have activated in your render setting "BE list" ("Name" and "First name") will be visible here.
+After "Save and close", the record is visible with the activated attributes from the render
+setting "BE List" (last name and first name) (see screenshot).
 
-|img_contentelements_03_en|
+|img_contentelements_03|
 
-You can edit this entry with a click on the "pencil icon" and you can quickly switch the published/unpublished status with the "eye icon".
+The record can be edited again via the pencil icon, and the "Published" status can be toggled
+via the "eye" (as an alternative to the checkbox in the input mask).
 
-Now your front end view should look somehow like this (see seenshot):
+The frontend output should now look approximately as follows (screenshot).
 
-|img_contentelements_04_en|
+|img_contentelements_04|
 
-Once you have entered some test data the employee list in the back end will look similar to this (see screenshot)
+If some test data is loaded into the database — or entered manually — the employee list in the
+backend looks approximately as shown in the screenshot:
 
-|img_contentelements_05_en|
+|img_contentelements_05|
 
-and it will look similar like this in the front end
+And in the frontend as follows:
 
-|img_contentelements_06_en|
+|img_contentelements_06|
 
-For front end output the attributes are displayed within individual HTML div container elements including specific CSS classes using the standard template. Now you can format the output by using CSS or by customising the standard template, so that the output takes place in form of a HTML table.
+For the frontend output, the attributes are rendered via the default template into individual
+HTML div containers including specific CSS classes. Formatting can be done either via CSS or by
+customizing the template so that the output is rendered as an HTML table.
 
-By using some CSS rules e.g. such as follows
+With some CSS rules like the following:
 
-.. code:: css
-	 
+.. code-block:: css
+   :linenos:
+
 	.ce_metamodel_content .item {
 	    display: table;
 	    width: 100%;
-	}  
+	}
 	.ce_metamodel_content .item.even {
 	    background-color: #f4f2f0;
 	    border-bottom: 1px solid #d4cbc5;
@@ -62,23 +77,67 @@ By using some CSS rules e.g. such as follows
 	    border-bottom: 1px solid #d4cbc5;
 	    border-collapse: collapse;
 	}
-  .ce_metamodel_content .item .field {
-    display: table-cell;
-    width: 25%;
-  }
+	.ce_metamodel_content .item .field {
+	    display: table-cell;
+	}
+	.ce_metamodel_content .item .field.name {
+	    width: 20%;
+	}
+	.ce_metamodel_content .item .field.firstname {
+	    width: 20%;
+	}
+	.ce_metamodel_content .item .field.email {
+	    width: 40%;
+	}
+	.ce_metamodel_content .item .field.department {
+	    width: 20%;
+	}
+
+the output already looks better — see screenshot:
+
+|img_contentelements_07|
 
 
-the front end view looks better - see screenshot:
+.. _mm_first_contentelements_detailpage:
+Detail Page of a Record
+------------------------
 
-|img_contentelements_07_en|
+Typically, the list view does not display all content of a record, but only those fields needed
+for searching or selection. The complete record can be presented on a detail page.
+
+For this, a detail page must first be created in Contao — e.g. ``domain.tld/employee-details.html``.
+
+A content element MM list is inserted into this page as a module or CE — MetaModel is again
+``mm_employees``.
+
+A render setting for the output is also needed — for the detail page you should create a separate
+render setting "FE - Details". With a custom :ref:`template <component_templates>`, the output
+can be individually designed.
+
+To ensure only the desired record — and not all records — is output on the page, a corresponding
+filter is needed. The :ref:`"Simple lookup" <component_filter_simplelookup>` filter rule is
+recommended, with an :ref:`alias <component_attribute_alias>` or
+:ref:`translated alias <component_attribute_translatedalias>` as the attribute. Additional
+filter rules such as "Published" etc. are also possible as needed. The created filter must be
+selected in the MM list for the detail page.
+
+With a URL like ``domain.tld/employee-details/alias/avery-amir.html``, the corresponding
+record should be output.
+
+To automatically generate links to the detail page in the list view, in the render setting of
+the list in the "Jump-to settings" section, the detail page must be selected along with the
+corresponding filter. The output of the links in the template is in the ``actions`` node.
+
+
+
 
 .. |img_new| image:: /_img/icons/new.gif
 .. |img_metamodels| image:: /_img/icons/metamodels.png
 
-.. |img_contentelements_01_en| image:: /_img/screenshots/metamodel_first/contentelements_01_en.png
-.. |img_contentelements_02_en| image:: /_img/screenshots/metamodel_first/contentelements_02_en.png
-.. |img_contentelements_03_en| image:: /_img/screenshots/metamodel_first/contentelements_03_en.png
-.. |img_contentelements_04_en| image:: /_img/screenshots/metamodel_first/contentelements_04_en.png
-.. |img_contentelements_05_en| image:: /_img/screenshots/metamodel_first/contentelements_05_en.png
-.. |img_contentelements_06_en| image:: /_img/screenshots/metamodel_first/contentelements_06_en.png
-.. |img_contentelements_07_en| image:: /_img/screenshots/metamodel_first/contentelements_07_en.png
+.. |img_contentelements_01| image:: /_img/screenshots/metamodel_first/contentelements_01.png
+.. |img_contentelements_02| image:: /_img/screenshots/metamodel_first/contentelements_02.png
+.. |img_contentelements_03| image:: /_img/screenshots/metamodel_first/contentelements_03.png
+.. |img_contentelements_04| image:: /_img/screenshots/metamodel_first/contentelements_04.png
+.. |img_contentelements_05| image:: /_img/screenshots/metamodel_first/contentelements_05.png
+.. |img_contentelements_06| image:: /_img/screenshots/metamodel_first/contentelements_06.png
+.. |img_contentelements_07| image:: /_img/screenshots/metamodel_first/contentelements_07.png

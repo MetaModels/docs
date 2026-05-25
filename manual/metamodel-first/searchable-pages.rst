@@ -1,9 +1,9 @@
 .. _mm_first_searchable-pages:
 
-|img_searchable_pages_32| Search settings
-=========================================
+|img_searchable_pages_32| Indexing
+===================================
 
-We don't need any search settings for our example here, because we don't display any detailpages fo the employees.
+For the employee list task, indexing is not required as no detail pages are output.
 
 .. |img_searchable_pages_32| image:: /_img/icons/searchable_pages_32.png
 .. |img_searchable_pages| image:: /_img/icons/searchable_pages.png

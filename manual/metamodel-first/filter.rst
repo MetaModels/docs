@@ -1,33 +1,44 @@
 .. _mm_first_filter:
 
-|img_filter_32| Filter sets
-===========================
+|img_filter_32| Filter Sets
+============================
 
-Setting up "filter sets" is an optional step. You can control different output parameters with this component. In this example we will set up a filter, which will allow us to show only entries which have the attribute "published" activated.
+The "Filter sets" step is one of the optional components and controls various output parameters.
+In our example, a filter will be created that only shows entries with "Published" activated for
+the frontend output.
 
-To do this, go to the MetaModels overview to see the entry "Employee list". Now click onto the icon "|img_filter| Define filters" and the view will switch to the overview of filters - at the moment it is still empty.
+To access the filters, activate the MetaModels overview again so that the "Employee List" entry
+is visible. Then click the icon "|img_filter| Filters" and the view switches to the filters
+overview — which is currently still empty.
 
-Click on the icon "|img_new| New" and the input screen for setting up a filter opens immediately. You just have to enter a name for the filter in the input field "Name" - e.g. "published" (see screenshot).
+After clicking "|img_new| New", the mask for creating a filter opens immediately. Only a name
+for the filter is entered in the "Name" input field — e.g. "Published" (see screenshot).
 
-|img_filter_01_en|
+|img_filter_01|
 
-Now you should be able to see your first entry "Published" in the filter overview -  see screenshot.
+The filters overview should now show the first entry "Published" — see screenshot.
 
-|img_filter_02_en|
+|img_filter_02|
 
-Then click on the icon "|img_filter_setting| Define attribute setting" to open the next level for the filter attributes. Here you can configure the filter and its attributes. The filter attributes can be combined in different nestings and combinations. For our example we will need to add only one filter attribute to the filter by clicking on the icon "|img_new| New".
+Clicking the icon "|img_filter_setting| Attributes" opens the next level for the filter
+attributes. Here, the filter is configured with its filter attributes. The filter attributes can
+be linked together in various combinations and nesting. For the example, only one filter
+attribute is added to the filter by clicking the "|img_new| New" icon in the header.
 
-After the click you will first see only the clip folder icon |img_pasteinto| - click on this icon to open the configuration screen.
+After clicking, only the clipboard icon |img_pasteinto| is initially visible — clicking the icon
+opens the configuration mask.
 
-To filter by published state there is a special filter available in the select menu "Type" (see screenshot).
+For filtering the published status, there is a special filter under "Type" that is selected. As
+the attribute, "Published" is selected (see screenshot).
 
-|img_filter_03_en|
+|img_filter_03|
 
-Then click on "Enabled" and "Save and close" to finish the filter attribute setup. You should see the following list view now (see screenshot).
+After clicking "Activated" and "Save and close", the filter attribute is complete and the
+following list view should be visible (see screenshot).
 
-|img_filter_04_en|
+|img_filter_04|
 
-Now the filter is defined and it can be activated for different components.
+The filter is now defined and can be activated in various components.
 
 
 .. |img_filter_32| image:: /_img/icons/filter_32.png
@@ -35,9 +46,10 @@ Now the filter is defined and it can be activated for different components.
 .. |img_filter_setting| image:: /_img/icons/filter_setting.png
 .. |img_new| image:: /_img/icons/new.gif
 .. |img_about| image:: /_img/icons/about.png
+.. |img_help| image:: /_img/icons/help.svg
 .. |img_pasteinto| image:: /_img/icons/pasteinto.gif
 
-.. |img_filter_01_en| image:: /_img/screenshots/metamodel_first/filter_01_en.png
-.. |img_filter_02_en| image:: /_img/screenshots/metamodel_first/filter_02_en.png
-.. |img_filter_03_en| image:: /_img/screenshots/metamodel_first/filter_03_en.png
-.. |img_filter_04_en| image:: /_img/screenshots/metamodel_first/filter_04_en.png
+.. |img_filter_01| image:: /_img/screenshots/metamodel_first/filter_01.png
+.. |img_filter_02| image:: /_img/screenshots/metamodel_first/filter_02.png
+.. |img_filter_03| image:: /_img/screenshots/metamodel_first/filter_03.png
+.. |img_filter_04| image:: /_img/screenshots/metamodel_first/filter_04.png

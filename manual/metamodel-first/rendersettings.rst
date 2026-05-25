@@ -1,43 +1,56 @@
 .. _mm_first_rendersettings:
 
-|img_rendersettings_32| Render settings
-=======================================
+|img_rendersettings_32| Render Settings
+========================================
 
-In this step we'll set up the render settings for our MetModel "Employee list". We need a render setting for the back end (data input) and for the front end (data output).
+In this step, the render settings for the MetaModel "Employee List" are created. A render
+setting is needed for the backend (data entry) and for the frontend (data output).
 
-To set up a new render setting go to the MetaModels overview. Beneath the MetaModel "Employee list" click on the icon "|img_rendersettings| Render settings". The render setting overview for this MetaModel will open but currently there is no render setting available yet.
+To access the render settings, activate the MetaModels overview so that the "Employee List"
+entry is visible. Then click the icon "|img_rendersettings| Render settings" and the view
+switches to the render settings overview — which is currently still empty.
 
-With a click on "|img_new| New" the input mask for a new render setting opens. Here you set an appropriate name for the setting, e.g. "BE list" (for back end list, see screenshot below). Then check the checkbox "Is default" and hit "Save and close". 
+After clicking "|img_new| New", the input mask for the first render setting opens immediately.
+In the "Name" input field, enter a descriptive name such as "BE List" (see screenshot), check
+the "Default" checkbox, and save the entry with "Save and close".
 
-|img_rendersettings_01_en|
+|img_rendersettings_01|
 
-Now you can see your first entry named "BE list" in the render settings overview -  see screenshot below.
+The render settings overview should now show the first entry "BE List" — see screenshot.
 
-|img_rendersettings_02_en|
+|img_rendersettings_02|
 
-Next click on the icon "|img_rendersetting| Define attribute settings". Here you can select and activate the attributes which you want to be shown in the render setting.
+Clicking the icon "|img_rendersetting| Render settings for attributes" opens the next level for
+the attributes. Here, the attributes to be displayed in the respective render setting list are
+selected or activated.
 
-The easiest way to add attributes to a render setting is with a click on the icon "|img_rendersettings_add| Add all" in the header. Then hit "Continue" and "Save and close" and all attributes available will be added to your render setting. Please note that the attributes are set to "unpublished" by default (grey "eye-icon"). But you can easily activate them with a click on the "eye icon".
-In our example we will just activate the attributes "name" and "first name". 
-Now your attributes should be activated as shown in the screenshot below.
+A simple way to add all created attributes is via the header icon
+"|img_rendersettings_add| Add all" — after clicking the "Continue" and "Save and close" buttons,
+all existing attributes are added to the render setting. By default, the attributes are not
+activated — this can easily be done via the "eye icon". In this example, the attributes "Last
+name" and "First name" are activated — the attribute list should now look like the screenshot.
 
-|img_rendersettings_03_en|
+|img_rendersettings_03|
 
-Now you have successfully set up a render setting for the backend. 
+The render settings for the backend display are now complete. The render settings for the
+frontend display can follow next.
 
-Let's go on with the one for the front end:
-The procedure is pretty much the same as for the back end. But this time you might want to choose "FE list" (for front end list) as the appropriate name.
-Additionally we want to hide all labels by checking the checkbox "Hide labels" (see screenshot). 
+The procedure is analogous to that for the "BE List" — in the render settings, "FE List" could
+be entered as the name. Additionally, the display of attribute labels is disabled via the
+"Hide labels" checkbox (see screenshot).
 
-|img_rendersettings_04_en|
+|img_rendersettings_04|
 
-For the front end view we will activate all the attributes except the attribute "published". As this is only required for the filtering, it doesn't need to be displayed in the front end (see screenshot).
+For the frontend display, all necessary attributes are activated — all except the "Published"
+attribute, which is needed for the filter and does not need to be (or should not be) output
+(see screenshot).
 
-|img_rendersettings_05_en|
+|img_rendersettings_05|
 
-This completes our preparations for the back end and front end listings. No you should see the overview of our two render settings as shown in the screenshot below.
+The preparations for the backend and frontend listings are now complete and the render settings
+overview should now show the two lists (see screenshot).
 
-|img_rendersettings_06_en|
+|img_rendersettings_06|
 
 
 .. |img_rendersettings_32| image:: /_img/icons/rendersettings_32.png
@@ -47,10 +60,9 @@ This completes our preparations for the back end and front end listings. No you 
 .. |img_new| image:: /_img/icons/new.gif
 .. |img_edit| image:: /_img/icons/edit.gif
 
-.. |img_rendersettings_01_en| image:: /_img/screenshots/metamodel_first/rendersettings_01_en.png
-.. |img_rendersettings_02_en| image:: /_img/screenshots/metamodel_first/rendersettings_02_en.png
-.. |img_rendersettings_03_en| image:: /_img/screenshots/metamodel_first/rendersettings_03_en.png
-.. |img_rendersettings_04_en| image:: /_img/screenshots/metamodel_first/rendersettings_04_en.png
-.. |img_rendersettings_05_en| image:: /_img/screenshots/metamodel_first/rendersettings_05_en.png
-.. |img_rendersettings_06_en| image:: /_img/screenshots/metamodel_first/rendersettings_06_en.png
-
+.. |img_rendersettings_01| image:: /_img/screenshots/metamodel_first/rendersettings_01.png
+.. |img_rendersettings_02| image:: /_img/screenshots/metamodel_first/rendersettings_02.png
+.. |img_rendersettings_03| image:: /_img/screenshots/metamodel_first/rendersettings_03.png
+.. |img_rendersettings_04| image:: /_img/screenshots/metamodel_first/rendersettings_04.png
+.. |img_rendersettings_05| image:: /_img/screenshots/metamodel_first/rendersettings_05.png
+.. |img_rendersettings_06| image:: /_img/screenshots/metamodel_first/rendersettings_06.png
