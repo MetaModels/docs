@@ -221,8 +221,6 @@ To set a "deep link" for editing including language selection, the GET parameter
 ``domain.com/en/fee-processing?act=edit&id=mm_employees_trans%::42&__setlng=de`` — the
 parameter is automatically removed after a reload.
 
-|img_fee-multilanguage|
-
 **Language indicators in the input mask** |br|
 Analogous to the backend, multiple indicators for the current editing language are
 shown in the frontend input mask:

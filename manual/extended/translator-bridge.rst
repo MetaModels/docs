@@ -291,7 +291,7 @@ The project is complete but not yet freely available. Refinancing is done via an
 Program", meaning you can use the extension immediately upon payment of a donation. The payment
 entitles use for one project. Legal claims of any kind are excluded after payment of a donation.
 
-The amount of the donation should be at least €150*1.
+The amount of the donation should be at least €200*1.
 
 A receipt with VAT stated (or net for EU countries with a valid EU tax ID) will be issued for
 contributions. |br|
