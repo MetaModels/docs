@@ -11,7 +11,7 @@ automatically enters the result into the translation field currently being edite
 More on the topic :ref:`Multilingualism in MetaModels <component_multi-language>`.
 
 .. note:: The Translator-Bridge extension is still in fundraising and will only be released once
-   the target amount of currently 3,442.50 € is reached. |br|
+   the target amount of currently 2,762.50 € is reached. |br|
    Early installation via the "Early Adopter Program" is possible —
    `see below <#rst-extended-translator-bridge-early-adopter-program>`_
 
@@ -307,7 +307,7 @@ Donations
 
 Thanks for the donations* for the extension to:
 
-* N.N.
+* `AntwortInternet <https://www.antwortinternet.com/>`_: 680 €
 
 
 (Donations are net amounts)

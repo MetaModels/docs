@@ -100,6 +100,9 @@ Attributes
     * Support for ``'inputType' => 'fileTree'`` with ``'multiple' => 'true'`` including file moving
 * Text
     * Migration for `basicEntities` — `see Contao manual <https://docs.contao.org/manual/de/artikelverwaltung/insert-tags/#basic-entities>`_
+* Token (NEW)
+    * Generates a cryptographically random, immutable string (token) when a record is first saved —
+      see :ref:`component_attribute_token`
 * Translated Alias
     * Column ``langcode`` changed to ``varchar(64)``
 * Translated Checkbox
