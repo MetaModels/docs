@@ -35,8 +35,8 @@ The button only appears when:
 Prerequisites
 -------------
 
-* MetaModels core 2.4
-* Contao 5.3.x
+* as of MetaModels core 2.4
+* as of Contao 5.3.x
 * A valid API key from the respective translation provider (e.g. DeepL Free or Pro)
 
 
@@ -73,6 +73,39 @@ it from being published e.g. via a repository):
 .. note:: DeepL Free-Tier keys end with ``:fx`` and automatically use the free API endpoint
    ``api-free.deepl.com``. Pro keys without this suffix use ``api.deepl.com``. The extension
    detects the key type automatically.
+
+
+.. _rst_extended_translator-bridge_preferred-language-variants:
+
+Preferred Language Variants
+---------------------------
+
+For some languages, DeepL distinguishes regional variants — e.g. British English
+(``EN-GB``), American English (``EN-US``), or Brazilian Portuguese (``PT-BR``). With the
+``preferred_language_variant`` setting you define which variant should be requested for a
+target language:
+
+.. code-block:: yaml
+
+   meta_models_translator_bridge:
+       deepl_api_key: '%env(DEEPL_API_KEY)%'
+       preferred_language_variant:
+           en: en-GB
+           pt: pt-BR
+
+The key is the target language code (as used e.g. in the ``mm_lang`` field or as the active
+editing language), the value is the desired DeepL variant. The mapping applies **exclusively**
+to the target language of the translation.
+
+.. note:: Valid DeepL target language codes must be used. The complete list can be found in the
+   `DeepL documentation <https://developers.deepl.com/docs/getting-started/supported-languages>`_.
+   An invalid value (e.g. ``en-BR``) causes DeepL to reject the request with an error (HTTP 400).
+
+After changing the configuration, clear the Symfony cache:
+
+.. code-block:: bash
+
+   php bin/console cache:clear
 
 
 .. _rst_extended_translator-bridge_usage:
@@ -202,6 +235,33 @@ Then clear the Symfony cache:
    is nothing to translate in the fallback tree.
 
 
+.. _rst_extended_translator-bridge_display-character-usage:
+
+Display Character Usage
+-----------------------
+
+Providers that support it (e.g. DeepL) can display the current consumption of their character
+quota — in two places:
+
+**In the console**, the command outputs ``<used> / <limit> (<percentage>)``:
+
+.. code-block:: bash
+
+   php vendor/bin/contao-console metamodels:translator:deepl:usage
+   # Example output: 497 / 500,000 (< 1%)
+
+The command name follows the pattern ``metamodels:translator:<identifier>:usage`` and is
+provided automatically for every provider with usage support.
+
+**In the backend**, the keyboard shortcut :kbd:`Alt+U` (macOS: :kbd:`Option+U`) on a translation
+editing page opens a popup showing *"<used> used characters of <limit> (<percentage>)"*. The popup
+closes via the ``×``, a click outside the popup, or the :kbd:`Esc` key.
+
+.. note:: The numbers are displayed with the thousands separators of the respective language. If
+   something has already been consumed but the rounded value is 0 %, ``< 1%`` is shown (instead
+   of ``0%``).
+
+
 .. _rst_extended_translator-bridge_error-messages:
 
 Error Messages
@@ -252,6 +312,23 @@ The interface requires the following methods:
   performs the actual translation; on failure, a ``\RuntimeException`` with a **user-readable**
   message must be thrown (no raw HTTP exceptions)
 * ``getSupportedLanguages(): array`` — list of supported target language codes
+
+Optionally, a provider can additionally implement the interface
+``MetaModels\TranslatorBridge\Api\UsageAwareTranslatorInterface``. This requires the method
+``getUsage(): TranslatorUsage`` and thereby enables the console command
+``metamodels:translator:<identifier>:usage`` as well as the :kbd:`Alt+U` display in the backend
+for this provider (see
+`Display Character Usage <#rst-extended-translator-bridge-display-character-usage>`_).
+
+So that the console command can be named correctly, the service tag must include the
+``identifier`` attribute (matching the return value of ``getIdentifier()``):
+
+.. code-block:: yaml
+
+   # config/services.yaml
+   App\Translation\MyProvider:
+       tags:
+           - { name: metamodels.translator_provider, identifier: myprovider }
 
 
 .. _rst_extended_translator-bridge_order-multiple-providers:
