@@ -9,7 +9,7 @@ can be configured and rendered via `Leaflet <https://leafletjs.com/>`_. The exte
 both monolingual and multilingual MetaModels.
 
 .. note:: This extension is available from MM 2.4 with Contao 5.3 — to get access please
-   send an email to mail@metamodel.me. Current open financing: 3,781.25 €
+   send an email to mail@metamodel.me. Current open financing: 3,181.25 €
 
 
 Installation
@@ -148,19 +148,25 @@ To display records as markers on a map, various data must be maintained in MetaM
 following information may or should have corresponding attributes in MM (including the supported
 attribute types):
 
-* Coordinates (Latitude and Longitude required, Altitude optional) — Decimal for individual
-  values or Text for comma-separated input
+* Coordinates (Latitude and Longitude required, Altitude optional) — :ref:`LatLong
+  <component_attribute_latlong>` (recommended), Decimal for individual values per coordinate, or
+  Text for comma-separated input
 * Title attribute (optional) — Text, Combined values, Translated text, Translated combined values
 * Alt attribute (optional) — Text, Combined values, Translated text, Translated combined values
 * Popup (optional) — Text, Long text, Combined values, Translated text, Translated long text,
   Translated combined values
 
-The coordinates of the marker can be stored either as comma-separated values in a single field or
-as individual values. For the first case, a Text attribute should be created that stores the tuple
-(``52.510885,13.3989367``) or triple (``52.510885,13.3989367,36``). If coordinates are stored
-individually, two or three Decimal attributes are required. Individual coordinate values must be
-used if records are to be filtered using a
-:ref:`perimeter search from MetaModels <extended_perimetersearch>`.
+The coordinates of the marker can be stored in three ways:
+
+* **LatLong attribute** (from MM 2.5, recommended) — a single attribute stores the coordinate pair
+  as a native ``POINT``. This variant optionally supports a spatial index and can also be filtered
+  with a :ref:`perimeter search from MetaModels <extended_perimetersearch>` — by now it is even
+  noticeably faster than the variant with individual Decimal attributes, provided the index is
+  enabled.
+* **Comma-separated text** — a Text attribute stores the tuple (``52.510885,13.3989367``) or triple
+  (``52.510885,13.3989367,36``). Cannot be filtered with a perimeter search.
+* **Individual values** — two or three "Decimal" attributes for latitude, longitude, and
+  optionally altitude. Also supports a perimeter search from MetaModels.
 
 The marker icon can optionally receive a text for the title or alt attribute. A corresponding
 Text attribute is required for this. The text must not contain any HTML formatting that would
@@ -416,19 +422,34 @@ A map is often embedded alongside a filtered MM list — in this case, you natur
 filtering to also affect the displayed markers.
 
 Cowegis retrieves its data for generating the map and all other elements not directly via the
-content element, but the map element fetches the data via its own path. This request does not,
-however, receive the filter parameters from the URL.
+content element, but the map element fetches the data via its own path. This request does not
+receive the filter parameters from the URL.
 
-Therefore, the filter parameters must currently be passed along with this request. Depending on
-the financing of the extension, a more universal approach may be implemented in the future — until
-then, parameters must be passed manually via ``map-uri``.
+.. note:: **From MM 2.5:** Cowegis Layer ships its own template for this that automatically
+   picks up the filter parameters — see below. The template override that was previously
+   necessary, with manually adjusted parameters, is therefore no longer needed for the normal
+   case.
 
-For the transfer, the template of the Cowegis content element can be customized as follows:
+**Bundled template** ``ce_cowegis_map_mm-filter``
+
+Cowegis Layer ships a second template for the map content element. Based on the map selected in
+the content element, it automatically determines which URL parameters the "MetaModels Marker"
+layers embedded there expect for their filter settings, and appends their current values to the
+map request itself — with no customization required.
+
+To use it, select the ``ce_cowegis_map_mm-filter`` template instead of the default template under
+"Template settings" in the map content element. This requires that at least one
+:ref:`filter setting <component_filter>` is set under "MetaModel" → "Filter settings to apply" on
+the marker layer — its URL parameter names are determined automatically.
+
+For special cases — e.g. custom URL parameters that do not come from an MM filter setting — you
+can still create your own template with fixed parameter names, following the same pattern as
+before:
 
 .. code-block:: html
    :linenos:
 
-   <!-- templates/ce_cowegis_map.html5 -->
+   <!-- templates/ce_cowegis_map_custom-parameters.html5 -->
    <?php $this->extend('ce_cowegis_map'); ?>
 
    <?php $this->block('content') ?>
@@ -448,6 +469,7 @@ For the transfer, the template of the Cowegis content element can be customized 
 
 If the map should adapt to the changed number of markers, the "Fit bounds" option must be enabled
 on the MM map (see above).
+
 
 Custom JavaScript Customization
 --------------------------------
@@ -521,6 +543,7 @@ Thanks for the donations* for the extension to:
 * `AntwortInternet <https://www.antwortinternet.com/>`_: 200 €
 * `External IT Solutions <https://external.at/>`_: 200 €
 * `Klarika <https://www.klarika.de/>`_: 200 €
+* `AntwortInternet <https://www.antwortinternet.com/>`_: 600 €
 
 (*Donations are net amounts)
 

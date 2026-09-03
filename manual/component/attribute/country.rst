@@ -1,7 +1,7 @@
 .. _component_attribute_country:
 
-|img_country| Country
-=====================
+|svg_attr_country_22| |img_country| Country
+===========================================
 
 The "Country" attribute provides a selection list of all countries in the world.
 Country names are displayed in the currently active backend language and sorted
@@ -140,6 +140,8 @@ The country value is stored as ``varchar(2) NULL`` (two-letter ISO code).
 An empty value is stored as ``NULL`` (compatible with MySQL Strict Mode).
 
 
+.. |svg_attr_country_22| image:: /_img/icons_svg/country.svg
+   :width: 22px
 .. |img_country| image:: /_img/icons/country.png
 
 .. |br| raw:: html

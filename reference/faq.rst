@@ -3,8 +3,8 @@ FAQ
 
 .. _faq-searchable-pages:
 
-Indexing (Searchable Pages)
-----------------------------
+Search Settings (Searchable Pages)
+----------------------------------
 
 | Q: Can I configure the sitemap and the search index independently of each other?
 | A: No, both are fed by the same function. This is implemented in the Contao Core, so the same configuration applies to both.

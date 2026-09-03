@@ -1,7 +1,7 @@
 .. _component_attribute_timestamp:
 
-Timestamp
-=========
+|svg_attr_timestamp_22| |img_timestamp| Timestamp
+=================================================
 
 The "Timestamp" attribute stores date, time, or both as a Unix timestamp (``bigint``).
 In the backend, a date picker with the configured Contao date format is displayed.
@@ -160,6 +160,9 @@ render settings takes precedence over the system-wide Contao format. In template
 formatted value is directly available as ``$arrData['html5']`` or ``$arrData['text']``.
 
 
+.. |svg_attr_timestamp_22| image:: /_img/icons_svg/timestamp.svg
+   :width: 22px
+.. |img_timestamp| image:: /_img/icons/timestamp.png
 .. |br| raw:: html
 
    <br />

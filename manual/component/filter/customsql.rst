@@ -1,7 +1,7 @@
 .. _component_filter_customsql:
 
-|img_filter_customsql| Custom SQL
-===================================
+|svg_filt_customsql_22| |img_filter_customsql| Custom SQL
+=========================================================
 
 The "Custom SQL" filter rule enables the use of a custom SQL query to filter items.
 The query must return a list of item IDs. This filter rule is aimed at advanced users
@@ -198,6 +198,8 @@ For the URL ``https://example.org/list.html`` (no parameter): |br|
 ``SELECT t.id FROM mm_demo AS t WHERE t.catname = 'defaultcat'``
 
 
+.. |svg_filt_customsql_22| image:: /_img/icons_svg/filter_customsql.svg
+   :width: 22px
 .. |img_filter_customsql| image:: /_img/icons/filter_customsql.png
 
 .. |br| raw:: html

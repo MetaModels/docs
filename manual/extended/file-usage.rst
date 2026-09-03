@@ -7,37 +7,24 @@ File-Usage Integration
 
 The `File-Usage <https://github.com/inspiredminds/contao-file-usage>`_ extension allows you to
 see in the file manager whether and where a file is used in Contao. Support for MM is available
-from File-Usage version 3.0.1.
+from File-Usage version 4.1.
 
 Corresponding providers have been created to display the images embedded in MetaModels records.
 The following attributes are currently supported:
 
-* Content article (ContentArticle)
-* File
-* Long text
-* Multi-table (MCW)
-* Translated content article (ContentArticle)
-* Translated file
-* Translated long text
-* Translated multi-table (MCW)
-
-.. seealso::
-
-   Documentation for supported attributes:
-
-   * :ref:`Content article <component_attribute_contentarticle>`
-   * :ref:`File <component_attribute_file>`
-   * :ref:`Long text <component_attribute_longtext>`
-   * :ref:`Multi-table (MCW) <component_attribute_tablemulti>`
-   * :ref:`Translated content article <component_attribute_translatedcontentarticle>`
-   * :ref:`Translated file <component_attribute_translatedfile>`
-   * :ref:`Translated long text <component_attribute_translatedlongtext>`
-   * :ref:`Translated multi-table (MCW) <component_attribute_translatedtablemulti>`
+* :ref:`Content article <component_attribute_contentarticle>`
+* :ref:`File <component_attribute_file>`
+* :ref:`Long text <component_attribute_longtext>`
+* :ref:`Multi-table (MCW) <component_attribute_tablemulti>`
+* :ref:`Translated content article <component_attribute_translatedcontentarticle>`
+* :ref:`Translated file <component_attribute_translatedfile>`
+* :ref:`Translated long text <component_attribute_translatedlongtext>`
+* :ref:`Translated multi-table (MCW) <component_attribute_translatedtablemulti>`
 
 Depending on the attribute, the stored UUID(s) of the file or files are searched, or existing
 insert tags with file references (`file`, `picture`, `figure`) are searched.
 
-As of `File-Usage version 3.1.0 <https://github.com/inspiredminds/contao-file-usage/releases/tag/3.1.0>`_,
+As of `File-Usage version 4.1.0 <https://github.com/inspiredminds/contao-file-usage/releases/tag/4.1.0>`_,
 textual path references such as `/file/content/my_file.jpg` in the HTML attributes `href` and
 `src` are also searched — for example in text fields.
 
@@ -54,10 +41,10 @@ Donations
 
 Thanks for the donations* for the extension to (target amount 2,613.75 €):
 
-* `GUTcert <https://www.gut-cert.de/>`_: 340 €
 * `AntwortInternet <https://www.antwortinternet.com/>`_: 340 €
 * `AntwortInternet <https://www.antwortinternet.com/>`_: 340 €
 * `P KREATIV <https://p-kreativ.at/>`_: 250 €
+* `GUTcert <https://www.gut-cert.de/>`_: 340 €
 
 (*Donations are net amounts)
 

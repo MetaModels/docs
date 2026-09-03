@@ -45,7 +45,8 @@ Numbers
     "Integer values", ":ref:`Numeric <component_attribute_numeric>`", `attribute_numeric <https://github.com/MetaModels/attribute_numeric>`_, "Value from/to for one attribute, |br| Value from/to for two attributes", "✔", "for postal codes or phone numbers use |br| Text attribute"
     "Decimal numbers", ":ref:`Decimal <component_attribute_decimal>`", `attribute_decimal <https://github.com/MetaModels/attribute_decimal>`_, "Value from/to for one attribute, |br| Value from/to for two attributes", "✔", "Input with period as decimal separator"
     "Date or time", ":ref:`Timestamp <component_attribute_timestamp>`", `attribute_timestamp <https://github.com/MetaModels/attribute_timestamp>`_, "Value from/to for one date attribute, |br| Value from/to for two date attributes", "✔", "Stored as UNIX timestamp; |br| Input can be limited to date only |br| or time only"
-    "Geo coordinates", "see Decimal", , "Perimeter search", "**—**", "create one attribute each |br| for latitude and longitude"
+    "Geo coordinates (combined)", ":ref:`LatLong <component_attribute_latlong>`", `attribute_latlong <https://github.com/MetaModels/attribute_latlong>`_, "Perimeter search", "**—**", "Stored as native ``POINT``; |br| optional spatial index for faster |br| perimeter search; input optionally |br| via address search with map"
+    "Geo coordinates (separate)", "see Decimal", , "Perimeter search", "**—**", "create one attribute each |br| for latitude and longitude"
 
 Files
 -----

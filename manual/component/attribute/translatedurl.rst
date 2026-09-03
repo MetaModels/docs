@@ -1,7 +1,7 @@
 .. _component_attribute_translatedurl:
 
-Translated URL
-==============
+|svg_attr_translatedurl_22| |img_url| Translated URL
+====================================================
 
 The "Translated URL" attribute is the multilingual variant of the
 :ref:`URL <component_attribute_url>` attribute. It stores a separate link per language,
@@ -148,6 +148,9 @@ allowing internal Contao pages to be selected. If "Remove title" is enabled, onl
 simple text field is available.
 
 
+.. |svg_attr_translatedurl_22| image:: /_img/icons_svg/url.svg
+   :width: 22px
+.. |img_url| image:: /_img/icons/url.png
 .. |br| raw:: html
 
    <br />

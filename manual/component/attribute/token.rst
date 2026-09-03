@@ -1,7 +1,7 @@
 .. _component_attribute_token:
 
-|img_token| Token (from MM 2.4)
-================================
+|svg_attr_token_22| |img_token| Token (from MM 2.4)
+===================================================
 
 The "Token" attribute generates a cryptographically random, immutable string (token) when
 a record is saved for the first time. Typical use cases:
@@ -229,6 +229,8 @@ The token is stored as ``varchar(255) NULL`` in the MetaModel table. An empty va
 stored as ``NULL`` (compatible with MySQL Strict Mode).
 
 
+.. |svg_attr_token_22| image:: /_img/icons_svg/token.svg
+   :width: 22px
 .. |img_token| image:: /_img/icons/token.png
 
 .. |br| raw:: html

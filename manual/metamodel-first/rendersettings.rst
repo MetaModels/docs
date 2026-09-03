@@ -1,13 +1,13 @@
 .. _mm_first_rendersettings:
 
-|img_rendersettings_32| Render Settings
-========================================
+|svg_rendersettings_32| |img_rendersettings_32| Render Settings
+==================================================================
 
 In this step, the render settings for the MetaModel "Employee List" are created. A render
 setting is needed for the backend (data entry) and for the frontend (data output).
 
 To access the render settings, activate the MetaModels overview so that the "Employee List"
-entry is visible. Then click the icon "|img_rendersettings| Render settings" and the view
+entry is visible. Then click the icon "|svg_rendersettings_22| |img_rendersettings| Render settings" and the view
 switches to the render settings overview — which is currently still empty.
 
 After clicking "|img_new| New", the input mask for the first render setting opens immediately.
@@ -20,12 +20,12 @@ The render settings overview should now show the first entry "BE List" — see s
 
 |img_rendersettings_02|
 
-Clicking the icon "|img_rendersetting| Render settings for attributes" opens the next level for
+Clicking the icon "|svg_rendersetting_22| |img_rendersetting| Render settings for attributes" opens the next level for
 the attributes. Here, the attributes to be displayed in the respective render setting list are
 selected or activated.
 
 A simple way to add all created attributes is via the header icon
-"|img_rendersettings_add| Add all" — after clicking the "Continue" and "Save and close" buttons,
+"|svg_rendersettings_add_22| |img_rendersettings_add| Add all" — after clicking the "Continue" and "Save and close" buttons,
 all existing attributes are added to the render setting. By default, the attributes are not
 activated — this can easily be done via the "eye icon". In this example, the attributes "Last
 name" and "First name" are activated — the attribute list should now look like the screenshot.
@@ -53,9 +53,17 @@ overview should now show the two lists (see screenshot).
 |img_rendersettings_06|
 
 
+.. |svg_rendersettings_32| image:: /_img/icons_svg/rendersettings.svg
+   :width: 32px
 .. |img_rendersettings_32| image:: /_img/icons/rendersettings_32.png
+.. |svg_rendersettings_22| image:: /_img/icons_svg/rendersettings.svg
+   :width: 22px
 .. |img_rendersettings| image:: /_img/icons/rendersettings.png
+.. |svg_rendersetting_22| image:: /_img/icons_svg/rendersetting.svg
+   :width: 22px
 .. |img_rendersetting| image:: /_img/icons/rendersetting.png
+.. |svg_rendersettings_add_22| image:: /_img/icons_svg/rendersettings_add.svg
+   :width: 22px
 .. |img_rendersettings_add| image:: /_img/icons/rendersettings_add.png
 .. |img_new| image:: /_img/icons/new.gif
 .. |img_edit| image:: /_img/icons/edit.gif

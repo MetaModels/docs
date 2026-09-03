@@ -1,7 +1,7 @@
 .. _component_filter_levenshtein:
 
-|img_filter_default| Levenshtein-based Search
-=================================================
+|svg_filt_levenshtein_22| |img_filter_default| Levenshtein-based Search
+=======================================================================
 
 The "Levenshtein-based Search" filter rule (package ``attribute_levenshtein``) creates
 a full-text index over selected attributes and enables a similarity-based full-text
@@ -94,6 +94,8 @@ The Levenshtein attribute can in turn index multiple other attributes (text, lon
 alias, etc.).
 
 
+.. |svg_filt_levenshtein_22| image:: /_img/icons_svg/filter_levenshtein.svg
+   :width: 22px
 .. |img_filter_default| image:: /_img/icons/filter_default.png
 
 .. |br| raw:: html

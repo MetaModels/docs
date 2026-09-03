@@ -70,7 +70,7 @@ called classes should be imported with a qualified "use" statement.
    $attribute  = $model->getAttribute('division');
    $filter->addFilterRule(new \MetaModels\Filter\Rules\SearchAttribute($attribute, $value, $languages));
 
-   // Custom SQL:
+   // Custom SQL *1:
    $query = \sprintf('SELECT * FROM %s WHERE published = 1', $modelName);
    $filter->addFilterRule(new \MetaModels\Filter\Rules\SimpleQuery($query));
    // Alternative see https://www.doctrine-project.org/projects/doctrine-dbal/en/4.2/reference/data-retrieval-and-manipulation.html
@@ -92,6 +92,37 @@ called classes should be imported with a qualified "use" statement.
    $items    = $model->findByFilter($filter);
    $arrItems = $items->parseAll('text');
    //dump($arrItems);
+
+*1: Custom SQL can also be built using the
+`Doctrine DBAL queryBuilder <https://www.doctrine-project.org/projects/doctrine-dbal/en/4.4/reference/query-builder.html>`_
+and passed to SimpleQuery. The queryBuilder allows a query to be assembled elegantly when, for
+example, various conditions need to be taken into account. Here is an example:
+
+.. code-block:: php
+   :linenos:
+
+   <?php
+
+   use Doctrine\DBAL\Connection;
+   use MetaModels\Filter\Rules\SimpleQuery;
+
+   // ...
+
+   $modelName = 'mm_employees';
+   $model     = $factory->getMetaModel($modelName);
+   $filter    = $model->getEmptyFilter();
+
+   $builder = $this->connection->createQueryBuilder()
+               ->select('t.id')
+               ->from($metaModel->getTableName(), 't');
+
+   if ($checkUpload) {
+       $builder->andWhere('t.upload_allowed = 1');
+   }
+
+   $filter = $metaModel->getEmptyFilter();
+   $filter->addFilterRule(SimpleQuery::createFromQueryBuilder($builder));
+   $items = $metaModel->findByFilter($filter, 'name');
 
 
 .. |br| raw:: html

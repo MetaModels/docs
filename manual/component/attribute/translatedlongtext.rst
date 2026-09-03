@@ -1,7 +1,7 @@
 .. _component_attribute_translatedlongtext:
 
-Translated Long Text
-====================
+|svg_attr_translatedlongtext_22| |img_longtext| Translated Long Text
+====================================================================
 
 The "Translated Long Text" attribute is the multilingual variant of the
 :ref:`Long Text <component_attribute_longtext>` attribute. It stores a separate long
@@ -165,6 +165,9 @@ in that case.
 If a value is missing for a language, MetaModels falls back to the fallback language.
 
 
+.. |svg_attr_translatedlongtext_22| image:: /_img/icons_svg/longtext.svg
+   :width: 22px
+.. |img_longtext| image:: /_img/icons/longtext.png
 .. |br| raw:: html
 
    <br />

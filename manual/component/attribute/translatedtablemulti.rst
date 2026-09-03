@@ -1,7 +1,7 @@
 .. _component_attribute_translatedtablemulti:
 
-Translated Multi-Table (MCW)
-================================
+|svg_attr_translatedtablemulti_22| |img_translatedtablemulti| Translated Multi-Table (MCW)
+==========================================================================================
 
 The "Translated Multi-Table (MCW)" attribute is the multilingual variant of the
 :ref:`Multi-Table <component_attribute_tablemulti>` attribute. It enables separate
@@ -129,6 +129,9 @@ additional ``langcode`` column in the value table and the use of the language-aw
 ``getTranslatedDataFor()`` and ``setTranslatedDataFor()`` methods.
 
 
+.. |svg_attr_translatedtablemulti_22| image:: /_img/icons_svg/translatedtablemulti.svg
+   :width: 22px
+.. |img_translatedtablemulti| image:: /_img/icons/translatedtablemulti.png
 .. |br| raw:: html
 
    <br />

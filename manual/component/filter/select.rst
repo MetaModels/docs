@@ -1,7 +1,7 @@
 .. _component_filter_select:
 
-|img_filter_select| Single Select
-==================================
+|svg_filt_select_22| |img_filter_select| Single Select
+======================================================
 
 The "Single Select" filter rule (package ``filter_select``) outputs a frontend widget
 through which visitors can select a single value from a selection list. Items are filtered
@@ -40,9 +40,15 @@ Settings when Creating the Filter Rule
      - Free text field for describing the purpose of this filter rule.
    * - Attribute
      - The attribute by whose value items should be filtered.
-   * - Label attribute
-     - Optional attribute whose value is used as the display text for the options
-       in the widget (e.g. a name or title attribute).
+   * - Attribute for label text
+     - Optional second attribute whose value is used as the display text for the options
+       in the widget (e.g. a name or title attribute) — from MM 2.4.12.
+
+       This setting only appears if the filtered attribute does not itself provide the
+       display text — i.e. for attributes without a relation. It is omitted for Single
+       Select (MetaModel), Tags and Translated Tags, since for those the display text is
+       already determined via the value column of the attribute; the alias column
+       provides the key for the URL.
 
 
 Settings for the Frontend Widget
@@ -113,6 +119,8 @@ Link lists are particularly suitable for SEO-optimized navigation without form
 submission.
 
 
+.. |svg_filt_select_22| image:: /_img/icons_svg/filter_select.svg
+   :width: 22px
 .. |img_filter_select| image:: /_img/icons/filter_select.png
 
 .. |br| raw:: html

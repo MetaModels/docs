@@ -1,19 +1,32 @@
 .. _component_filter_perimeter-search:
 
-|img_filter_perimetersearch| Perimeter Search
-==========================================
+|svg_filt_perimeter_search_22| |img_filter_perimetersearch| Perimeter Search
+============================================================================
 
 The "Perimeter Search" filter rule (package ``filter_perimetersearch``) filters items
 based on their geographic position. Visitors enter an address or coordinates and choose
 a search radius; the filter rule finds all items whose geocoordinates (latitude/longitude)
 lie within the specified perimeter.
 
-A prerequisite is that items have geocoordinates stored in two separate decimal attributes
-(latitude and longitude). External lookup services are used for geocoding addresses to
-coordinates (e.g. OpenStreetMap/Nominatim, Google Maps API).
+A prerequisite is that items have their geocoordinates stored either in a single
+:ref:`LatLong attribute <component_attribute_latlong>` or in two separate decimal or text
+attributes (latitude and longitude). External lookup services are used for geocoding
+addresses to coordinates (e.g. OpenStreetMap/Nominatim, Google Maps API).
 
 .. seealso:: Detailed documentation on perimeter search:
    :ref:`extended_perimetersearch`
+
+.. note:: **From MM 2.5:** When the address field is cleared, the previously selected
+   perimeter selection also disappears from the widget — before, it remained visible even
+   though it no longer had any effect without an address (`Issue #31
+   <https://github.com/MetaModels/filter_perimetersearch/issues/31>`_). In MM 2.4 the
+   previous behavior remains unchanged.
+
+.. note:: **From MM 2.5:** If a :ref:`LatLong attribute <component_attribute_latlong>` with
+   spatial index enabled is used (single attribute), the perimeter search automatically uses
+   an index-backed bounding-box pre-filter — depending on the amount of data, several times
+   faster than without an index. Details and benchmark figures: :ref:`Special functions of the
+   LatLong attribute <component_attribute_latlong_special>`.
 
 
 Installation
@@ -44,11 +57,13 @@ Settings when Creating the Filter Rule
    * - Data mode
      - Defines how the geocoordinates of items are stored:
 
-       * **Single attribute** — The coordinates are stored in a single combined
-         attribute (e.g. "lat,long" as text). Additional option:
-         **Attribute (single)** — Selection of the attribute.
+       * **Single attribute** — The coordinates are stored in a single
+         :ref:`LatLong attribute <component_attribute_latlong>`. Additional option:
+         **Attribute (single)** — Selection of the attribute (only LatLong attributes
+         are selectable).
        * **Two attributes** — Latitude and longitude are stored in two separate
-         attributes. Additional options:
+         attributes (:ref:`Decimal <component_attribute_decimal>` or
+         :ref:`Text <component_attribute_text>`). Additional options:
          **First attribute (lat)** and **Second attribute (long)**.
    * - URL parameter
      - The key of the URL parameter for passing the address/coordinate input.
@@ -96,24 +111,41 @@ Settings for the Frontend Widget
        * **Preset** — Fixed country (ISO code). Additional option: **Country preset**.
        * **GET parameter** — The country is passed via a URL parameter.
          Additional option: **Country GET parameter**.
-   * - Lookup service
-     - Configuration of the geocoding service (MCW table):
+   * - Lookup services
+     - Multi-column assistant for configuring the services that convert an
+       address into geocoordinates. Available services (depending on
+       installation):
 
-       * **Service** — Selection of the geocoding service (e.g. Nominatim, Google Maps).
-       * **API token** — Optional API key for paid services.
+       * **Coordinates** — Direct coordinate input
+       * **Google Maps** — Address resolution via the Google Maps API
+       * **OpenStreetMap** — Address resolution via the Nominatim API
+
+       For services that require an API token, it can be entered in the
+       "API Token" field.
+
+       The lookup services are processed in order from top to bottom and stop at the first
+       match. If coordinates should also be allowed alongside address input in the frontend,
+       this service must be placed first. On mobile devices, the lat/long values for the
+       input can be read from the device via JavaScript.
 
 
 Matching Attributes
 ------------------
 
-The "Perimeter Search" filter rule requires geocoordinates in decimal form:
+Depending on the selected data mode, the "Perimeter Search" filter rule requires one of the
+following attributes:
 
-* :ref:`Decimal <component_attribute_decimal>` (for latitude and longitude separately)
+* :ref:`LatLong <component_attribute_latlong>` (single attribute — recommended, supports a
+  spatial index for a significantly faster perimeter search)
+* :ref:`Decimal <component_attribute_decimal>` or :ref:`Text <component_attribute_text>` (two
+  attributes — for latitude and longitude separately)
 
 Additionally, the :ref:`Geo distance <component_attribute_geodistance>` attribute can
 be used for display and sorting by distance.
 
 
+.. |svg_filt_perimeter_search_22| image:: /_img/icons_svg/filter_perimetersearch.svg
+   :width: 22px
 .. |img_filter_perimetersearch| image:: /_img/icons/filter_default.png
 
 .. |br| raw:: html

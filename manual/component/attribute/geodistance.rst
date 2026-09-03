@@ -1,7 +1,7 @@
 .. _component_attribute_geodistance:
 
-Geo Distance
-============
+|svg_attr_geodistance_22| |img_geodistance| Geo Distance
+========================================================
 
 The "Geo distance" attribute calculates the geographic distance between a stored coordinate
 pair of an item and a search point during a perimeter search. The result enables the sorting
@@ -67,9 +67,15 @@ The attribute offers the following specific settings, divided into two groups:
      - Defines how the geo coordinates are stored in the MetaModels attributes:
 
        * **Single mode** — Latitude and longitude are stored combined in a single
-         attribute (e.g. of type "Geolocation"). Sub-field: select the attribute.
+         attribute. Only an attribute of type :ref:`LatLong <component_attribute_latlong>`
+         can be selected. Sub-field: select the attribute.
        * **Multi mode** — Latitude and longitude are stored in two separate attributes.
          Sub-fields: attribute for latitude (Lat) and attribute for longitude (Lng).
+   * - Rounding step (km)
+     - The calculated distance is rounded to a multiple of this value (in kilometers) —
+       e.g. ``0.001`` rounds to the nearest meter, ``1`` to whole kilometers, ``5`` to
+       5-kilometer steps. This only affects the displayed value, not the sort order —
+       the latter always remains exact.
    * - Lookup services
      - Multi-column wizard for configuring the services that convert an address to
        geo coordinates. Available services (depending on installation):
@@ -79,6 +85,10 @@ The attribute offers the following specific settings, divided into two groups:
        * **OpenStreetMap** — Address resolution via the Nominatim API
 
        For services that require an API token, it can be entered in the "API Token" field.
+
+       The lookup services are processed in order from top to bottom and stop at the first
+       hit. If, alongside address input, coordinates should also be permitted in the
+       frontend, this service must be placed first.
 
 
 Settings in Render Settings
@@ -130,8 +140,12 @@ Special Functions
 **Calculation**
 
 The distance between the search point and the stored coordinate pair is calculated using
-the Haversine formula, which accounts for the curvature of the earth. The result is
-available in the template as a distance value (in km or miles).
+MySQL/MariaDB's native spatial function ``ST_Distance_Sphere()`` (spherical distance,
+accounting for the curvature of the earth). In single mode, this uses the ``POINT`` column
+of the :ref:`LatLong attribute <component_attribute_latlong>` directly — if a spatial index
+is defined on it, only the :ref:`perimeter search <component_filter_perimeter-search>`
+itself benefits from it, not this sort order (which operates on the result set already
+narrowed down by the perimeter search).
 
 **Caching**
 
@@ -149,6 +163,9 @@ The calculated distance values can be used as a sorting criterion in the MetaMod
 view, so that the nearest results appear at the top.
 
 
+.. |svg_attr_geodistance_22| image:: /_img/icons_svg/geodistance.svg
+   :width: 22px
+.. |img_geodistance| image:: /_img/icons/geodistance.png
 .. |br| raw:: html
 
    <br />

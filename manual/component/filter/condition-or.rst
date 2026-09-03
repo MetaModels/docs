@@ -1,7 +1,7 @@
 .. _component_filter_condition-or:
 
-|img_filter_or| OR Condition
-=====================================
+|svg_filt_condition_or_22| |img_filter_or| OR Condition
+=======================================================
 
 The "OR Condition" filter rule is a container that can hold multiple sub-filter rules.
 The contained filter rules are combined with an OR link: an item must fulfill at least
@@ -73,6 +73,8 @@ Example of a three-way OR link with two AND conditions each:
        └── Filter rule D (e.g. status = published)
 
 
+.. |svg_filt_condition_or_22| image:: /_img/icons_svg/filter_or.svg
+   :width: 22px
 .. |img_filter_or| image:: /_img/icons/filter_or.png
 
 .. |br| raw:: html

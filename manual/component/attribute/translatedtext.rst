@@ -1,7 +1,7 @@
 .. _component_attribute_translatedtext:
 
-Translated Text
-================
+|svg_attr_translatedtext_22| |img_text| Translated Text
+=======================================================
 
 The "Translated Text" attribute is the multilingual variant of the
 :ref:`Text <component_attribute_text>` attribute. It stores a separate short text value
@@ -181,6 +181,9 @@ Special characters are correctly encoded and decoded when saving and outputting.
 If "Unique values" is active, MetaModels checks uniqueness separately per language.
 
 
+.. |svg_attr_translatedtext_22| image:: /_img/icons_svg/text.svg
+   :width: 22px
+.. |img_text| image:: /_img/icons/text.png
 .. |br| raw:: html
 
    <br />

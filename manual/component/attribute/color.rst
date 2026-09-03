@@ -1,7 +1,7 @@
 .. _component_attribute_color:
 
-Color Picker
-============
+|svg_attr_color_22| |img_color| Color Picker
+============================================
 
 The "Color picker" attribute enables the selection of a web color including an opacity value
 via an integrated color picker widget. Typical use cases:
@@ -140,6 +140,9 @@ Sorting by color values is done by converting the hexadecimal values into numeri
 so that colors can be meaningfully ordered by their numeric color value.
 
 
+.. |svg_attr_color_22| image:: /_img/icons_svg/color.svg
+   :width: 22px
+.. |img_color| image:: /_img/icons/color.png
 .. |br| raw:: html
 
    <br />

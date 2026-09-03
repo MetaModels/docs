@@ -1,7 +1,7 @@
 .. _component_attribute_tabletext:
 
-Table Text
-==========
+|svg_attr_tabletext_22| |img_tabletext| Table Text
+==================================================
 
 The "Table text" attribute enables the input of text data in a tabular structure with
 configured columns and any number of rows. The data is stored in a dedicated value table,
@@ -137,6 +137,9 @@ In the frontend template, the values are available as a nested array:
 names are automatically generated from the column settings.
 
 
+.. |svg_attr_tabletext_22| image:: /_img/icons_svg/tabletext.svg
+   :width: 22px
+.. |img_tabletext| image:: /_img/icons/tabletext.png
 .. |br| raw:: html
 
    <br />

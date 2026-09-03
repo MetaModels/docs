@@ -1,7 +1,7 @@
 .. _component_filter_fromto-date:
 
-|img_filter_fromto| Value from/to for one date field
-=====================================================
+|svg_filt_fromto_date_22| |img_filter_fromto| Value from/to for one date field
+==============================================================================
 
 The "Value from/to for one date field" filter rule (package ``filter_fromto``) filters
 items based on a date range for a single date attribute. Visitors can enter a "from" date,
@@ -104,6 +104,8 @@ for date values only, the "Date and time handling" option in the attribute shoul
 to "Store date only without time".
 
 
+.. |svg_filt_fromto_date_22| image:: /_img/icons_svg/filter_fromto_date.svg
+   :width: 22px
 .. |img_filter_fromto| image:: /_img/icons/filter_fromto.png
 
 .. |br| raw:: html

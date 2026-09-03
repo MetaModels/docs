@@ -69,6 +69,9 @@ about the labeling in the section ":ref:`component_multi-language_input`".
 .. note:: When multilingual models or attributes are deleted, not all content is deleted with them
    — :ref:`notes on checking and deleting here <rst_cookbook_specials_delete-superfluous-data>`
 
+From MM 2.4, there is the parameter "Disable fallback mode" — if this is active, a value for a
+language is still saved even if it is equal to the fallback value. This option is activated, for
+example, for the attribute :ref:`Translated checkbox <component_attribute_translatedcheckbox>`.
 
 .. _component_multi-language_attribute:
 Attributes
@@ -277,6 +280,14 @@ Frontend Editing (FEE)
 From MM 2.4, multilingual support is also supported in frontend editing — :ref:`more about this
 <extended_frontend_editing_multilanguage>` — including the display of the fallback language and
 translation status — see :ref:`Frontend Editing <extended_frontend_editing_multilanguage>`.
+
+
+Custom Translation Adjustments
+-------------------------------
+
+The texts in MetaModels, such as the label of buttons, can be overridden with custom texts — more
+about this under ":ref:`component_translations_modifications`".
+
 
 
 .. |img_locale| image:: /_img/icons/locale.png

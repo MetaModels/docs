@@ -11,6 +11,10 @@ and supplement certain steps directly.
 The individual steps are described in more detail in the further articles of the :ref:`component_index`
 section.
 
+.. note:: Note: SVG icons were introduced for MetaModels in MM 2.5. During a transition period,
+   both variants are shown in the manual — new first, then old — an overview can be found here:
+   :ref:`manual_new_icons-25`
+
 Step 0: Concept of the Data Structure
 --------------------------------------
 
@@ -47,18 +51,18 @@ information and selections need to be made. For easier orientation of where to f
 
 * 1: |img_new| :ref:`Create new MetaModel <mm_first_new-mm>`
     * Set up :ref:`multilingual support <component_multi-language>` if necessary
-    * After saving, the icons can be accessed from left to right as follows |img_workflow_01|
-* 2: |img_fields| :ref:`Create attributes <mm_first_attribute>`
+    * After saving, the icons can be accessed from left to right as follows |svg_workflow_01| |img_workflow_01|
+* 2: |svg_fields_22| |img_fields| :ref:`Create attributes <mm_first_attribute>`
     * After creating all attributes, run the :ref:`DB migration <component_schema-manager>` (Contao Manager or console) and clear the cache
-* 3.a: |img_rendersettings| :ref:`Create render setting <component_rendersettings>`
+* 3.a: |svg_rendersettings_22| |img_rendersettings| :ref:`Create render setting <component_rendersettings>`
     * Basic setting for the list view
-* 3.b: |img_rendersetting| :ref:`Add attributes to render setting <component_rendersettings>`
+* 3.b: |svg_rendersetting_22| |img_rendersetting| :ref:`Add attributes to render setting <component_rendersettings>`
     * Determines which attributes are available in the respective list for a view
-* 4.a: |img_dca| :ref:`Create input form <component_dca>`
+* 4.a: |svg_dca_22| |img_dca| :ref:`Create input form <component_dca>`
     * Basic setting for the input form
-* 4.b: |img_dca_setting| :ref:`Add attributes to input form <component_dca>`
+* 4.b: |svg_dca_setting_22| |img_dca_setting| :ref:`Add attributes to input form <component_dca>`
     * Determines which attributes are available in the respective input form for a view
-* 5: |img_dca_combine| :ref:`Create input/render assignments <component_dca-combine>`
+* 5: |svg_dca_combine_22| |img_dca_combine| :ref:`Create input/render assignments <component_dca-combine>`
     * Select and save the created render setting and input form
 
 When step 5 is completed, the new MetaModel should appear on the left in the Contao navigation
@@ -81,32 +85,32 @@ Step 3: Adjusting Settings from Step 1
 
 * 1: |img_new| :ref:`Adjust MetaModel <mm_first_new-mm>`
     * Activate :ref:`variants <component_relations_variants>` if required for the data structure
-* 3.a: |img_rendersettings| :ref:`Adjust render setting <component_rendersettings>`
+* 3.a: |svg_rendersettings_22| |img_rendersettings| :ref:`Adjust render setting <component_rendersettings>`
     * Create specific render setting, e.g. for list output in the frontend
     * Select the :ref:`template variant "metamodels_prerendered" <component_templates>` for custom output
     * Set the "jumpTo" page for :ref:`detail view <component_contentelements>`
-* 3.b: |img_rendersetting| :ref:`Adjust attributes in render setting <component_rendersettings>`
+* 3.b: |svg_rendersetting_22| |img_rendersetting| :ref:`Adjust attributes in render setting <component_rendersettings>`
     * Make specific settings for attributes — e.g. :ref:`output of images including image size <rst_cookbook_templates_fe_work_with_images>`
     * Select :ref:`template variant "mm_attr_<type>" <component_templates>` for custom output
-* 4.a: |img_dca| :ref:`Adjust input form <component_dca>`
+* 4.a: |svg_dca_22| |img_dca| :ref:`Adjust input form <component_dca>`
     * Specify keys for output of filter, search, sorting, limit
     * Select the backend section where the MetaModel should appear, e.g. content or custom section
     * Display as table in the backend
     * Permissions for editing
-* 4.b: |img_dca_setting| :ref:`Adjust attributes for input form <component_dca>`
+* 4.b: |svg_dca_setting_22| |img_dca_setting| :ref:`Adjust attributes for input form <component_dca>`
     * CSS class such as w50
     * Required field, read-only (Readonly)
     * Option whether the attribute should be filterable and/or searchable in the backend list
     * Add legends to logically subdivide larger input forms
-* 4.c: |img_dca_groupsortsettings| :ref:`Create sorting/grouping <component_dca>`
+* 4.c: |svg_dca_groupsortsettings_22| |img_dca_groupsortsettings| :ref:`Create sorting/grouping <component_dca>`
     * Create default sorting or further sortings for selection in list
-* 4.d: |img_dca_condition| :ref:`Create visibility conditions <component_dca_visibility-conditions>`
+* 4.d: |svg_dca_condition_22| |img_dca_condition| :ref:`Create visibility conditions <component_dca_visibility-conditions>`
     * Input widgets can be shown or hidden based on values of other widgets
-* 5: |img_dca_combine| :ref:`Create input/render assignments <component_dca-combine>`
+* 5: |svg_dca_combine_22| |img_dca_combine| :ref:`Create input/render assignments <component_dca-combine>`
     * Assign selection of render settings and input forms to user groups (BE) or member groups (FE)
-* 6.a: |img_filter| :ref:`Create filter <component_filter>`
+* 6.a: |svg_filter_22| |img_filter| :ref:`Create filter <component_filter>`
     * Assign a name for the filter
-* 6.b: |img_filter_setting| :ref:`Create filter rules <component_filter>`
+* 6.b: |svg_filter_setting_22| |img_filter_setting| :ref:`Create filter rules <component_filter>`
     * Insert filter rules
     * Nesting with AND or OR is possible
     * Without further specification, all filter rules are automatically linked with AND
@@ -171,13 +175,34 @@ Tips:
 
 .. |img_new| image:: /_img/icons/new.gif
 .. |img_fields| image:: /_img/icons/fields.png
+.. |svg_fields_22| image:: /_img/icons_svg/fields.svg
+   :width: 22px
 .. |img_workflow_01| image:: /_img/screenshots/workflow/workflow_01.png
+.. |svg_workflow_01| image:: /_img/screenshots/workflow/svg_workflow_01.png
 .. |img_rendersettings| image:: /_img/icons/rendersettings.png
+.. |svg_rendersettings_22| image:: /_img/icons_svg/rendersettings.svg
+   :width: 22px
 .. |img_rendersetting| image:: /_img/icons/rendersetting.png
+.. |svg_rendersetting_22| image:: /_img/icons_svg/rendersetting.svg
+   :width: 22px
 .. |img_dca| image:: /_img/icons/dca.png
+.. |svg_dca_22| image:: /_img/icons_svg/dca.svg
+   :width: 22px
 .. |img_dca_setting| image:: /_img/icons/dca_setting.png
+.. |svg_dca_setting_22| image:: /_img/icons_svg/dca_setting.svg
+   :width: 22px
 .. |img_dca_groupsortsettings| image:: /_img/icons/dca_groupsortsettings.png
+.. |svg_dca_groupsortsettings_22| image:: /_img/icons_svg/dca_groupsortsettings.svg
+   :width: 22px
 .. |img_dca_condition| image:: /_img/icons/dca_condition.png
+.. |svg_dca_condition_22| image:: /_img/icons_svg/dca_condition.svg
+   :width: 22px
 .. |img_dca_combine| image:: /_img/icons/dca_combine.png
+.. |svg_dca_combine_22| image:: /_img/icons_svg/dca_combine.svg
+   :width: 22px
 .. |img_filter| image:: /_img/icons/filter.png
+.. |svg_filter_22| image:: /_img/icons_svg/filter.svg
+   :width: 22px
 .. |img_filter_setting| image:: /_img/icons/filter_setting.png
+.. |svg_filter_setting_22| image:: /_img/icons_svg/filter_setting.svg
+   :width: 22px

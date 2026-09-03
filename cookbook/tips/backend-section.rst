@@ -9,10 +9,67 @@ can be assigned in the input mask properties under "Backend section".
 
 |img_be-section|
 
-This requires an SVG icon and an assignment via the Contao MenuEvent — it is planned that this
-will be
-`configurable via an entry in config.yaml <https://github.com/MetaModels/core/issues/1519>`_
-in the future.
+
+Via Configuration (from MM 2.5, recommended)
+----------------------------------------------
+
+Since MetaModels 2.5, such a group can be created directly via ``config.yaml`` — with no
+custom code required:
+
+.. code-block:: yaml
+
+   meta_models_core:
+       be_sections:
+           products:
+               name:
+                   de: 'Produkte'
+                   en: 'Products'
+               tooltip:
+                   de: 'Produkte erstellen'
+                   en: 'Create products'
+               icon: 'files/theme/mm/products.svg'
+               add:
+                   before: design
+
+``products`` is the unique alias of the section — it is later selected under "Backend
+section" in the input mask properties.
+
+* ``name`` (required) — language map for the label. The current backend language is
+  displayed, falling back to English, then to the first available entry.
+* ``tooltip`` (optional) — language map for the tooltip, resolved the same way as
+  ``name``. If not specified, ``name`` is used.
+* ``icon`` (optional) — web path to an icon, typically located under the Contao file
+  manager ``files/…``. If not specified — or if the specified file cannot be found —
+  the grey MetaModels default icon is displayed.
+* ``add`` (required) — sets the position relative to an existing navigation entry, using
+  exactly one of ``before`` or ``after``.
+* ``collapsed`` (optional, default ``false``) — makes the section start collapsed on
+  first load.
+
+.. note:: The target alias under ``add`` is the **internal** Contao group name, not the
+   displayed label — the "Layout" section has internally been called ``design`` since
+   Contao 4/5, not ``layout``. Common targets are ``content``, ``design``, ``accounts``,
+   ``system``, or the alias of another section that was itself created via
+   configuration. If the specified alias cannot be found in the navigation, the custom
+   section is appended to the end instead.
+
+This configuration only creates the **empty group**. It is populated as usual: enter the
+chosen alias (here ``products``) under "Backend section" in the input mask properties of
+a MetaModel.
+
+.. seealso:: `core#1519 <https://github.com/MetaModels/core/issues/1519>`_, as well as
+   the section "Custom Backend Sections via Configuration" in :ref:`new_in_mm250`.
+
+
+Manually via Event Listener (for Special Cases)
+---------------------------------------------------
+
+If the configuration above is not sufficient — for example because the visibility or
+label of the section needs to depend on runtime conditions (logged-in user, database
+content, etc.) — the same section can still be built via a custom ``MenuEvent``
+listener, as it was the only option before MM 2.5.
+
+This requires an SVG icon and an assignment via the Contao MenuEvent.
 
 SVG icons can be downloaded from e.g. `material.io <https://material.io/tools/icons/>`_ — the
 width, height, and fill colour should be adjusted as shown in the example using a text editor:

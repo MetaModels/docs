@@ -65,6 +65,11 @@ select relations.
 
 The remaining setting parameters are analogous to the "Simple Lookup" filter rule.
 
+If "Text" is selected as the widget type, the "Search type" setting additionally appears. This determines how
+the search term entered is compared with the value of the linked attribute – by default, the value must contain
+the search term, but optionally it can also match exactly, begin with it or end with it. An asterisk (``*``)
+entered by the visitor acts as a wildcard and overrides the setting.
+
 
 Donations
 ---------
@@ -73,7 +78,10 @@ Thanks for the donations* for the extension to:
 
 * N.N.: 400 €
 * N.N.: 400 €
-* Agency `Markenzoo <https://markenzoo.de/>`_: 200€
+* `Agency Markenzoo <https://markenzoo.de/>`_: 200€
+* `GUTcert GmbH <https://www.gut-cert.de/>`_: 212,50€
+* `Naturpark Dümmer <https://www.naturpark-duemmer.de/>`_: 350€
+* `RSM certification GmbH <https://www.rsm-certification.de/>`_: 350€
 
 
 (Donations are net amounts)

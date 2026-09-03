@@ -1,7 +1,7 @@
 .. _component_attribute_url:
 
-URL
-===
+|svg_attr_url_22| |img_url| URL
+===============================
 
 The "URL" attribute stores a link consisting of a title and a URL address. Alternatively,
 it can be set to pure URL output (without title). Typical use cases:
@@ -132,6 +132,9 @@ allowing internal Contao pages to be selected. If "Remove title" is enabled, onl
 text field is available.
 
 
+.. |svg_attr_url_22| image:: /_img/icons_svg/url.svg
+   :width: 22px
+.. |img_url| image:: /_img/icons/url.png
 .. |br| raw:: html
 
    <br />

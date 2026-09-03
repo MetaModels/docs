@@ -1,7 +1,7 @@
 .. _component_filter_idlist:
 
-|img_filter_default| Predefined Item Set
-===========================================
+|svg_filt_idlist_22| |img_filter_default| Predefined Item Set
+=============================================================
 
 The "Predefined Item Set" filter rule allows specifying a fixed list of item IDs as the
 filter basis. The filter set only outputs those items whose ID is contained in the
@@ -54,6 +54,8 @@ set of IDs, it is particularly suitable as an AND condition in combination with 
 filter rules to restrict the total set of searchable items in advance.
 
 
+.. |svg_filt_idlist_22| image:: /_img/icons_svg/filter_idlist.svg
+   :width: 22px
 .. |img_filter_default| image:: /_img/icons/filter_default.png
 
 .. |br| raw:: html

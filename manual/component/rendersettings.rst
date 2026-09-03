@@ -1,7 +1,7 @@
 .. _component_rendersettings:
 
-|img_rendersettings_32| Render Settings
-========================================
+|svg_rendersettings_32| |img_rendersettings_32| Render Settings
+==================================================================
 
 .. note:: Create list views for backend and frontend;
   add and activate attributes
@@ -60,9 +60,24 @@ Options
   Empty attribute entries are skipped — important when attribute labels are also output
 * **Hide labels** |br|
   The attribute names are not output as "labels"
+* **Render attributes only when needed [Lazy] (from MM 2.5)** |br|
+  An attribute is only rendered once the template actually accesses it, instead of both output
+  formats (HTML5 and Text) being generated immediately for every attribute as before; worthwhile
+  when a template only uses part of the attributes or consistently uses only one output format —
+  if, on the other hand, a template accesses all attributes in both formats, the option brings no
+  benefit and can mean a small additional overhead; default is off, selectable per render setting
+  to match the template used
+* **Wrapper in list template [legacy behavior, deprecated] (from MM 2.5)** |br|
+  Outputs the enclosing block (field, label, value) in the list template as up to MM 2.4, instead
+  of — as usual from 2.5 — in the attribute templates themselves; automatically activated for
+  existing render settings during the upgrade so the output does not change, newly created render
+  settings start without the option; marked as legacy behavior from the outset and removed in
+  MetaModels 3.0 — pattern and example for custom attribute templates under
+  :ref:`component_templates_attribute-wrapper`
 * **Additional CSS/JavaScript files** |br|
   CSS and/or JavaScript files can be output with the list for output formatting and interaction;
   they are only included if at least one item is output in the list
+
 
 Procedure
 ---------
@@ -83,9 +98,54 @@ those that should be displayed in the list view should be activated.
 For individual attributes, the template to be used can be changed and/or a special CSS class
 entered ("|img_edit| Edit").
 
+
+Notes on Rendering Attributes Only When Needed [Lazy] (from MM 2.5)
+---------------------------------------------------------------------
+
+Without this option, when building a list MetaModels renders **both** output formats — both the
+requested format (usually HTML5) and the text value — for **every** activated attribute,
+regardless of whether the list template ultimately outputs both or even just one of them. With a
+large number of attributes and records, this noticeably costs time spent on values that are never
+used.
+
+If the option is activated, the template instead gets its own placeholder for each format, which
+only actually renders an attribute once it is specifically accessed in the template — and this
+happens independently per format: if the template only accesses ``html5``, ``text`` is not
+calculated at all for this attribute, and vice versa. Nothing changes for template authors in
+terms of usage — access to ``html5``, ``text``, ``raw`` and ``attributes`` works as usual.
+
+**When this pays off:** The option always helps when a template does not access all activated
+attributes in both formats anyway — for example because only part of the attributes are actually
+output, or because the template consistently uses only one format (e.g. only ``text`` for a
+search index, or only ``html5`` for the visible output). If, on the other hand, a template
+accesses all attributes in both formats anyway, Lazy brings no benefit and can even be minimally
+slower due to the somewhat more expensive, general access. So there is no fundamentally "better"
+behavior — that's why the option can be switched on or off per render setting to match the
+template used, and the default is off equally for new and existing render settings.
+
+**Measurements:** For reference, several scenarios were measured on a real test page with 13 and
+208 items respectively and 25 configured attributes (pure CPU time rather than wall-clock time,
+to factor out system load on the measurement machine; each reproduced multiple times):
+
+================================================  ==================  ==================
+Scenario                                          13 items            208 items
+================================================  ==================  ==================
+All attributes, both formats used                 no difference       no difference
+All attributes, only HTML5 used                   14-20 % faster      10-11 % faster
+All attributes, only Text used                    63-69 % faster      70-71 % faster
+Only 3 of 25 attributes used                      37-45 % faster      36-43 % faster
+================================================  ==================  ==================
+
+The effect is greatest with pure text usage, because HTML5 rendering takes noticeably more effort
+per attribute than plain text output — if it is skipped entirely thanks to Lazy, this has a
+correspondingly large impact.
+
+
 .. seealso:: :ref:`rst_cookbook_rendering_encrypt-email`
 
 
+.. |svg_rendersettings_32| image:: /_img/icons_svg/rendersettings.svg
+   :width: 32px
 .. |img_rendersettings_32| image:: /_img/icons/rendersettings_32.png
 .. |img_rendersettings| image:: /_img/icons/rendersettings.png
 .. |img_rendersetting| image:: /_img/icons/rendersetting.png

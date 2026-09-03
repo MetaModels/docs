@@ -1,7 +1,7 @@
 .. _component_attribute_rating:
 
-Rating
-======
+|svg_attr_rating_22| |img_star_full| Rating
+===========================================
 
 The "Rating" attribute provides a star rating system. Visitors can rate items via an AJAX
 widget in the frontend. The backend displays the number of ratings and the average value.
@@ -134,6 +134,9 @@ Items are sorted by average value in descending order; in the event of a tie, th
 of votes decides. Items without a rating are placed at the end of the list.
 
 
+.. |svg_attr_rating_22| image:: /_img/icons_svg/star.svg
+   :width: 22px
+.. |img_star_full| image:: /_img/icons/star-full.png
 .. |br| raw:: html
 
    <br />

@@ -1,7 +1,7 @@
 .. _component_attribute_langcode:
 
-Language Code
-=============
+|svg_attr_langcode_22| |img_langcode| Language Code
+===================================================
 
 The "Language code" attribute provides a selection list of ISO language codes (locales).
 Language names are displayed in the currently active backend language. The language code
@@ -139,6 +139,9 @@ The language code is stored as ``varchar(5) NULL`` (up to 5 characters, e.g. ``d
 An empty value is stored as ``NULL`` (compatible with MySQL Strict Mode).
 
 
+.. |svg_attr_langcode_22| image:: /_img/icons_svg/langcode.svg
+   :width: 22px
+.. |img_langcode| image:: /_img/icons/langcode.png
 .. |br| raw:: html
 
    <br />

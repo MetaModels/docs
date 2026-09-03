@@ -1,7 +1,7 @@
 .. _component_dca:
 
-|img_dca_32| Input Forms
-=========================
+|svg_dca_32| |img_dca_32| Input Forms
+=======================================
 
 .. note:: Create input forms for data entry;
   add, activate and configure attributes; optionally define
@@ -140,6 +140,8 @@ then be created via the "|img_dca_groupsortsettings| Sorting and grouping" icon.
    * :ref:`rst_cookbook_inputmask_regex`
 
 
+.. |svg_dca_32| image:: /_img/icons_svg/dca.svg
+   :width: 32px
 .. |img_dca_32| image:: /_img/icons/dca_32.png
 .. |img_dca| image:: /_img/icons/dca.png
 .. |img_dca_setting| image:: /_img/icons/dca_setting.png

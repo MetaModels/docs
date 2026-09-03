@@ -160,6 +160,17 @@ the desired relation from ``pid`` to ``id`` when creating a child record.
 Access to the list of child records is via an icon in the parent record row in the edit icons —
 selecting a custom icon is optional.
 
+From MM 2.5, the backend header shows the path there — from the base model through all
+intermediate levels to the current one. Each link is clickable, so you can switch between levels
+without a detour via the overall list. For deep nesting, the middle is collapsed to "…" and can
+be expanded.
+
+What the individual records in the path are named is defined per input form under "Additions to
+the form heading" — the same field that also extends the heading of the edit form. It accepts
+Simple Tokens based on the attributes of the record, e.g. ``##model_name##`` or
+``##model_name##, ##model_firstname##``; ``##model_id##`` outputs the ID. Without an entry, only
+the name of the MetaModel appears at that point.
+
 When working with child tables, note that "parents don't know they have children", i.e. there is
 no automatic output of child data in the frontend. However, child records of a parent record can
 be filtered based on the "id-pid relation" — e.g. using the "Custom SQL" filter rule.
@@ -196,9 +207,21 @@ of records for variants to create child records. The input form for editing a ch
 identical to the parent record's form, but only the attributes specified as Variant are editable —
 all other (invariant) widgets are automatically read-only.
 
+.. note:: **From MM 2.5:** Next to the root entry of the list there is a link "Expand all"/
+   "Collapse all" that expands or collapses all variant groups at once, instead of having to
+   click each one individually.
+
 The special feature of variants is that all non-variant values from the parent record are automatically
 transferred to child records — and not just on creation, but also on changes. The child records always
 contain the current values of the parent record and do not need to be queried separately.
+
+.. note:: **From MM 2.5:** If a non-variant value was subsequently changed in the parent record,
+   it was indeed transferred to the child records — however, derived variant attributes such as
+   :ref:`Combined values <component_attribute_combinedvalues>` or :ref:`Alias
+   <component_attribute_alias>` that include this value were not recalculated in the child
+   records and remained at their old state until the child record itself was edited
+   (`Issue #657 <https://github.com/MetaModels/core/issues/657>`_). In MM 2.4, the previous
+   behavior remains unchanged.
 
 Attributes containing unique values (e.g. Alias) therefore need more attention. The uniqueness check
 applies to all records in the table and not just parent records. An appropriate error message is

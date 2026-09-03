@@ -1,7 +1,7 @@
 .. _component_filter_fromto:
 
-|img_filter_fromto| Value from/to for one field
-===============================================
+|svg_filt_fromto_22| |img_filter_fromto| Value from/to for one field
+====================================================================
 
 The "Value from/to for one field" filter rule (package ``filter_fromto``) filters items
 based on a value range for a single numeric or text-based attribute. Visitors can enter a
@@ -93,6 +93,8 @@ or comparable values:
 * :ref:`Decimal <component_attribute_decimal>`
 
 
+.. |svg_filt_fromto_22| image:: /_img/icons_svg/filter_fromto.svg
+   :width: 22px
 .. |img_filter_fromto| image:: /_img/icons/filter_fromto.png
 
 .. |br| raw:: html

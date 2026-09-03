@@ -1,7 +1,7 @@
 .. _component_dca-combine:
 
-|img_dca_combine_32| Input/Render Assignments
-==============================================
+|svg_dca_combine_32| |img_dca_combine_32| Input/Render Assignments
+====================================================================
 
 .. note:: Define access options for render settings and input forms;
   backend input access should be enabled at minimum for the 'Administrator' user group
@@ -38,5 +38,7 @@ Make the selections in the predefined columns of the input/render assignments an
 MetaModel input options should now be visible in the backend.
 
 
+.. |svg_dca_combine_32| image:: /_img/icons_svg/dca_combine.svg
+   :width: 32px
 .. |img_dca_combine_32| image:: /_img/icons/dca_combine_32.png
 .. |img_dca_combine| image:: /_img/icons/dca_combine.png

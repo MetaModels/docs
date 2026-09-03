@@ -1,7 +1,7 @@
 .. _component_attribute_translatedcheckbox:
 
-Translated Checkbox
-===================
+|svg_attr_translatedcheckbox_22| |img_checkbox| Translated Checkbox
+===================================================================
 
 The "Translated Checkbox" attribute is the multilingual variant of the
 :ref:`Checkbox <component_attribute_checkbox>` attribute. It stores a separate boolean
@@ -42,6 +42,10 @@ the translated checkbox attribute offers the following specific options:
 
    * - Option
      - Description
+   * - Disable fallback mode
+     - When this option is active, a value is stored for a language even when it equals
+       the fallback value — this ensures typical per-language publication filtering
+       works correctly.
    * - Toggle icon
      - Adds an additional icon ("eye") in the backend list view to toggle the status
        directly (language-dependent). The column name ``published`` is typically used.
@@ -157,6 +161,9 @@ If a value is missing for a language, MetaModels falls back to the fallback lang
 IDs without a value in the fallback language are treated as inactive (``''``).
 
 
+.. |svg_attr_translatedcheckbox_22| image:: /_img/icons_svg/checkbox.svg
+   :width: 22px
+.. |img_checkbox| image:: /_img/icons/checkbox.png
 .. |br| raw:: html
 
    <br />

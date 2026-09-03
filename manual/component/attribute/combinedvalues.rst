@@ -1,7 +1,7 @@
 .. _component_attribute_combinedvalues:
 
-|img_combinedvalues| Combined Values
-=====================================
+|svg_attr_combinedvalues_22| |img_combinedvalues| Combined Values
+=================================================================
 
 The "Combined values" attribute combines values from multiple existing attributes into a new,
 stored text value. Typical use cases:
@@ -182,6 +182,8 @@ The combined value is stored as ``text NULL``. An empty value is stored as ``NUL
 (compatible with MySQL Strict Mode).
 
 
+.. |svg_attr_combinedvalues_22| image:: /_img/icons_svg/combinedvalues.svg
+   :width: 22px
 .. |img_combinedvalues| image:: /_img/icons/combinedvalues.png
 
 .. |br| raw:: html

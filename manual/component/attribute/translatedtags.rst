@@ -1,7 +1,7 @@
 .. _component_attribute_translatedtags:
 
-Translated Multi-Select [tags]
-==================================
+|svg_attr_translatedtags_22| |img_tags| Translated Multi-Select [tags]
+======================================================================
 
 The "Translated Multi-Select" attribute is an extension of the
 :ref:`Multi-Select <component_attribute_tags>` attribute. It is used when the
@@ -198,6 +198,9 @@ filtering on published entries:
    t.published = '1'
 
 
+.. |svg_attr_translatedtags_22| image:: /_img/icons_svg/tags.svg
+   :width: 22px
+.. |img_tags| image:: /_img/icons/tags.png
 .. |br| raw:: html
 
    <br />

@@ -29,7 +29,9 @@ e.g. be manipulated or new data dynamically generated.
 Event listeners and other services are registered analogously to
 `Contao hooks <https://docs.contao.org/dev/framework/hooks/#registering-hooks>`_.
 
-.. note:: Requires at least Contao 4.13 and PHP 8
+.. note:: Requires at least Contao 4.13 and PHP 8. However, the detailed example at the
+   end of this page uses features (e.g. the ``ContentUrlGenerator`` as well as ``readonly``
+   classes) and therefore requires at least Contao 5.3 and PHP 8.2.
 
 
 .. _register-services-with-attribute:
@@ -263,7 +265,71 @@ subfolders such as ``src/ProjectOneBundle`` would be created.
 If this is not the case, all files can be placed directly in ``src/`` with a
 namespace such as ``AppBundle``.
 
-More on this: coming soon...
+
+.. _register-services-example-of-services:
+
+Examples of Services and Their Registration
+---------------------------------------------
+
+.. note:: The examples require at least Contao 5.3 and PHP 8.2.
+
+The following two files list typical services and show how they can be registered:
+
+.. literalinclude:: ./register-services/service.yaml
+   :language: yaml
+   :linenos:
+
+.. literalinclude:: ./register-services/MetaModelsServiceExamplesListener.php
+   :language: php
+   :linenos:
+
+
+.. _register-services-security:
+
+Determining the Current User (Security)
+------------------------------------------
+
+To determine the currently logged-in frontend user, the example shows three approaches
+that operate at different levels. The first approach, via ``security.helper``, is
+recommended.
+
+**Recommended** – ``security.helper``
+
+The ``security.helper`` (``Symfony\Bundle\SecurityBundle\Security``) bundles the
+``AuthorizationChecker`` and the ``TokenStorage``. It is the only one of the three
+approaches that can both **check permissions** (``isGranted()``) *and* **fetch the
+user** (``getUser()``). ``getUser()`` returns the Symfony user object; the Contao
+``MemberModel`` with all database fields can then be loaded afterwards via
+``findByUsername()``.
+
+* *Advantage:* modern standard, covers both permission checking and user retrieval.
+* *Disadvantage:* an additional query is required for the raw DB fields.
+
+**Alternative 1** – ``contao.framework`` (Legacy)
+
+The classic Contao approach via the framework adapter. Important: the ``getInstance()``
+singleton is intended for the *current* user — ``createInstance()`` would create a new,
+empty instance and would therefore be wrong.
+
+* *Advantage:* directly returns the Contao user object including DB fields (e.g.
+  ``$member->email``) without an additional query.
+* *Disadvantage:* Contao-specific, no permission checking, outdated pattern, only useful
+  within the frontend scope.
+
+**Alternative 2** – ``security.token_storage`` (Low-Level)
+
+The pure Symfony variant only returns the token or the user — **without** an
+``AuthorizationChecker``. It is exactly the foundation on which ``security.helper`` is
+internally built.
+
+* *Advantage:* minimal, works everywhere.
+* *Disadvantage:* cannot check permissions; null handling (not logged in = no token)
+  must be handled manually.
+
+In short: use ``security.helper`` as the default. Use ``token_storage`` only when you
+deliberately need *just* the token, and ``framework``/``getInstance()`` only for legacy
+code or when you need the Contao model with its fields directly.
+
 
 .. |img_register-services_01.png| image:: /_img/screenshots/cookbook/specials/register-services_01.png
 .. |img_register-services_02.png| image:: /_img/screenshots/cookbook/specials/register-services_02.png

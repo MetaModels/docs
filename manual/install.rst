@@ -57,41 +57,41 @@ Version Overview
 ----------------
 
 * C 6.x + MM 3.0 + PHP 8.x - currently in planning...
-* C 5.7 + MM 2.5 + PHP 8.3 - currently in development and testing with Contao 5.7
+* C 6.3 + MM 2.6 + PHP 8.4 - currently in development and testing with Contao 6.0
+* :ref:`C 5.7 + MM 2.5 + PHP 8.4 <install_mm250>` - currently testing with Contao 5.7
 * :ref:`C 5.3 + MM 2.4 + PHP 8.2 <install_mm240>` - access via "EAP"
 * :ref:`C 4.13 + MM 2.3 + PHP 8.1 <install_mm230>`
 * :ref:`C 4.9 + MM 2.2 + PHP 7.4 <install_mm-old>`
 * :ref:`C 4.4 + MM 2.1 + PHP 7.2/7.4 <install_mm-old>`
 * :ref:`C 3.5 + MM 2.0 + PHP 5.6 <install_mm-old>`
 
-.. _install_mm240:
-Installation of MM 2.4 for Contao 5.3 and PHP 8
--------------------------------------------------
+.. _install_mm250:
+Installation of MM 2.5 for Contao 5.7 and PHP 8.4
+---------------------------------------------------
 
-MetaModels 2.4 brings full compatibility with Contao 5.3 and PHP 8.2. MM 2.4 is an adaptation of
-version 2.3 to the new Contao and PHP version and of course brings
-:ref:`all changes and features from MM 2.3 <new_in_mm230>`.
+MetaModels 2.5 brings full compatibility with Contao 5.7 and PHP 8.4. MM 2.5 is an adaptation of
+version 2.4 to the new Contao and PHP version and of course brings
+:ref:`all changes and features from MM 2.4 <new_in_mm240>`.
 
-The installation requirements for MetaModels 2.4 are:
+The installation requirements for MetaModels 2.5 are:
 
-* a running Contao 5.3.x (LTS)
-* PHP 8.2 or higher
-* MySQL 5.5.5 or higher (InnoDB), MariaDB (including "strict mode")
+* a running Contao 5.7.x (LTS)
+* PHP 8.4 or higher
+* at least MySQL 5.7.6 or MariaDB 10.4.3
 * ``memory_limit`` 512MB or more (recommended)
-* until release, access key via the `EAP <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-4>`_
-  — `MM Core <https://github.com/MetaModels/core/tree/release/2.4.0>`_ is already freely available
-* for smaller projects, `Package "Basic 1" is available <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-4>`_
+* until release, access key via the `EAP <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-5>`_
+* for smaller projects, `Package "Basic 1" is available <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-5>`_
 
 Higher versions of Contao and/or PHP may be possible but are not officially supported.
 
-For an upgrade or new installation, note the :ref:`changes and new features of MM 2.4 <new_in_mm240>` as
+For an upgrade or new installation, note the :ref:`changes and new features of MM 2.5 <new_in_mm250>` as
 well as the workflow with the :ref:`schema manager <component_schema-manager>` and XLIFF translations
 :ref:`component_translations`.
 
 .. toctree::
     :maxdepth: 1
 
-    new-in-mm-24.rst
+    new-in-mm-25.rst
 
 
 .. seealso::
@@ -122,6 +122,45 @@ well as the workflow with the :ref:`schema manager <component_schema-manager>` a
    The error message looks like this: |br|
    ``Cannot assign null to property ContaoCommunityAlliance\DcGeneral\Panel\DefaultLimitElement::$intAmount of type int``
 
+The site should be fully tested before going live. MM 2.5 can be installed via Composer (console) or
+the Contao Manager. Access to the currently protected repository is available through our
+"**early adopter program**" — more information under Fundraising on the
+`MM website <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-5>`_.
+
+**Further features of MM 2.5:** |br|
+We have compiled an :ref:`overview page with the changes and features for MM 2.5 <new_in_mm250>` — please
+note the :ref:`checklist <check_upgrade_mm240>` when upgrading.
+
+
+.. _install_mm240:
+Installation of MM 2.4 for Contao 5.3 and PHP 8.2
+---------------------------------------------------
+
+MetaModels 2.4 brings full compatibility with Contao 5.3 and PHP 8.2. MM 2.4 is an adaptation of
+version 2.3 to the new Contao and PHP version and of course brings
+:ref:`all changes and features from MM 2.3 <new_in_mm230>`.
+
+The installation requirements for MetaModels 2.4 are:
+
+* a running Contao 5.3.x (LTS)
+* PHP 8.2 or higher
+* MySQL 5.5.5 or higher (InnoDB), MariaDB (including "strict mode")
+* ``memory_limit`` 512MB or more (recommended)
+* until release, access key via the `EAP <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-4>`_
+  — `MM Core <https://github.com/MetaModels/core/tree/release/2.4.0>`_ is already freely available
+* for smaller projects, `Package "Basic 1" is available <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-4>`_
+
+Higher versions of Contao and/or PHP may be possible but are not officially supported.
+
+For an upgrade or new installation, note the :ref:`changes and new features of MM 2.4 <new_in_mm240>` as
+well as the workflow with the :ref:`schema manager <component_schema-manager>` and XLIFF translations
+:ref:`component_translations`.
+
+.. toctree::
+    :maxdepth: 1
+
+    new-in-mm-24.rst
+
 The site should be fully tested before going live. MM 2.4 can be installed via Composer (console) or
 the Contao Manager. Access to the currently protected repository is available through our
 "**early adopter program**" — more information under Fundraising on the
@@ -132,50 +171,11 @@ We have compiled an :ref:`overview page with the changes and features for MM 2.4
 note the :ref:`checklist <check_upgrade_mm240>` when upgrading.
 
 
-.. _install_mm230:
-Installation of MM 2.3 for Contao 4.13 and PHP 8
--------------------------------------------------
-
-MetaModels 2.3 brings full compatibility with Contao 4.13 and PHP 8.1. MM 2.3 is an adaptation of
-version 2.2 to the new Contao and PHP version and of course brings
-:ref:`all changes and features from MM 2.2 <new_in_mm220>`.
-
-With the new schema manager and XLIFF files, the workflow with MM needs to be adjusted — see
-:ref:`schema manager <component_schema-manager>` and :ref:`component_translations`.
-
-The installation requirements for MetaModels 2.3 are:
-
-* a running Contao 4.13.x (LTS)
-* PHP 8.1 or higher
-* MySQL 5.5.5 or higher (InnoDB), MariaDB (including "strict mode")
-* ``memory_limit`` 512MB or more (recommended)
-* until release, access key via the `EAP <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-3>`_
-  — `MM Core <https://github.com/MetaModels/core/tree/release/2.3.0>`_ is already freely available
-
-Higher versions of Contao and/or PHP may be possible but are not officially supported.
-
-We have compiled an :ref:`overview page with the changes and features for MM 2.3 <new_in_mm230>` — please
-note the :ref:`checklist <check_upgrade_mm230>` when upgrading.
-
-.. toctree::
-    :maxdepth: 1
-
-    new-in-mm-23.rst
-
-The MM team also supports the work on
-`DC_General <https://github.com/contao-community-alliance/dc-general/>`_ with work and funding, which
-is responsible among other things for the displays in the backend in MM and brings many great features.
-
-.. seealso:: For refinancing the extensive work, the MM team asks for financial support. A guideline
-   should be the scope of the project to be realized, with approximately 10% calculated — based on
-   the experience of recent contributions, these are amounts between €100 and €500 (net) — an invoice
-   including VAT is always issued. `More... <https://now.metamodel.me/de/unterstuetzer/spenden>`_
-
-
 .. _install_mm-old:
 Notes and Instructions for Older Contao and MM Versions
 -------------------------------------------------------
 
+* :ref:`Overview page with changes and features for MM 2.3 <new_in_mm230>`
 * :ref:`Overview page with changes and features for MM 2.2 <new_in_mm220>`
 * :ref:`cookbook_move_mm2.0_to_2.1`
 * :ref:`cookbook_install_mm2.0-and-older`
@@ -194,7 +194,7 @@ SQL commands to query the actually used attributes and filters:
 
    -- Attributes
    SELECT type FROM `tl_metamodel_attribute` GROUP BY type ORDER BY type
-   -- Attribute "levensthein" was renamed to "levenshtein"
+   -- Since MM 2.5, the attribute "levensthein" is called "levenshtein" (migration renames existing entries)
 
    -- Filters
    SELECT type FROM `tl_metamodel_filtersetting` GROUP BY type ORDER BY type

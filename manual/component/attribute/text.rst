@@ -1,7 +1,7 @@
 .. _component_attribute_text:
 
-Text
-====
+|svg_attr_text_22| |img_text| Text
+==================================
 
 The "Text" attribute is the simplest text field in MetaModels and stores short texts up to 255
 characters. Typical use cases:
@@ -173,6 +173,9 @@ The attribute automatically handles Contao HTML entities (``basicEntities``). Sp
 are correctly encoded and decoded when saving and outputting.
 
 
+.. |svg_attr_text_22| image:: /_img/icons_svg/text.svg
+   :width: 22px
+.. |img_text| image:: /_img/icons/text.png
 .. |br| raw:: html
 
    <br />

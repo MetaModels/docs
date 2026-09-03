@@ -1,7 +1,7 @@
 .. _component_attribute_longtext:
 
-Long Text
-=========
+|svg_attr_longtext_22| |img_longtext| Long Text
+===============================================
 
 The "Long text" attribute is intended for longer text input. It is displayed as a textarea
 widget in the backend and can optionally be equipped with a rich text editor (RTE such as
@@ -164,6 +164,9 @@ The text is stored as ``text NULL`` (up to 65,535 characters). An empty value is
 described in the cookbook under :ref:`rst_cookbook_inputmask_manipulate-select-values`.
 
 
+.. |svg_attr_longtext_22| image:: /_img/icons_svg/longtext.svg
+   :width: 22px
+.. |img_longtext| image:: /_img/icons/longtext.png
 .. |br| raw:: html
 
    <br />

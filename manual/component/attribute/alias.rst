@@ -1,7 +1,7 @@
 .. _component_attribute_alias:
 
-|img_alias| Alias
-=================
+|svg_attr_alias_22| |img_alias| Alias
+=====================================
 
 The "Alias" attribute generates a unique, URL-compatible short identifier derived from one or more
 existing attributes. Typical use cases:
@@ -206,6 +206,8 @@ hyphens used in Contao for text formatting) are automatically removed before slu
 so they do not appear in the alias.
 
 
+.. |svg_attr_alias_22| image:: /_img/icons_svg/alias.svg
+   :width: 22px
 .. |img_alias| image:: /_img/icons/alias.png
 
 .. |br| raw:: html

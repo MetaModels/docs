@@ -1,7 +1,7 @@
 .. _component_attribute_translatedcontentarticle:
 
-Translated Content of an Article
-==================================
+|svg_attr_translatedcontentarticle_22| |img_article| Translated Content of an Article
+=====================================================================================
 
 The "Translated Content of an Article" attribute is the multilingual variant of the
 :ref:`Content of an Article <component_attribute_contentarticle>` attribute.
@@ -127,6 +127,9 @@ If a set of content elements is missing for a language, the content of the fallb
 language is output automatically.
 
 
+.. |svg_attr_translatedcontentarticle_22| image:: /_img/icons_svg/article.svg
+   :width: 22px
+.. |img_article| image:: /_img/icons/article.png
 .. |br| raw:: html
 
    <br />

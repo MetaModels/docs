@@ -44,6 +44,50 @@ For easy copying of the array data into a frontend template, there is the
 :ref:`rst_cookbook_frontend_array-helper`, which generates output in the source code for
 `copy & paste`.
 
+The debug output can also be further restricted or redirected — for example:
+
+- Restrict output to HTML requests only:
+
+.. code-block:: php
+   :linenos:
+
+   <?php
+   // Debug — not for API/JSON responses, otherwise dump() will break the output.
+   $request = \Contao\System::getContainer()->get('request_stack')->getCurrentRequest();
+   if (
+       \Contao\System::getContainer()->get('kernel')->isDebug()
+       && 'html' === $request?->getRequestFormat()
+   ) {
+       dump($this->data);
+   }
+   ?>
+
+- Specifically exclude output for a given path:
+
+.. code-block:: php
+   :linenos:
+
+   <?php
+   // Debug — not for API/JSON responses, otherwise dump() will break the output.
+   $request = \Contao\System::getContainer()->get('request_stack')->getCurrentRequest();
+   if (
+       \Contao\System::getContainer()->get('kernel')->isDebug()
+       && !str_starts_with($request?->getPathInfo() ?? '', '/cowegis/api')
+   ) {
+       dump($this->data);
+   }
+   ?>
+
+- Redirect it entirely to Contao's log directory — usually ``var/logs/`` — via an
+  entry in config.yaml:
+
+.. code-block:: yaml
+   :linenos:
+
+   when@dev:
+      debug:
+          dump_destination: "%kernel.logs_dir%/dump.log"
+
 
 Debug in MM 2.0
 ---------------

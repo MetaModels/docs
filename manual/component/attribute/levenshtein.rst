@@ -1,7 +1,7 @@
 .. _component_attribute_levenshtein:
 
-Levenshtein
-===========
+|svg_attr_levenshtein_22| |img_levenshtein| Levenshtein
+=======================================================
 
 The "Levenshtein" attribute creates a full-text search index for selected MetaModels attributes
 and enables similarity search with configurable error tolerance (typos, similar spellings).
@@ -92,9 +92,16 @@ Special Functions
 
 **Storage**
 
-The attribute does not store any values in the MetaModel table. The search index is stored
-in a dedicated table ``tl_metamodel_levensthein_index`` (columns: ``word``, ``transliterated``).
-The MetaModel table does not receive its own column.
+The attribute does not store any values of its own in the MetaModel table. The search index
+is stored in two dedicated tables: ``tl_metamodel_levenshtein`` holds one entry per indexed
+record, while ``tl_metamodel_levenshtein_index`` holds the words derived from it (columns:
+``word``, ``transliterated``). The MetaModel table does not receive its own column.
+
+.. note:: Up to MetaModels 2.4, the attribute type, the two tables, and two columns in
+   ``tl_metamodel_attribute`` were misspelled as ``levensthein`` (``h`` and ``t`` swapped).
+   From MetaModels 2.5 onward, everything consistently uses ``levenshtein``; a migration
+   automatically renames existing installations while preserving the search index — see
+   :ref:`new_in_mm250`.
 
 **Index update**
 
@@ -120,6 +127,9 @@ The index is created language-aware — for multilingual MetaModels, the active 
 taken into account when building the index.
 
 
+.. |svg_attr_levenshtein_22| image:: /_img/icons_svg/levenshtein.svg
+   :width: 22px
+.. |img_levenshtein| image:: /_img/icons/levenshtein.png
 .. |br| raw:: html
 
    <br />

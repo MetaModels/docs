@@ -1,7 +1,7 @@
 .. _component_attribute:
 
-|img_fields_32| Attributes
-===========================
+|svg_fields_32| |img_fields_32| Attributes
+==========================================
 
 .. note:: Create your own columns of the database table as attributes and configure them |br|
    To create the attribute columns in the mm_* table, run a DB migration — :ref:`see schema manager <component_schema-manager>`
@@ -63,9 +63,6 @@ the page. The following is a list of attribute types with notes on specific opti
   note that for (direct) display of preview images in the backend or frontend, the
   "Use as image field with preview image" option in the render settings of the file
   attribute must be set — :ref:`more... <component_attribute_file>`
-* **Language code**: selection of ISO language codes |br|
-  This attribute provides a selection of language codes; the language codes can be
-  selected via checkbox — :ref:`more... <component_attribute_langcode>`
 * **Long text**: text input |br|
   Attribute for longer text input — :ref:`more... <component_attribute_longtext>`
 * **Numeric**: input of integer values — :ref:`more... <component_attribute_numeric>`
@@ -88,8 +85,6 @@ the page. The following is a list of attribute types with notes on specific opti
 * **URL**: link text and URL |br|
   Entry of external links (include "\http://") or internal links via the page picker;
   optionally, "Remove title" can output only the URL — :ref:`more... <component_attribute_url>`
-* **Token** (from MM 2.4): unique string |br|
-  Creates unique strings that do not change again — :ref:`more... <component_attribute_token>`
 
 If the "Translation" option is activated in the MetaModel, the following attributes are
 additionally available for multilingual support:
@@ -132,13 +127,22 @@ Examples of additional attributes are:
 * **Levenshtein**: word search by Levenshtein |br|
   The attribute calculates word similarity for flexible search — :ref:`more... <component_attribute_levenshtein>`
 * **Country selection**: selection list with countries — :ref:`more... <component_attribute_country>`
+* **Language code**: selection of ISO language codes |br|
+  This attribute provides a selection of language codes; the language codes can be
+  selected via checkbox — :ref:`more... <component_attribute_langcode>`
 * **Content article**: possibility to create Contao content elements similar to an article in |br|
-  a widget — also available as translated variant — :ref:`more... <component_attribute_contentarticle>`
+  a widget :ref:`more... <component_attribute_contentarticle>` |br|
+  also available as translated variant :ref:`more... <component_attribute_translatedcontentarticle>`
 * **Multi-table**: similar to "Table text" attribute but each "cell" can have its own |br|
-  widget type such as select, radio buttons, checkboxes, etc. — also available |br|
-  as translated variant — :ref:`more... <component_attribute_tablemulti>`
+  widget type such as select, radio buttons, checkboxes, etc. :ref:`more... <component_attribute_tablemulti>` |br|
+  also available as translated variant :ref:`more... <component_attribute_translatedtablemulti>`
 * **Geo-distance**: calculates the geographic distance to the search point for a perimeter search |br|
   The value can be used to sort lists by distance — :ref:`more... <component_attribute_geodistance>`
+* **LatLong** (from MM 2.5): coordinate pair (latitude/longitude) as a native ``POINT`` in a single |br|
+  column, optionally with a spatial index for a faster perimeter search; input optionally via an
+  address search with a map — :ref:`more... <component_attribute_latlong>`
+* **Token** (from MM 2.4): unique string |br|
+  Creates unique strings that do not change again — :ref:`more... <component_attribute_token>`
 
 The order in which attributes are created is freely selectable —
 only for attributes that refer to other attributes, such as "Alias" or "Combined values",
@@ -183,39 +187,42 @@ Details of All Attributes
    attribute/alias
    attribute/checkbox
    attribute/combinedvalues
-   attribute/contentarticle
-   attribute/country
    attribute/decimal
    attribute/file
-   attribute/langcode
    attribute/longtext
    attribute/numeric
    attribute/select
    attribute/tabletext
-   attribute/tablemulti
    attribute/tags
    attribute/text
    attribute/timestamp
-   attribute/token
    attribute/url
    attribute/translatedalias
    attribute/translatedcheckbox
    attribute/translatedcombinedvalues
-   attribute/translatedcontentarticle
    attribute/translatedfile
    attribute/translatedlongtext
    attribute/translatedselect
    attribute/translatedtabletext
-   attribute/translatedtablemulti
    attribute/translatedtags
    attribute/translatedtext
    attribute/translatedurl
-   attribute/color
-   attribute/geodistance
-   attribute/levenshtein
    attribute/rating
+   attribute/color
+   attribute/levenshtein
+   attribute/country
+   attribute/langcode
+   attribute/contentarticle
+   attribute/translatedcontentarticle
+   attribute/tablemulti
+   attribute/translatedtablemulti
+   attribute/geodistance
+   attribute/latlong
+   attribute/token
 
 
+.. |svg_fields_32| image:: /_img/icons_svg/fields.svg
+   :width: 32px
 .. |img_fields_32| image:: /_img/icons/fields_32.png
 .. |img_fields| image:: /_img/icons/fields.png
 .. |img_new| image:: /_img/icons/new.gif

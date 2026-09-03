@@ -1,14 +1,14 @@
 .. _component_searchable-pages:
 
-|img_searchable_pages_32| Indexing
-====================================
+|svg_searchable_pages_32| |img_searchable_pages_32| Search Settings
+======================================================================
 
 .. note:: Include detail pages of a MetaModel in the sitemap.xml of Contao
 
 Introduction
 ------------
 
-Indexing allows the detail pages of a MetaModel rendering (list) to be included in the
+Search settings allow the detail pages of a MetaModel rendering (list) to be included in the
 generation of sitemap.xml.
 
 This "special treatment" of detail pages compared to normal list views arises from how they
@@ -47,7 +47,7 @@ Options
 Procedure
 ---------
 
-A new indexing is created via the icon "|img_new| New indexing" and after entering the name,
+New search settings are created via the icon "|img_new| New search settings" and after entering the name,
 the render setting is selected. The render setting is usually the same as the one chosen for
 the CE/module MetaModel list of the frontend output of the "overview list" — but a separate
 render setting can also be created.
@@ -67,6 +67,8 @@ Tips
 * :ref:`rst_cookbook_specials_add_items_at_navigation`
 
 
+.. |svg_searchable_pages_32| image:: /_img/icons_svg/searchable_pages.svg
+   :width: 32px
 .. |img_searchable_pages_32| image:: /_img/icons/searchable_pages_32.png
 .. |img_searchable_pages| image:: /_img/icons/searchable_pages.png
 .. |img_new| image:: /_img/icons/new.gif

@@ -1,7 +1,7 @@
 .. _component_filter_register:
 
-|img_filter_default| Register
-==============================
+|svg_filt_register_22| |img_filter_default| Register
+====================================================
 
 The "Register" filter rule (package ``filter_register``) filters items by the first
 letter of an attribute value. It generates a list of all existing or possible initial
@@ -102,6 +102,8 @@ customized using the standard Contao method (template inheritance) to integrate 
 different layout or special characters.
 
 
+.. |svg_filt_register_22| image:: /_img/icons_svg/filter_register.svg
+   :width: 22px
 .. |img_filter_default| image:: /_img/icons/filter_default.png
 
 .. |br| raw:: html

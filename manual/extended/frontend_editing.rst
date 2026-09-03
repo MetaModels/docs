@@ -102,7 +102,7 @@ In this element, the MetaModel to be edited is selected.
 |img_metamodelfeeedit|
 
 As a final step, the input mask configured for the backend must be unlocked for the
-frontend. To do this, open the "Input/render assignments" |img_dca_combine| page in the
+frontend. To do this, open the "Input/render assignments" |svg_dca_combine_22| |img_dca_combine| page in the
 backend and select an appropriate entry in the "Member group" column for frontend
 permissions — please refer to the :ref:`settings documentation <component_dca-combine>`.
 
@@ -151,7 +151,7 @@ The input mask is created in the same way as the backend mask. The form fields f
 editing are defined by selecting and activating the attributes.
 
 The input mask can now be selected for the frontend via the "Input/render assignments"
-|img_dca_combine|.
+|svg_dca_combine_22| |img_dca_combine|.
 
 |img_fee-dca-zuordnung2|
 
@@ -210,7 +210,19 @@ Multilingual Support
 
 For multilingual MetaModels, a language switcher is rendered in the frontend input
 mask, just like in the backend. The language switcher can be customized via the template
-``dcfe_general_edit.html5``.
+``dcfe_general_edit`` — from MM 2.5 onwards, either as ``.html5`` or as ``.html.twig``. The same
+applies to the widgets of the input mask: ``form_upload-on-steroids`` (files), ``form_mcw``
+(MultiColumnWizard), and ``form_text_multiple`` (multiple text field). If both variants exist,
+the Twig version takes precedence; a custom ``.html5`` override with a higher priority keeps its
+precedence.
+
+.. important:: Anyone writing a custom Twig template for a widget should output only the label
+   itself in its ``label`` block. If a field carries a language badge (see "Language indicators
+   in the input mask" below), MetaModels extends the template and **completely replaces its
+   ``label`` block** — anything else placed there is dropped for exactly those fields. Content
+   such as file lists or ``{% add … to stylesheets %}`` therefore belongs in the ``field`` block;
+   this does not change the output order, since Contao renders the ``label`` block before the
+   ``field`` block anyway.
 
 Note that, as in the backend, when creating a new record the fallback language must
 always be filled in first — the input mask automatically switches to the appropriate
@@ -234,6 +246,9 @@ shown in the frontend input mask:
   * **[Fallback]** (orange): The value comes from the fallback language — there is no
     own translation in the current language yet.
   * **[Translated]** (green): The field has its own translation in the current language.
+
+  The explanatory sentence appears as a tooltip on the badge. In the fallback language itself
+  there is nothing to mark, so no badges appear there.
 
 |img_fee-multilanguage2|
 
@@ -446,6 +461,8 @@ The output in the FE mask might look like this, for example:
 .. |img_fee-dca-zuordnung| image:: /_img/screenshots/extended/frontend_editing/fee-dca-zuordnung.png
 .. |img_fee-dca-zuordnung2| image:: /_img/screenshots/extended/frontend_editing/fee-dca-zuordnung2.png
 
+.. |svg_dca_combine_22| image:: /_img/icons_svg/dca_combine.svg
+   :width: 22px
 .. |img_dca_combine| image:: /_img/icons/dca_combine.png
 
 .. |img_fee-own-headline| image:: /_img/screenshots/extended/frontend_editing/fee-own-headline.png

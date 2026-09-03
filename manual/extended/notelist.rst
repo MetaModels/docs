@@ -36,10 +36,22 @@ Installation via Contao Manager or Composer
 
 Prerequisites for installation:
 
+**Contao 5.7:**
+
+.. note:: The note list is ready to use but will only be released once the current
+   fundraising target of 4,335 is reached. |br|
+   For access please send an email to info@e-spin.de
+
+* ^PHP 8.4
+* MetaModels 2.5
+* Notelist 2.5
+* optional Notification Center 2.3 or NCPro
+* Access to the protected repository — credentials after donation
+
 **Contao 5.3:**
 
 .. note:: The note list is ready to use but will only be released once the current
-   fundraising target of 3,685€ is reached. |br|
+   fundraising target of 4,335 is reached. |br|
    For access please send an email to info@e-spin.de
 
 * ^PHP 8.2
@@ -67,9 +79,15 @@ leads to creating and editing note lists.
 |img_notelist_icon|
 
 When creating a new note list, a name can be assigned. Currently available "storage
-adapters" are PHP session and Contao session. With the Contao session, the values of a
+adapters" are "PHP session" and "Contao session". With the Contao session, the values of a
 note list are automatically stored in the session values of the database for logged-in
 members and are available again after re-login.
+
+.. note:: Change from version 2.4 (Contao 5.3): In Contao 5.3, session handling was rebuilt, so
+   only "Contao session" or custom implementations are available as storage adapters. If a member
+   is logged in on the frontend, the note list data is automatically stored persistently in their
+   own Contao session. This data also takes precedence if a site visitor fills the note list and
+   then logs in — after login, the data from the member data is shown.
 
 The filter selection allows restricting which records can be added — e.g. based on
 "Department" or member groups. Filtering by member groups is possible, for example, via
@@ -107,7 +125,7 @@ following code (number corresponds to the note list ID):
 .. code-block:: html
    :linenos:
 
-   <a href="<?= $arrItem['actions']['notelist_1']['href'] ?>" class="<?= $arrItem['actions']['notelist_1']['class'] ?>"><?= $arrItem['actions']['notelist_1']['label'] ?></a>
+   <a href="<?= $arrItem['actions']['notelist_1_button']['href'] ?>" class="<?= $arrItem['actions']['notelist_1_button']['class'] ?>"><?= $arrItem['actions']['notelist_1_button']['label'] ?></a>
 
 |img_notelist_fe_list|
 
@@ -364,10 +382,15 @@ Donations
 
 Thanks for the donations* for the extension to:
 
+**Version 2.5:**
+
 **Version 2.4:**
 
 * `dpmed GmbH <https://www.dpmed.de>`_: 350 €
 * `afm werbestudio & agentur <https://www.afm-werbestudio.de/>`_: 350 €
+* `Nationalfonds AT <https://www.nationalfonds.org/>`_: 350 €
+* `AntwortInternet <https://www.antwortinternet.com/>`_: 350 €
+* Johannes Bittner: 350 €
 
 
 **Version 2.0 to 2.3:**

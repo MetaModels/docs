@@ -1,7 +1,7 @@
 .. _component_filter_text:
 
-|img_filter_text| Text Filter
-=============================
+|svg_filt_text_22| |img_filter_text| Text Filter
+================================================
 
 The "Text Filter" filter rule (package ``filter_text``) filters items based on a text
 input in the frontend. Visitors enter a search term into a text input field, and items
@@ -113,6 +113,8 @@ In the "Any words" and "All words" modes, the search term is split into individu
 words using the configured delimiter before each word is searched separately.
 
 
+.. |svg_filt_text_22| image:: /_img/icons_svg/filter_text.svg
+   :width: 22px
 .. |img_filter_text| image:: /_img/icons/filter_text.png
 
 .. |br| raw:: html

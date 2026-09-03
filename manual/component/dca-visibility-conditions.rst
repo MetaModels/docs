@@ -1,7 +1,7 @@
 .. _component_dca_visibility-conditions:
 
-|img_dca_condition| Visibility Conditions / Sub-Palettes
-==========================================================
+|svg_dca_condition_22| |img_dca_condition| Visibility Conditions / Sub-Palettes
+=================================================================================
 
 Visibility conditions are also referred to as "sub-palettes", as they allow an input widget of an
 attribute in an input form to be specifically shown or hidden based on the values of another widget.
@@ -42,22 +42,22 @@ For widgets that have a visibility condition implemented, the icon is color-high
 
 The following types of conditions are implemented:
 
-* **Property value is...** |br|
+* |svg_condition_propertyvalueis_22| **Property value is...** |br|
   The condition is met when the attribute value equals the specified value.
   Attributes with single selection, such as Select or Checkbox, can be selected. \*
-* **Property value can contain...** |br|
+* |svg_condition_propertycontainanyof_22| **Property value can contain...** |br|
   The condition is met when any attribute value equals any of the specified values
   (intersection/OR). Attributes with multiple selection, such as Tags, can be selected.
-* **Property is visible...** |br|
+* |svg_condition_propertyvisible_22| **Property is visible...** |br|
   The condition is met when all conditions for a selected attribute are met. In other words,
   the attribute is visible if and only if the selected (or "referenced") attribute is also
   visible. This condition type saves you from duplicating created visibility conditions of
   an attribute.
-* **OR** |br|
+* |svg_condition_or_22| **OR** |br|
   Any one condition must be met.
-* **AND** |br|
+* |svg_condition_and_22| **AND** |br|
   All conditions must be met.
-* **NOT** |br|
+* |svg_condition_not_22| **NOT** |br|
   Reverses the result of a given condition.
 
 .. note:: \* From version 2.3, the empty or unfilled condition of a Select or Checkbox widget can
@@ -66,7 +66,21 @@ The following types of conditions are implemented:
    are equivalent, so the select jumps back to the first value "-" after saving.
 
 
+.. |svg_dca_condition_22| image:: /_img/icons_svg/dca_condition.svg
+   :width: 22px
 .. |img_dca_condition| image:: /_img/icons/dca_condition.png
+.. |svg_condition_propertyvalueis_22| image:: /_img/icons_svg/condition_propertyvalueis.svg
+   :width: 22px
+.. |svg_condition_propertycontainanyof_22| image:: /_img/icons_svg/condition_propertycontainanyof.svg
+   :width: 22px
+.. |svg_condition_propertyvisible_22| image:: /_img/icons_svg/condition_propertyvisible.svg
+   :width: 22px
+.. |svg_condition_or_22| image:: /_img/icons_svg/condition_or.svg
+   :width: 22px
+.. |svg_condition_and_22| image:: /_img/icons_svg/condition_and.svg
+   :width: 22px
+.. |svg_condition_not_22| image:: /_img/icons_svg/condition_not.svg
+   :width: 22px
 .. |img_dca_condition_1| image:: /_img/icons/dca_condition_1.png
 .. |img_new| image:: /_img/icons/new.gif
 .. |img_about| image:: /_img/icons/about.png

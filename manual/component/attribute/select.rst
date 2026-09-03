@@ -1,7 +1,7 @@
 .. _component_attribute_select:
 
-Single Select [select]
-======================
+|svg_attr_select_22| |img_select| Single Select [select]
+========================================================
 
 The "Single select [select]" attribute creates a :ref:`1:n relation <component_relations_standard-relation-1ton>` to
 another table — either a MetaModels table or any Contao table
@@ -189,6 +189,9 @@ Example for filtering on published entries:
    sourceTable.published = '1'
 
 
+.. |svg_attr_select_22| image:: /_img/icons_svg/select.svg
+   :width: 22px
+.. |img_select| image:: /_img/icons/select.png
 .. |br| raw:: html
 
    <br />

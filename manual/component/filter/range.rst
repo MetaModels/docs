@@ -1,7 +1,7 @@
 .. _component_filter_range:
 
-|img_filter_range| Value from/to for two fields
-================================================
+|svg_filt_range_22| |img_filter_range| Value from/to for two fields
+====================================================================
 
 The "Value from/to for two fields" filter rule (package ``filter_range``) filters items
 based on a value range defined by two separate attributes. The first attribute represents
@@ -102,6 +102,8 @@ values:
 * :ref:`Decimal <component_attribute_decimal>`
 
 
+.. |svg_filt_range_22| image:: /_img/icons_svg/filter_range.svg
+   :width: 22px
 .. |img_filter_range| image:: /_img/icons/filter_range.png
 
 .. |br| raw:: html

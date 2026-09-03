@@ -1,7 +1,7 @@
 .. _component_filter_range-date:
 
-|img_filter_range| Value from/to for two date fields
-=====================================================
+|svg_filt_range_date_22| |img_filter_range| Value from/to for two date fields
+=============================================================================
 
 The "Value from/to for two date fields" filter rule (package ``filter_range``) filters
 items based on a date range defined by two separate date attributes. The first date
@@ -106,6 +106,8 @@ for date values only, the "Date and time handling" option in the attribute shoul
 to "Store date only without time".
 
 
+.. |svg_filt_range_date_22| image:: /_img/icons_svg/filter_rangedate.svg
+   :width: 22px
 .. |img_filter_range| image:: /_img/icons/filter_range.png
 
 .. |br| raw:: html

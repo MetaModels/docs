@@ -59,6 +59,7 @@ Translations can now easily be tracked via the Symfony toolbar. In the "Translat
 about found and not found translations as well as fallbacks is listed.
 
 
+.. _component_translations_modifications:
 Custom Translation Adjustments
 --------------------------------
 

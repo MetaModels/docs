@@ -1,7 +1,7 @@
 .. _component_filter_by-related:
 
-|img_filter_default| Filter-by-related
-=======================================
+|svg_filt_by_related_22| |img_filter_default| Filter-by-related
+===============================================================
 
 The "Filter-by-related" filter rule (package ``filter_by_related``, from MM 2.4) allows
 items to be filtered based on properties of a related (relational) MetaModel. The
@@ -90,6 +90,19 @@ Settings for the Frontend Widget
        * **Text** — Text input field
        * **Radio** — Radio buttons
        * **Checkbox** — Checkboxes
+   * - Search type
+     - Only for widget type **Text**: defines how the search term is compared against
+       the value of the related attribute:
+
+       * **Contains search term** — The attribute value must contain the search term
+         (default).
+       * **Exact search** — The search term must match the attribute value exactly.
+       * **Starts with search term** — The attribute value must start with the search
+         term.
+       * **Ends with search term** — The attribute value must end with the search term.
+
+       An asterisk (``*``) entered by the visitor acts as a wildcard and overrides the
+       configured search type.
    * - Allow empty value
      - If this option is active and the URL parameter is empty, no filter is applied.
    * - Label
@@ -124,6 +137,8 @@ The relation to the main MetaModel can be built via the following attribute type
 * Child table relation (pid/ptable)
 
 
+.. |svg_filt_by_related_22| image:: /_img/icons_svg/filter_by_related.svg
+   :width: 22px
 .. |img_filter_default| image:: /_img/icons/filter_default.png
 
 .. |br| raw:: html

@@ -58,6 +58,10 @@ With MM 2.4, some design principles for multilingualism have been implemented mo
 The adjustments include the strict output of fallback language content when the target translation language has
 no own content — this applies for example also to the File and Content Article attributes.
 
+This behavior can be suspended via the "Disable fallback mode" option — for example, this option is available
+for the :ref:`Translated checkbox <component_attribute_translatedcheckbox>` attribute. This means a value is
+saved for a language even if it is identical to the fallback value.
+
 When multilingual records are copied, all other languages are now copied in addition to the fallback language.
 
 The backend display of which language is the fallback language has been improved. When switching from the fallback
@@ -109,6 +113,8 @@ Attributes
     * Dark mode support for icons — create an additional icon file with the suffix "--dark"
     * Template ``mm_attr_translatedcheckbox_icon.html5`` for displaying in the backend as ☑ or ☐ in list view
     * Column ``langcode`` changed to ``varchar(64)``
+    * Option "Disable fallback mode" for saving a value for a language even if it is identical to the
+      fallback value
 * Translated File
     * Template adjustments for output of `title`, `alt`, `caption` from the `metafile` node
     * Two new templates: ``mm_attr_file_contao_image.html5`` for standard output as in Contao, including
@@ -231,6 +237,17 @@ upgrading to MM 2.4:
 * For filter rules, check the "URL type for parameter" setting and set to Slug OR GET
 * New templates for Content Article (also multilingual) passing an array of content objects
 * Output of fallback language content when no translated content exists
+* For the Translated checkbox, set the "Disable fallback mode" option (attribute settings) to keep
+  existing filtering behavior — determine the affected attributes:
+
+.. code-block:: sql
+   :linenos:
+
+   SELECT mm.name AS metamodel, a.colname
+   FROM `tl_metamodel_attribute` AS a
+   JOIN `tl_metamodel` AS mm ON mm.id = a.pid
+   WHERE a.type = 'translatedcheckbox'
+   ORDER BY mm.name, a.colname;
 
 
 

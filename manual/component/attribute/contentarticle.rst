@@ -1,7 +1,7 @@
 .. _component_attribute_contentarticle:
 
-Content of an Article
-=====================
+|svg_attr_contentarticle_22| |img_article| Content of an Article
+================================================================
 
 The "Content of an article" attribute allows Contao content elements to be assigned to a
 MetaModels record — analogous to the content elements of a Contao article. The content
@@ -126,6 +126,9 @@ The extension contains recursion protection to prevent infinite loops if content
 themselves reference MetaModels content.
 
 
+.. |svg_attr_contentarticle_22| image:: /_img/icons_svg/article.svg
+   :width: 22px
+.. |img_article| image:: /_img/icons/article.png
 .. |br| raw:: html
 
    <br />

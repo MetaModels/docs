@@ -1,7 +1,7 @@
 .. _component_filter_checkbox:
 
-|img_filter_checkbox| Checkbox Status
-======================================
+|svg_filt_checkbox_22| |img_filter_checkbox| Checkbox Status
+============================================================
 
 The "Checkbox Status" filter rule (package ``filter_checkbox``) checks whether the value
 of a checkbox attribute is equal to ``1`` (active). It is typically used for publication
@@ -109,6 +109,8 @@ The included template ``mm_filteritem_checkbox.html5`` provides a checkbox-speci
 output for the filter widget.
 
 
+.. |svg_filt_checkbox_22| image:: /_img/icons_svg/filter_checkbox.svg
+   :width: 22px
 .. |img_filter_checkbox| image:: /_img/icons/filter_checkbox.png
 
 .. |br| raw:: html

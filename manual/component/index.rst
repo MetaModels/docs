@@ -21,14 +21,18 @@ Before creating more complex data structures in MetaModels, you should definitel
 "elegant" structure — especially the relations between models. There is an overview page
 ":ref:`component_relations`" for this.
 
+.. note:: Note: SVG icons were introduced for MetaModels in MM 2.5. During a transition period,
+   both variants are shown in the manual — new first, then old — an overview can be found here:
+   :ref:`manual_new_icons-25`
+
 After creating a MetaModel, the following main components are available for editing:
 
- |img_fields|  :ref:`component_attribute` |br|
- |img_rendersettings|  :ref:`component_rendersettings` |br|
- |img_dca|  :ref:`component_dca` |br|
- |img_searchable_pages|  :ref:`component_searchable-pages` |br|
- |img_filter|  :ref:`component_filter` |br|
- |img_dca_combine|  :ref:`component_dca-combine`
+ |svg_fields_22| |img_fields|  :ref:`component_attribute` |br|
+ |svg_rendersettings_22| |img_rendersettings|  :ref:`component_rendersettings` |br|
+ |svg_dca_22| |img_dca|  :ref:`component_dca` |br|
+ |svg_searchable_pages_22| |img_searchable_pages|  :ref:`component_searchable-pages` |br|
+ |svg_filter_22| |img_filter|  :ref:`component_filter` |br|
+ |svg_dca_combine_22| |img_dca_combine|  :ref:`component_dca-combine`
 
 When creating a (simple) MetaModel, the components can be worked through in the order listed. As the
 complexity of the MetaModel increases — i.e. when multiple MetaModels interact with each other — you
@@ -86,8 +90,20 @@ various :ref:`insert tags <component_inserttags>` are available.
    :trim:
 
 .. |img_fields| image:: /_img/icons/fields.png
+.. |svg_fields_22| image:: /_img/icons_svg/fields.svg
+   :width: 22px
 .. |img_rendersettings| image:: /_img/icons/rendersettings.png
+.. |svg_rendersettings_22| image:: /_img/icons_svg/rendersettings.svg
+   :width: 22px
 .. |img_dca| image:: /_img/icons/dca.png
+.. |svg_dca_22| image:: /_img/icons_svg/dca.svg
+   :width: 22px
 .. |img_searchable_pages| image:: /_img/icons/searchable_pages.png
+.. |svg_searchable_pages_22| image:: /_img/icons_svg/searchable_pages.svg
+   :width: 22px
 .. |img_filter| image:: /_img/icons/filter.png
+.. |svg_filter_22| image:: /_img/icons_svg/filter.svg
+   :width: 22px
 .. |img_dca_combine| image:: /_img/icons/dca_combine.png
+.. |svg_dca_combine_22| image:: /_img/icons_svg/dca_combine.svg
+   :width: 22px

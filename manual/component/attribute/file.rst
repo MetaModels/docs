@@ -1,7 +1,7 @@
 .. _component_attribute_file:
 
-|img_file| File
-===============
+|svg_attr_file_22| |img_file| File
+==================================
 
 The "File" attribute provides a file picker for selecting one or more files from the Contao
 file directory. Typical use cases:
@@ -191,15 +191,28 @@ Special Functions
 **Database storage**
 
 Single files are stored as binary UUIDs. Multiple files are stored as a serialized array
-of UUIDs in a ``blob NULL`` field. Optionally, a second column ``<column_name>__sort``
-is created for the sort order.
+of UUIDs in a ``blob NULL`` field. The manually defined order is embedded in the value
+itself.
+
+.. note:: Up to MetaModels 2.4, an additional column ``<column_name>__sort`` was created
+   for the sort order when the *Multiple selection* option was set. Contao removed the
+   corresponding widget option ``orderField`` in version 5.0, so this column is dropped
+   with MetaModels 2.5 — a migration transfers the existing order into the value and then
+   deletes the column. See :ref:`new_in_mm250`.
 
 **Sorting for multiple files**
 
 The order of multiple files can be configured independently in both the render settings
 (for output) and the input form settings (for frontend upload).
 
+Independently of this, the order in the input form can also be set **manually via drag
+and drop**: in the *Gallery* and *Downloads* widget modes, the selected files are
+sortable when *Multiple selection* is active. The preview images also carry a red button
+that lets you remove a single file from the selection without opening the file picker.
 
+
+.. |svg_attr_file_22| image:: /_img/icons_svg/file.svg
+   :width: 22px
 .. |img_file| image:: /_img/icons/file.png
 
 .. |br| raw:: html

@@ -18,6 +18,13 @@ For a checklist after upgrading to MM 2.3, see :ref:`further notes below <check_
 General and Core
 ----------------
 
+The installation requirements for MetaModels 2.3 are:
+
+* a running Contao 4.13.x (LTS)
+* PHP 8.1 or higher
+* MySQL 5.5.5 or higher (InnoDB), MariaDB (incl. "strict mode")
+* ``memory_limit`` of 512MB or more (recommended)
+
 * Integration of a new schema manager — :ref:`More info <component_schema-manager>`
 * Entries for sorting/grouping now have a toggle button and can be enabled/disabled
   (`#1380 <https://github.com/MetaModels/core/issues/1380>`_)

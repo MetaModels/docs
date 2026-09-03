@@ -1,7 +1,7 @@
 .. _component_filter_simplelookup:
 
-|img_filter_default| Simple Lookup
-======================================
+|svg_filt_simplelookup_22| |img_filter_default| Simple Lookup
+=============================================================
 
 The "Simple Lookup" filter rule filters items based on a single attribute value.
 The filter value can either be passed dynamically via a URL parameter (GET/slug) or
@@ -44,9 +44,15 @@ Settings when Creating the Filter Rule
      - Free text field for describing the purpose of this filter rule.
    * - Attribute
      - The attribute by whose value items should be filtered.
-   * - Label attribute
-     - Optional attribute whose value is used as the display text in the frontend
-       widget (e.g. a title attribute instead of the internal alias).
+   * - Attribute for label text
+     - Optional second attribute whose value is used as the display text in the frontend
+       widget (e.g. a title attribute instead of the internal alias) — from MM 2.4.12.
+
+       This setting only appears if the filtered attribute does not itself provide the
+       display text — i.e. for attributes without a relation. It is omitted for Single
+       Select (MetaModel), Tags and Translated Tags, since for those the display text is
+       already determined via the value column of the attribute; the alias column
+       provides the key for the URL.
    * - Search all languages
      - For multilingual MetaModels, this setting controls whether all languages or
        only the active language should be used for the comparison.
@@ -133,6 +139,8 @@ always display a specific category without requiring a URL parameter — see
 :ref:`rst_cookbook_filter_filter-with-static-parameter`.
 
 
+.. |svg_filt_simplelookup_22| image:: /_img/icons_svg/filter_simplelookup.svg
+   :width: 22px
 .. |img_filter_default| image:: /_img/icons/filter_default.png
 
 .. |br| raw:: html

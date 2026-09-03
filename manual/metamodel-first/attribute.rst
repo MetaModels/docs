@@ -1,11 +1,11 @@
 .. _mm_first_attribute:
 
-|img_fields_32| Attributes
-===========================
+|svg_fields_32| |img_fields_32| Attributes
+============================================
 
 After the table "mm_employeelist" was created in the database, the fields / table columns for
 storing the data — i.e. the attributes — must now be created in it. This step is done via the
-component of the same name "|img_fields| Attributes".
+component of the same name "|svg_fields_22| |img_fields| Attributes".
 
 Based on the task requirements, the following fields are needed:
 
@@ -24,7 +24,7 @@ Based on the task requirements, the following fields are needed:
 +------------------+----------------+----------+
 
 In the first step, switch to the "Attributes" component in the MetaModel "Employee List" by
-clicking the icon |img_fields|. Then create the first attribute via
+clicking the icon |svg_fields_22| |img_fields|. Then create the first attribute via
 "|img_new| New attribute". Clicking "|img_new| New attribute" does not immediately open the
 input mask, but instead shows a "|img_pasteafter| clipboard icon" — click on this (see
 screenshot).
@@ -55,6 +55,10 @@ The list of created attributes should now be shown as in the screenshot.
 
 .. |img_fields_32| image:: /_img/icons/fields_32.png
 .. |img_fields| image:: /_img/icons/fields.png
+.. |svg_fields_22| image:: /_img/icons_svg/fields.svg
+   :width: 22px
+.. |svg_fields_32| image:: /_img/icons_svg/fields.svg
+   :width: 32px
 .. |img_new| image:: /_img/icons/new.gif
 .. |img_pasteafter| image:: /_img/icons/pasteafter.gif
 

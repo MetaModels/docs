@@ -1,7 +1,7 @@
 .. _component_filter_yes-no:
 
-|img_filter_checkbox| Yes / No
-================================
+|svg_filt_yes_no_22| |img_filter_checkbox| Yes / No
+===================================================
 
 The "Yes / No" filter rule (package ``filter_checkbox``) outputs a frontend widget
 through which visitors can choose between two states: "Yes" (value ``1``) or "No"
@@ -99,6 +99,8 @@ The "Yes / No" filter rule is exclusively suitable for the following attributes:
 * :ref:`Translated Checkbox <component_attribute_translatedcheckbox>`
 
 
+.. |svg_filt_yes_no_22| image:: /_img/icons_svg/filter_yes-no.svg
+   :width: 22px
 .. |img_filter_checkbox| image:: /_img/icons/filter_checkbox.png
 
 .. |br| raw:: html

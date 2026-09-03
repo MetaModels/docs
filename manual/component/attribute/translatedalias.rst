@@ -1,7 +1,7 @@
 .. _component_attribute_translatedalias:
 
-Translated Alias
-================
+|svg_attr_translatedalias_22| |img_alias| Translated Alias
+==========================================================
 
 The "Translated Alias" attribute is the multilingual variant of the
 :ref:`Alias <component_attribute_alias>` attribute. It generates a separate
@@ -157,6 +157,9 @@ When uniqueness is enabled, MetaModels checks separately per language and automa
 appends a counter for duplicates (``my-product-2``, etc.).
 
 
+.. |svg_attr_translatedalias_22| image:: /_img/icons_svg/alias.svg
+   :width: 22px
+.. |img_alias| image:: /_img/icons/alias.png
 .. |br| raw:: html
 
    <br />

@@ -1,7 +1,7 @@
 .. _component_attribute_numeric:
 
-Numeric
-=======
+|svg_attr_numeric_22| |img_numeric| Numeric
+===========================================
 
 The "Numeric" attribute stores integer values. Typical use cases:
 
@@ -134,6 +134,9 @@ The value is stored as ``int(10) NULL default NULL``. An empty value is stored a
 (compatible with MySQL Strict Mode).
 
 
+.. |svg_attr_numeric_22| image:: /_img/icons_svg/numeric.svg
+   :width: 22px
+.. |img_numeric| image:: /_img/icons/numeric.png
 .. |br| raw:: html
 
    <br />

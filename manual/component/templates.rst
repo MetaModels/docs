@@ -10,6 +10,46 @@ In addition to the templates listed here, individual attributes or extensions ma
 templates.
 
 
+.. _component_templates_twig:
+Twig Templates (from MetaModels 2.5)
+-------------------------------------
+
+From MetaModels 2.5, each of the templates described below can additionally be provided as a
+**Twig template** (``.html.twig``). If a Twig variant exists, it takes **precedence** over the
+classic ``.html5`` (frontend and backend, only for the HTML output — the ``.text`` format remains
+on the previous engine). If the Twig variant is missing, the ``.html5`` is used unchanged.
+
+Naming scheme:
+
+* MetaModels' own rendering (list/item and attribute templates as well as the filter widgets) is
+  located in the Contao namespace ``@Contao`` under the subgroup ``metamodels/``:
+
+  * Item/list ``metamodel_prerendered`` → ``@Contao/metamodels/item/prerendered.html.twig``
+  * Attribute ``mm_attr_text`` → ``@Contao/metamodels/attribute/text.html.twig``
+  * Filter widget ``mm_filteritem_default`` → ``@Contao/metamodels/filter/default.html.twig``
+
+* The Contao content element/module wrappers keep their flat name in the ``@Contao`` namespace,
+  e.g. ``@Contao/ce_metamodel_list.html.twig``, ``@Contao/mm_filter_default.html.twig``,
+  ``@Contao/mm_clearall_default.html.twig``, ``@Contao/mm_pagination.html.twig`` as well as the
+  separate ``@Contao/mm_actionbutton.html.twig`` (the list templates include it via ``include``,
+  so custom action button templates can still override it).
+
+The same variables are available in the Twig templates as in the ``.html5`` (e.g. ``{{ raw }}``,
+``{{ data }}``, ``{{ additional_class }}``). From MM 2.5, attribute templates additionally get
+``{{ label }}``, ``{{ colName }}``, ``{{ hideLabels }}`` and ``{{ legacyAttributeWrapper }}`` —
+see :ref:`component_templates_attribute-wrapper`. Because the templates are located in the
+managed ``@Contao`` namespace, they can be edited in Contao's **Template Studio** and overridden
+via theme folders as well as the project's ``templates/`` directory. An existing override on the
+flat ``.html5`` name (e.g. ``templates/metamodel_prerendered.html5``) still takes precedence
+during the transition period — this consideration is dropped in MetaModels 3.0.
+
+Custom Twig templates of a package are located — as in Contao's bundles — under a namespace root
+(folder ``twig/`` with an empty marker file ``.twig-root``); in the project, the folder
+``templates/`` is sufficient.
+
+See also :ref:`new_in_mm250`.
+
+
 .. _component_templates_fe-list:
 Frontend List
 -------------
@@ -74,6 +114,89 @@ template in the attribute settings of render settings.
 
 In MM templates, Contao templates can also be included, for example to get output as a YouTube
 content element for the Text attribute — see ":ref:`rst_cookbook_templates_fe_template_ce_elements`".
+
+
+.. _component_templates_attribute-wrapper:
+
+The Enclosing Block (from MetaModels 2.5)
+...........................................
+
+Up to MM 2.4, the block around each attribute value came from the **list template**
+("second level"):
+
+.. code-block:: html
+
+   <div class="field <column name>">
+     <div class="label">Label:</div>   <!-- omitted with "Hide labels" -->
+     <div class="value">…</div>
+   </div>
+
+The attribute template only delivered the innermost snippet, usually a
+``<span class="text …">``. Anyone wanting to style the output was therefore too deep in the DOM
+and could not reach the enclosing container.
+
+From MM 2.5, the **attribute template** ("third level") outputs this block itself. This means
+that not only the value but also its container can be customized per attribute type.
+
+**Nothing changes** for existing output: in the render settings there is the new option
+"Wrapper in list template (legacy behavior, deprecated)". A migration sets it for **all
+existing** render settings during the upgrade, so their output remains unchanged. Only **newly
+created** render settings start without the option and get the block from the attribute
+template.
+
+.. note:: The option is marked as deprecated from the outset and will be removed in
+   MetaModels 3.0. Until then, custom templates should be migrated.
+
+What to note here:
+
+* **Custom attribute templates** do not output the block as long as they have not been
+  adapted. If you create a new render setting, it is missing there. Either update the
+  template or set the option in this render setting.
+* **In column mode** of the backend list ("show columns"), no block is output — there, the
+  column heading already carries the label. The list template is skipped entirely in this
+  mode anyway.
+* **Empty values** behave as before. The "Hide empty entries" option works unchanged; it is
+  evaluated based on the raw value before any template runs.
+* **The node** ``html5`` then contains the block as well. Anyone using it outside the list
+  template — e.g. in their own PHP code via ``parseAll()`` or ``parseValue()`` — gets
+  different values for new render settings. The nodes ``text``, ``raw`` and ``attributes``
+  remain unchanged; anyone needing structured data is better served there anyway.
+
+The label uses the same translation key in both cases as before, which is why the colon is
+retained.
+
+For an attribute template to be able to output the block, it additionally gets these values as
+of MM 2.5:
+
+* ``label``: the translated name of the attribute (in the active language for multilingual
+  support)
+* ``colName``: the column name, which also serves as a CSS class on the container
+* ``hideLabels``: whether "Hide labels" is set in the render settings
+* ``legacyAttributeWrapper``: whether the list template outputs the block — see above
+
+.. note:: These values are resolved and passed in ready-made by the core. A template should
+   **not** fetch them itself via ``settings.getParent()``: Twig has no ``try``/``catch``, and
+   the render setting does not always have a parent collection — the call would then break the
+   output.
+
+A custom attribute template therefore follows this pattern — the content is collected first, so
+that no block is created at all if the result is empty:
+
+.. code-block:: twig
+
+   {% set mmFieldContent %}<span class="text mytype{{ additional_class|default('') }}">{{ raw|default('')|raw }}</span>{% endset %}
+   {% if mmFieldContent|trim is not empty %}
+       {%- if legacyAttributeWrapper -%}
+           {{- mmFieldContent|raw -}}
+       {%- else -%}
+           <div class="field {{ colName }}">
+               {%- if not hideLabels %}<div class="label">{{ 'field_label'|trans({'%field_label%': label}, 'metamodels_list') }}</div>{% endif -%}
+               <div class="value">{{ mmFieldContent|raw }}</div>
+           </div>
+       {%- endif -%}
+   {% endif %}
+
+The ``.text`` templates **do not** get the block — they deliver the plain text representation.
 
 For list and attribute templates ("levels two and three"), there are **templates in the types/extensions**
 ``.text`` **and** ``.html5`` with always the same filename. The ``.text`` rendering is always present

@@ -1,7 +1,7 @@
 .. _component_filter_condition-and:
 
-|img_filter_and| AND Condition
-=====================================
+|svg_filt_condition_and_22| |img_filter_and| AND Condition
+==========================================================
 
 The "AND Condition" filter rule is a container that can hold multiple sub-filter rules.
 All contained filter rules are combined with an AND link: an item must fulfill all
@@ -56,6 +56,8 @@ AND condition (or OR condition). This creates a nested filter structure that can
 nearly arbitrarily complex logical expressions.
 
 
+.. |svg_filt_condition_and_22| image:: /_img/icons_svg/filter_and.svg
+   :width: 22px
 .. |img_filter_and| image:: /_img/icons/filter_and.png
 
 .. |br| raw:: html

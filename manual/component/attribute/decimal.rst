@@ -1,7 +1,7 @@
 .. _component_attribute_decimal:
 
-|img_decimal| Decimal
-=====================
+|svg_attr_decimal_22| |img_decimal| Decimal
+===========================================
 
 The "Decimal" attribute stores decimal numbers (double-precision floating-point numbers).
 Typical use cases:
@@ -142,6 +142,8 @@ The input field uses the ``digit`` regex check, which only accepts numeric input
 (including decimal point and sign).
 
 
+.. |svg_attr_decimal_22| image:: /_img/icons_svg/decimal.svg
+   :width: 22px
 .. |img_decimal| image:: /_img/icons/decimal.png
 
 .. |br| raw:: html

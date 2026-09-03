@@ -1,7 +1,7 @@
 .. _component_attribute_tablemulti:
 
-Table Multi (MCW)
-=================
+|svg_attr_tablemulti_22| |img_tablemulti| Table Multi (MCW)
+===========================================================
 
 The "Table multi (MCW)" attribute is an extended variant of the
 :ref:`table text attribute <component_attribute_tabletext>`. Instead of plain text inputs,
@@ -147,6 +147,9 @@ Binary UUIDs are converted to readable UUIDs before storage. Array values are st
 serialized and automatically deserialized when reading.
 
 
+.. |svg_attr_tablemulti_22| image:: /_img/icons_svg/tablemulti.svg
+   :width: 22px
+.. |img_tablemulti| image:: /_img/icons/tablemulti.png
 .. |br| raw:: html
 
    <br />

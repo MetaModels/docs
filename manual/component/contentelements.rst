@@ -160,6 +160,14 @@ Example for a custom call of 'submitonchange' when multiple filter elements are 
     });
     </script>
 
+Options CE/Module Filter Reset
+-------------------------------
+
+With this element, a button for resetting all filter entries (reset) can be inserted. As a
+setting, there is the option to select a custom template and to define a URL fragment as an
+anchor.
+
+
 Procedure
 ---------
 

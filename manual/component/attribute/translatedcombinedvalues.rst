@@ -1,7 +1,7 @@
 .. _component_attribute_translatedcombinedvalues:
 
-Translated Combined Values
-==========================
+|svg_attr_translatedcombinedvalues_22| |img_combinedvalues| Translated Combined Values
+======================================================================================
 
 The "Translated Combined Values" attribute is the multilingual variant of the
 :ref:`Combined Values <component_attribute_combinedvalues>` attribute. It combines
@@ -186,6 +186,9 @@ combined value already exists. For duplicates, a counter is automatically append
 ``Müller, Hans (2)``, ``Müller, Hans (3)``, etc.
 
 
+.. |svg_attr_translatedcombinedvalues_22| image:: /_img/icons_svg/combinedvalues.svg
+   :width: 22px
+.. |img_combinedvalues| image:: /_img/icons/combinedvalues.png
 .. |br| raw:: html
 
    <br />

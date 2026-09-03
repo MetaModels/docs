@@ -1,7 +1,7 @@
 .. _component_filter_expression-rule:
 
-|img_filter_expression| Expression Rule
-=========================================
+|svg_filt_expression_rule_22| |img_filter_expression| Expression Rule
+=====================================================================
 
 The "Expression Rule" filter rule (from MM 2.4) allows the execution of further filter
 rules to be tied to a condition. A node is created in the rule list that can hold one or
@@ -54,6 +54,8 @@ The expression rule is not directly attribute-bound. The filter rules used in th
 sub-rules can reference any attributes.
 
 
+.. |svg_filt_expression_rule_22| image:: /_img/icons_svg/filter_expression.svg
+   :width: 22px
 .. |img_filter_expression| image:: /_img/icons/filter_expression.png
 
 .. |br| raw:: html

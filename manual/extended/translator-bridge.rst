@@ -11,7 +11,7 @@ automatically enters the result into the translation field currently being edite
 More on the topic :ref:`Multilingualism in MetaModels <component_multi-language>`.
 
 .. note:: The Translator-Bridge extension is still in fundraising and will only be released once
-   the target amount of currently 2,762.50 € is reached. |br|
+   the target amount of currently 2,562.50 € is reached. |br|
    Early installation via the "Early Adopter Program" is possible —
    `see below <#rst-extended-translator-bridge-early-adopter-program>`_
 
@@ -169,6 +169,11 @@ MetaModel's fallback language.
    the language assignment can be established. After saving, the translation buttons will also
    be visible.
 
+.. note:: **Nested** content elements too - for example inside an accordion, an element group,
+   or a slider - receive the translation buttons. The target language is determined via the
+   parent chain up to the actually associated dataset, not only from the direct parent content
+   element.
+
 Suitable field types are: ``text``, ``textarea``, ``inputUnit``, and ``listWizard``. The
 following rules apply:
 
@@ -233,6 +238,9 @@ Then clear the Symfony cache:
    and passes it as the explicit source language to the translation provider.
    Buttons only appear in page or article trees that are **not** the fallback tree itself — there
    is nothing to translate in the fallback tree.
+   This also applies to **nested** content elements - for example inside an accordion, an element
+   group, or a slider: the source language is determined via the parent chain up to the actually
+   associated page or article, not only from the direct parent content element.
 
 
 .. _rst_extended_translator-bridge_display-character-usage:
@@ -385,6 +393,7 @@ Donations
 Thanks for the donations* for the extension to:
 
 * `AntwortInternet <https://www.antwortinternet.com/>`_: 680 €
+* `GUTcert Berlin <https://www.gut-cert.de/>`_: 680 €
 
 
 (Donations are net amounts)

@@ -1,7 +1,7 @@
 .. _component_filter_tags:
 
-|img_filter_tags| Multi-Select
-==================================
+|svg_filt_tags_22| |img_filter_tags| Multi-Select
+=================================================
 
 The "Multi-Select" filter rule (package ``filter_tags``) outputs a frontend widget
 through which visitors can select multiple values simultaneously from a list. Items
@@ -41,9 +41,15 @@ Settings when Creating the Filter Rule
      - Free text field for describing the purpose of this filter rule.
    * - Attribute
      - The tags attribute by whose values items should be filtered.
-   * - Label attribute
-     - Optional attribute whose value is used as the display text for the options
-       in the widget.
+   * - Attribute for label text
+     - Optional second attribute whose value is used as the display text for the options
+       in the widget — from MM 2.4.12.
+
+       This setting only appears if the filtered attribute does not itself provide the
+       display text — i.e. for attributes without a relation. It is omitted for Single
+       Select (MetaModel), Tags and Translated Tags, since for those the display text is
+       already determined via the value column of the attribute; the alias column
+       provides the key for the URL.
 
 
 Settings for the Frontend Widget
@@ -116,6 +122,8 @@ With the OR option disabled (default), all selected tags must be present in an i
 This significantly affects the result set with multiple selections.
 
 
+.. |svg_filt_tags_22| image:: /_img/icons_svg/filter_tags.svg
+   :width: 22px
 .. |img_filter_tags| image:: /_img/icons/filter_tags.png
 
 .. |br| raw:: html

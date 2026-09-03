@@ -1,7 +1,7 @@
 .. _component_filter_loupe:
 
-|img_filter_default| Loupe
-===========================
+|svg_filt_loupe_22| |img_filter_default| Loupe
+==============================================
 
 The "Loupe" filter rule (package ``filter_loupe``, from MM 2.4) creates a full-text
 index over selected attributes in a dedicated SQLite database and enables powerful
@@ -114,6 +114,8 @@ The Loupe index is stored in a standalone SQLite file (not in the main Contao da
 This enables fast full-text searches even with large amounts of data.
 
 
+.. |svg_filt_loupe_22| image:: /_img/icons_svg/loupe-emblem.svg
+   :width: 22px
 .. |img_filter_default| image:: /_img/icons/filter_default.png
 
 .. |br| raw:: html

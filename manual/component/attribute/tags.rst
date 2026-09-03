@@ -1,7 +1,7 @@
 .. _component_attribute_tags:
 
-Multi-Select [tags]
-===================
+|svg_attr_tags_22| |img_tags| Multi-Select [tags]
+=================================================
 
 The "Multi-select [tags]" attribute creates an :ref:`m:n relation <component_relations_standard-relation-mton>` to
 another table — either a MetaModels table or any Contao table
@@ -185,6 +185,9 @@ on published entries:
    t.published = '1'
 
 
+.. |svg_attr_tags_22| image:: /_img/icons_svg/tags.svg
+   :width: 22px
+.. |img_tags| image:: /_img/icons/tags.png
 .. |br| raw:: html
 
    <br />

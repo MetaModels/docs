@@ -1,7 +1,7 @@
 .. _component_attribute_checkbox:
 
-|img_checkbox| Checkbox
-=======================
+|svg_attr_checkbox_22| |img_checkbox| Checkbox
+==============================================
 
 The "Checkbox" attribute stores a boolean value (0 or 1). Typical use cases:
 
@@ -177,6 +177,8 @@ The value is stored as ``char(1) NOT NULL default ''``:
 ``'1'`` means active, ``''`` (empty string) means inactive.
 
 
+.. |svg_attr_checkbox_22| image:: /_img/icons_svg/checkbox.svg
+   :width: 22px
 .. |img_checkbox| image:: /_img/icons/checkbox.png
 
 .. |br| raw:: html

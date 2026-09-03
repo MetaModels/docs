@@ -1,7 +1,7 @@
 .. _component_filter:
 
-|img_filter_32| Filter Sets
-============================
+|svg_filter_32| |img_filter_32| Filter Sets
+============================================
 
 .. note:: Optionally create filter sets for backend and frontend;
   create filter set and activate in components or content elements/modules
@@ -106,7 +106,14 @@ options. For most filter rules, the following parameters can be set:
   ``language`` and ``items`` are reserved by Contao — from MM 2.3 these are automatically rewritten
   and ``__`` is appended if set as column name.
 * **URL type for the parameter:** (from MM 2.4) here you can set whether the filter parameter is passed
-  to the URL as a slug or GET parameter — more about this in the :ref:`SEO tips <rst_cookbook_tips_seo_filter-url>`
+  to the URL as a slug or as a GET parameter. The available options are "Slug only", "GET only" and
+  "Slug or GET allowed". The last option is deprecated and should be switched to one of the two
+  unambiguous values; the backend shows a notice when it is used. Newly created filter rules start
+  with "Slug only", while existing ones were set to "Slug or GET allowed" when the setting was
+  introduced, so their behaviour would not change. If a parameter is passed via the URL type other
+  than the one configured, it is ignored from MM 2.4.25 onwards — just like any other unknown
+  parameter; previously this resulted in a 404. More about this in the :ref:`SEO tips
+  <rst_cookbook_tips_seo_filter-url>`
 * **Template:** selection of the widget template for the frontend display; in addition to the template
   ``mm_filteritem_default``, various filter rules bring their own templates such as checkbox, Levenshtein,
   register, etc. The templates can be customized in the usual Contao way. The surrounding template
@@ -163,6 +170,8 @@ Details of All Filter Rules
    filter/parent
 
 
+.. |svg_filter_32| image:: /_img/icons_svg/filter.svg
+   :width: 32px
 .. |img_filter_32| image:: /_img/icons/filter_32.png
 .. |img_filter| image:: /_img/icons/filter.png
 .. |img_filter_setting| image:: /_img/icons/filter_setting.png

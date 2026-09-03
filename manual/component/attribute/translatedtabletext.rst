@@ -1,7 +1,7 @@
 .. _component_attribute_translatedtabletext:
 
-Translated Table Text
-========================
+|svg_attr_translatedtabletext_22| |img_translatedtabletext| Translated Table Text
+=================================================================================
 
 The "Translated Table Text" attribute is the multilingual variant of the
 :ref:`Table Text <component_attribute_tabletext>` attribute. It enables the input of
@@ -151,6 +151,9 @@ column names are automatically generated from the number of columns. The transla
 column labels are available as ``$arrData['cols']``.
 
 
+.. |svg_attr_translatedtabletext_22| image:: /_img/icons_svg/translatedtabletext.svg
+   :width: 22px
+.. |img_translatedtabletext| image:: /_img/icons/translatedtabletext.png
 .. |br| raw:: html
 
    <br />

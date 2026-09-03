@@ -1,7 +1,7 @@
 .. _component_attribute_translatedfile:
 
-Translated File
-================
+|svg_attr_translatedfile_22| |img_file| Translated File
+=======================================================
 
 The "Translated File" attribute is the multilingual variant of the
 :ref:`File <component_attribute_file>` attribute. It provides a separate file picker
@@ -192,7 +192,13 @@ Special Functions
 
 The file references are stored per language in ``tl_metamodel_translatedlongblob``
 (fields: ``att_id``, ``item_id``, ``langcode``, ``value`` as ``blob``).
-No column is created in the MetaModel table.
+No column is created in the MetaModel table. The manually defined order of multiple
+files is embedded in the value itself.
+
+.. note:: Up to MetaModels 2.4, the ``value_sorting`` field of the same table held the
+   sort order. Contao removed the corresponding widget option ``orderField`` in version
+   5.0, so this field is dropped with MetaModels 2.5 — a migration transfers the existing
+   order into the value and then deletes the field. See :ref:`new_in_mm250`.
 
 **Language-dependent files**
 
@@ -208,7 +214,16 @@ If a file is missing for a language, MetaModels falls back to the fallback langu
 The order of multiple files can be configured independently in the render settings
 (for output) and in the input form settings (for frontend upload).
 
+Independently of this, the order in the input form can also be set **manually per
+language via drag and drop**: in the *Gallery* and *Downloads* widget modes, the
+selected files are sortable when *Multiple selection* is active. The preview images
+also carry a red button that lets you remove a single file from the selection without
+opening the file picker.
 
+
+.. |svg_attr_translatedfile_22| image:: /_img/icons_svg/file.svg
+   :width: 22px
+.. |img_file| image:: /_img/icons/file.png
 .. |br| raw:: html
 
    <br />
