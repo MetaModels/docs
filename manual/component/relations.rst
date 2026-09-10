@@ -41,6 +41,12 @@ self-reference for holiday substitution:
 
 |img_db-schema_01|
 
+.. note:: **From MM 2.5:** The separately installable :ref:`metamodels/erd-viewer
+   <rst_extended_erd-viewer>` extension generates such a diagram automatically from the database -
+   directly in the backend, with filtering, click-through details and export as SVG/PNG/Graphviz/
+   GraphML. This does not replace manual upkeep in every case (e.g. for a curated documentation
+   diagram), but it saves it for the day-to-day overview.
+
 
 .. _component_relations_standard-relations:
 Standard Relations

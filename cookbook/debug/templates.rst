@@ -88,6 +88,11 @@ The debug output can also be further restricted or redirected — for example:
       debug:
           dump_destination: "%kernel.logs_dir%/dump.log"
 
+.. note:: In debug mode, a comment for start and end plus the template name is output in
+   the source code for html5 templates in the FE — this shows which template is outputting
+   what and where. For Twig templates, this information is also available via the
+   `contao-twig-debug-marker-bundle <https://github.com/e-spin/contao-twig-debug-marker-bundle>`_
+   extension.
 
 Debug in MM 2.0
 ---------------

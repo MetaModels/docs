@@ -26,6 +26,9 @@ All extensions created and supported directly by the MM team can be found on
     metadata_extractor
     xliff_ex-import
     translator-bridge
+    changelanguage-bridge
+    erd-viewer
+    health-check
 
 
 Other Known Extensions

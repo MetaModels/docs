@@ -18,15 +18,20 @@ MetaModels 2.5 requires **Contao 5.7** and **PHP 8.4**.
 The most important new features are:
 
 - Support for **Twig templates** in addition to the existing ``.html5`` templates
-- New SVG icons for the backend
+- **New SVG icons** for the backend
 - No more MooTools
-- Custom backend sections via configuration
-- Breadcrumb for child tables
+- Custom **backend sections via configuration**
+- **Breadcrumb for child tables**
 - Attribute templates now output the label together with the value
-- New attribute for lat/long values
-- Variants with pagination
+- New **attribute for lat/long values**
+- **Variants with pagination**
+- MetaModels records findable in **Contao's backend search**
+- New **ERD view** extension for all MetaModels tables and their relations
+- New **Health-Check** extension for finding and cleaning up orphaned MetaModels data
+- New **ChangeLanguage-Bridge** extension for the language switcher on detail pages
 - Record changes in the system log
-- Version management for MM configuration and MM items
+- **Version management** for MM configuration and MM items
+- **Various speed improvements** for the DCG, perimeter search/geo distance, lazy rendering
 
 
 Twig Templates (NEW)
@@ -112,6 +117,12 @@ with higher priority keeps its precedence, so existing customizations continue t
 There is one rule to note for a custom Twig version of the widget templates — the ``label`` block is
 replaced for fields with a language badge, see :ref:`rst_extended_frontend_editing`.
 
+.. seealso:: In debug mode, a comment for start and end plus the template name is output in the
+   source code for html5 templates in the FE — this shows which template is outputting what and
+   where. For Twig templates, this information is also available via the
+   `contao-twig-debug-marker-bundle <https://github.com/e-spin/contao-twig-debug-marker-bundle>`_
+   extension.
+
 
 Backend Icons (Reworked)
 ..........................
@@ -153,6 +164,17 @@ Three places have also received new icons:
    their own user profile — the setting applies per user, not for the whole installation. The
    extension is **not** part of MetaModels and can be used independently of it; thanks to the switch
    to SVG, the MetaModels icons stay crisp even so.
+
+
+Disabled Entries Are Shown Struck Through
+.............................................
+
+In the backend lists it was previously hard to see whether an entry is disabled — the symbol at the
+end of the row indicated it, but the name itself did not. The name of a disabled entry is now shown
+**struck through**. This affects render settings, the input mask, filter rules, and file selection.
+
+In file lists, the suffix "[Default]" appears after the name. It stays readable and is not struck
+through as well, so the two pieces of information do not run into one another.
 
 
 Quick Access to a MetaModel's Areas (NEW)
@@ -219,17 +241,6 @@ or, for standalone MetaModels screens, by specifying the section on the input ma
 .. seealso::
 
 
-Disabled Entries Are Shown Struck Through
-.............................................
-
-In the backend lists it was previously hard to see whether an entry is disabled — the symbol at the
-end of the row indicated it, but the name itself did not. The name of a disabled entry is now shown
-**struck through**. This affects render settings, the input mask, filter rules, and file selection.
-
-In file lists, the suffix "[Default]" appears after the name. It stays readable and is not struck
-through as well, so the two pieces of information do not run into one another.
-
-
 Breadcrumb for Child Tables (NEW)
 .....................................
 
@@ -272,6 +283,85 @@ field, and any values already maintained take effect immediately.
 
 The look and behavior come from Contao itself — it is the same breadcrumb as in the core modules,
 including the expand menu behind the ellipsis. See also :ref:`component_relations` for child tables.
+
+
+Backend Search Finds MetaModels Records (NEW)
+................................................
+
+Contao's global backend search (search field at the top of the header, keyboard shortcut Ctrl+K)
+has, since Contao 5.5, also searched the data entries of individual tables — provided their
+``dataContainer`` is exactly ``Contao\DC_Table``. Every MetaModels table — both the
+``tl_metamodel_*`` configuration tables and every generated item table — instead uses DC_General,
+which is why **nothing** appeared there until now. MetaModels 2.5 ships its own search provider
+for this that covers the **item tables** — i.e. the actual records of a MetaModel, not its
+configuration.
+
+**What is searched:** exactly the attributes already marked "Searchable" in the input mask — the
+same checkbox that has always fed the field selection of the backend list search. There is
+therefore **no additional setting**: if an attribute is checked there, it automatically also
+appears in the global search index.
+
+**Translated MetaModels:** For every language in which a record actually has its own value, a
+separate hit with its own edit link appears — clicking it opens the mask directly on the correct
+language tab. A language that was never translated for the record and therefore only shows the
+fallback language's value does **not** produce its own (duplicate) hit — exactly the cases that
+can already be recognized in the input mask itself by the orange "Fallback" badge.
+
+**Title and permissions:** The hit shows the name of the MetaModel and the record title (the same
+pattern as under "Additions to the mask headline", see above), and for translations additionally
+the language code. Whether a logged-in user sees a hit at all follows the existing MetaModels
+access permissions on the respective area — there is no separate permission for this.
+
+.. note:: Contao's backend search needs a permanently running background worker
+   (``messenger:consume``) that builds and keeps the search index up to date. Without it, the
+   search field does not appear in the header at all — independent of MetaModels, this affects
+   every searchable Contao table equally.
+
+
+Language Switcher on Detail Pages (NEW)
+..........................................
+
+The new, separately installable :ref:`metamodels/changelanguage-bridge
+<rst_extended_changelanguage-bridge>` extension makes `"ChangeLanguage"
+<https://github.com/terminal42/contao-changelanguage>`_ item-aware on MetaModels detail pages: the
+language switcher then links directly to the same record in the target language including the
+matching slug, instead of falling back to the language start page. Replaces the two previous
+workarounds (the "Search all languages" filter rule and a custom ``changelanguageNavigation``
+hook) with a single checkbox per render setting. In addition, GET filter parameters (e.g.
+``?alias=...``) are automatically carried over entirely without that checkbox — even for
+monolingual models, without an entry under "Keep query parameters". More on this under
+:ref:`Multilingualism <component_multi-language_fe-output>`.
+
+
+ERD View of All MetaModels Tables (NEW)
+..........................................
+
+The new, separately installable :ref:`metamodels/erd-viewer <rst_extended_erd-viewer>` extension
+shows an `entity-relationship diagram
+<https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model>`_ of all MetaModels tables,
+automatically generated from the database, in the backend — reachable via a new menu item in the
+"All MetaModels" list. Both the attribute relations (select, tags and their translated variants,
+each with cardinality) and the :ref:`parent-child relations
+<component_relations_child-tables>` are shown. The view can be filtered, filtered selections can
+be saved as a "view" for all backend users, and the current section or selection can be exported
+as SVG, PNG, Graphviz ``.dot``, or GraphML — the latter e.g. for further editing in the free `yEd
+Live <https://www.yworks.com/yed-live/>`_. See also :ref:`Database Structure
+<component_relations_database_structure>`.
+
+
+Health-Check for Cleaning Up Orphaned Data (NEW)
+...................................................
+
+The new, separately installable :ref:`metamodels/health-check <rst_extended_health-check>`
+extension finds and cleans up inconsistent MetaModels data — e.g. rows in the attribute-specific
+storage tables (tags, multi-/table text, ratings and their translated variants) left behind after
+deleting an attribute or a record, because the DCG never gets to see these additional tables.
+Reachable via a new menu item in the "All MetaModels" list, just like the ERD view accessible to
+admins only. The checks are built modularly (custom ones can be added via ``services.yml``) and
+only appear if they can apply to your own installation at all; every cleanup has a preview
+(dry run) before the actual deletion, every cleanup that is actually run is logged, a backup can
+be triggered directly from the page — restoring it is done as usual via the Contao Manager or the
+console — and every check can also be run via a console command (e.g. for cron jobs).
 
 
 DC_General

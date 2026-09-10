@@ -6,6 +6,13 @@ Deleting Superfluous Data
 .. note:: Always create a backup before deleting! - |br|
    e.g. with ``php vendor/bin/contao-console contao:backup:create``
 
+.. tip:: Since MetaModels 2.5, the :ref:`metamodels/health-check <rst_extended_health-check>`
+   extension takes over exactly this task directly in the backend - with a preview before
+   deletion, a cleanup log and a backup button on the same page, without any shell access
+   required, and it covers all the tables listed below. This is the recommended, more
+   convenient way; the script here continues to work unchanged though - or use the extension's
+   separate commands.
+
 When models or attributes are deleted, it can happen that not all records are
 deleted along with them. This affects all attributes that do not store their
 data directly in the MetaModel table ``mm_*`` but use their own tables. This is

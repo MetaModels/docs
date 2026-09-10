@@ -215,7 +215,8 @@ the page created in Contao — e.g. ``https://my-domain.tld/en/dessert/details``
 the filter.
 
 To pass the value for the other languages to the extension and filter accordingly, there are several
-options:
+options - the least effort is required by the :ref:`metamodels/changelanguage-bridge
+<rst_extended_changelanguage-bridge>` extension further below.
 
 **1. Filter rule "Simple lookup" with the "Search all languages" option**
 
@@ -272,6 +273,21 @@ in the language switcher.
 
 This variant also correctly sets the ``hreflang`` entries in the meta data —
 :ref:`see SEO <rst_cookbook_tips_seo_metadata-hreflang>`.
+
+
+**3. "ChangeLanguage-bridge" extension (from MM 2.5)**
+
+The :ref:`metamodels/changelanguage-bridge <rst_extended_changelanguage-bridge>` extension takes
+care of the hook from variant 2 for you: a single checkbox for "Support language switcher" per
+render setting is enough, the matching filter parameter for the respective target language is then
+determined automatically from the jump configuration already maintained on the render setting — no
+fixed list of page IDs and no custom PHP code needed.
+
+In addition, the same extension also picks up GET filter parameters (e.g. ``?alias=...``)
+automatically into the language switcher, entirely without that checkbox — a manual entry under
+"Keep query parameters" as in variant 1 is then no longer needed for monolingual models either. Why
+ChangeLanguage picks up path segments (``/alias/...``) on its own but not GET parameters is
+explained in ":ref:`rst_extended_changelanguage-bridge_slug-get`".
 
 
 Frontend Editing (FEE)
