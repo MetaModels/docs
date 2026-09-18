@@ -4,16 +4,17 @@ Changes and Features in MM 2.5
 ===============================
 
 The following is an overview of the changes and features in MetaModels 2.5, made possible by the
-"early adopter program" — more information under Fundraising on the
+"**early adopter program**" (EAP) — more information under **Fundraising** on the
 `MM website <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-5>`_.
 
-For a checklist after upgrading to MM 2.5, see :ref:`further notes below <check_upgrade_mm250>`.
+For a **check after upgrading** to MM 2.5, see :ref:`further notes below <check_upgrade_mm250>`.
 
 
 General and Core
 ----------------
 
-MetaModels 2.5 requires **Contao 5.7** and **PHP 8.4**.
+MetaModels 2.5 requires **Contao 5.7** and **PHP 8.4** — as well as, currently, an
+`EAP access key <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-5>`_.
 
 The most important new features are:
 
@@ -32,6 +33,8 @@ The most important new features are:
 - Record changes in the system log
 - **Version management** for MM configuration and MM items
 - **Various speed improvements** for the DCG, perimeter search/geo distance, lazy rendering
+- Manual now complete in `English <https://metamodels.readthedocs.io/en/latest/>`_ and
+  `French <https://metamodels.readthedocs.io/fr/latest/>`_
 
 
 Twig Templates (NEW)
@@ -653,6 +656,20 @@ project's ``templates/`` directory; they will be dropped in MetaModels 3.0.
     * new option **Rounding step (km)** — rounds the displayed distance value to a multiple of this
       value, without affecting the sort order (which always remains exact)
 
+* Alias (alias) and Combined Values (combinedvalues)
+    * **Multilingual source fields now build from the fallback language:** If one of the fields that make
+      up the alias or combined value is a translated attribute, the generated value used to change
+      depending on which language the record was currently being edited and saved in — a record last
+      saved in English got a value built from the English fields, even though the fallback language was
+      German. Both attribute types were affected equally, since they follow the same pattern.
+    * Such fields are now always read from the MetaModel's **main language** (fallback), regardless of
+      which language is currently being edited. The generated value therefore remains stable. Only
+      translated fields are affected; non-translated fields and meta columns (e.g. ``id``) behave
+      unchanged.
+    * Only affects multilingual MetaModels with a translated field among the source fields. An existing
+      value is not changed retroactively — only the next save (with forced alias regeneration or forced
+      combined values) rebuilds it from the fallback language.
+
 
 Filter
 ------
@@ -726,7 +743,8 @@ Known Issues
   route-based MetaModels backend pages (e.g. ``/contao/metamodel/mm_employees``), the ``referer``
   parameter stays **empty**, so Contao returns to the backend dashboard after toggling instead of the
   original page. This affects Contao's own debug toggle and is not caught by DC_General's new referer
-  handling (its own "Back" buttons) — Contao offers no way to influence the referer at this point.
+  handling (its own "Back" buttons) — Contao offers no way to influence the referer at this point. |br|
+  A fix has been proposed: `contao/contao PR #10206 <https://github.com/contao/contao/pull/10206>`_.
 
 
 .. _check_upgrade_mm250:

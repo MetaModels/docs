@@ -181,6 +181,14 @@ of selected fields.
 The combined value is stored as ``text NULL``. An empty value is stored as ``NULL``
 (compatible with MySQL Strict Mode).
 
+**Multilingual source fields (since MM 2.5)**
+
+If one of the selected fields is a translated attribute, its value is always read from the
+MetaModel's **main language** (fallback), regardless of the language the record is
+currently being edited in. This keeps the generated combined value stable, so it does not
+change depending on the edited language. Non-translated fields and meta columns (e.g.
+``id``) are not affected.
+
 
 .. |svg_attr_combinedvalues_22| image:: /_img/icons_svg/combinedvalues.svg
    :width: 22px

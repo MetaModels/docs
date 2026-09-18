@@ -205,6 +205,14 @@ The character sequences ``[-]``, ``[zwsp]``, ``&shy;``, and ``&ZeroWidthSpace;``
 hyphens used in Contao for text formatting) are automatically removed before slug generation
 so they do not appear in the alias.
 
+**Multilingual alias fields (since MM 2.5)**
+
+If one of the selected alias fields is a translated attribute, its value is always read from
+the MetaModel's **main language** (fallback), regardless of the language the record is
+currently being edited in. This keeps the generated alias stable, so it does not change
+depending on the edited language. Non-translated fields and meta columns (e.g. ``id``) are
+not affected.
+
 
 .. |svg_attr_alias_22| image:: /_img/icons_svg/alias.svg
    :width: 22px

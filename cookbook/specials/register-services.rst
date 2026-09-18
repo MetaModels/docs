@@ -230,8 +230,8 @@ the ``constructor`` by passing the service as an argument in ``services.yml``.
    # config/services.yml
    services:
      App\EventListener\PrePersistModelEventListener:
-     arguments:
-       - '@metamodels.factory'
+       arguments:
+         - '@metamodels.factory'
        tags:
          - { name: kernel.event_listener, event: dc-general.model.pre-persist }
 
