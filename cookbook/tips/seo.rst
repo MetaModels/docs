@@ -78,6 +78,14 @@ see :ref:`component_templates`. The following snippet shows how this can be done
 
 The ``$htmlHeadBag`` could also be provided via a helper class with injected services.
 
+.. hint:: Title and description cannot be set via ``$GLOBALS['TL_HEAD']``. The page layout (``fe_page``)
+          always outputs ``<title>`` and ``<meta name="description">`` itself from the values of the
+          ``HtmlHeadBag``. An entry in ``TL_HEAD`` would only create a second tag in addition, so the
+          source code would contain duplicate entries. The ``HtmlHeadBag`` is read only after the modules
+          have been rendered. Values from the render template therefore override the values from the page
+          properties. For tags that Contao does not output itself (e.g. ``og:`` tags), ``$GLOBALS['TL_HEAD']``
+          is the right way.
+
 
 .. _rst_cookbook_tips_seo_breadcrumb:
 Breadcrumb
@@ -89,11 +97,17 @@ on a detail page, it will not appear in the breadcrumb. This is because the FE m
 breadcrumb is typically placed before the MM list and receives this information too late — or
 not at all.
 
-A "BreadcrumbController" that adds the breadcrumb later during page rendering can solve this.
-An
-`example implementation <https://gist.github.com/fritzmg/e7df2804365fe676b1d88f053a234707?permalink_comment_id=5698503#gistcomment-5698503>`_
-is currently available —
-`this issue will be fixed in Contao 5.7 <https://youtu.be/nvIPd3OzXhs?t=1787>`_.
+Contao can pre-render elements with the attribute ``shouldPreload`` so that the title is already set when the
+breadcrumb is output (this is how the news reader works, for example). However, this only works for frontend modules
+in the layout column, not for content elements. In addition, the attribute has been marked as deprecated since
+Contao 5.3 and will be removed in Contao 6. The MM list therefore does not set it.
+
+A "BreadcrumbController" that adds the breadcrumb later during page rendering can solve this. Currently, you
+should use
+`Fritz's example code <https://gist.github.com/fritzmg/e7df2804365fe676b1d88f053a234707?permalink_comment_id=5698503#gistcomment-5698503>`_
+for this.
+
+A permanent solution based on Contao's new page type controller is being evaluated for MetaModels 2.6.
 
 
 .. _rst_cookbook_tips_seo_metadata-hreflang:

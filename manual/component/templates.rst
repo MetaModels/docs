@@ -47,6 +47,66 @@ Custom Twig templates of a package are located — as in Contao's bundles — un
 (folder ``twig/`` with an empty marker file ``.twig-root``); in the project, the folder
 ``templates/`` is sufficient.
 
+.. _component_templates_twig-blocks:
+
+Blocks in the wrapper templates (from MetaModels 2.5.2)
+.......................................................
+
+The wrapper templates for filter, filter reset and pagination are divided into Twig blocks. A custom
+template therefore no longer has to replace the entire template, but extends it and overrides only the
+desired block. The output of the default templates does not change as a result.
+
+==============================  =====================================================================
+Template                        Blocks
+==============================  =====================================================================
+``mm_filter_default``           ``section``, ``headline``, ``form``, ``form_hidden``, ``filters``,
+                                ``filter``, ``submit``
+``mm_clearall_default``         ``section``, ``link``
+``mm_pagination``               ``nav``, ``info``, ``first``, ``previous``, ``pages``, ``next``,
+                                ``last``
+==============================  =====================================================================
+
+The block ``filter`` is located inside the loop over all filter widgets; the variable ``filter`` is available
+there. This allows the markup to be adjusted per widget without copying the loop. Example
+(``templates/mm_filter_default.html.twig`` in the project):
+
+.. code-block:: twig
+
+   {% extends "@Contao/mm_filter_default.html.twig" %}
+
+   {% block filter %}
+       <div class="col-md-4 {{ filter.class|default('') }}">
+           {{ filter.value|raw }}
+       </div>
+   {% endblock %}
+
+   {% block submit %}
+       <button type="submit" class="btn btn-primary">{{ submit }}</button>
+   {% endblock %}
+
+With ``{{ parent() }}`` the original content of a block is taken over and can be supplemented.
+
+**Adding a CSS class to the submit button:** If the button only needs additional classes (e.g. ``btn btn-primary``
+for Bootstrap), the markup does not have to be rewritten. ``{{ parent() }}`` returns the default output of the
+block, in which the class is extended via ``replace``:
+
+.. code-block:: twig
+
+   {% extends "@Contao/mm_filter_default.html.twig" %}
+
+   {% block submit %}
+       {{ parent()|replace({'class="submit"': 'class="submit btn btn-primary"'})|raw }}
+   {% endblock %}
+
+This turns ``<input type="submit" class="submit" …>`` into ``<input type="submit" class="submit btn btn-primary" …>``;
+the class ``submit`` and the surrounding ``submit_container`` are retained. The example assumes that the
+default markup contains ``class="submit"`` unchanged. If the block has already been overridden by another template,
+``replace`` acts on its output. If you want to determine the markup of the button completely yourself,
+output it entirely in a custom block as in the example above.
+
+.. warning:: The block ``form_hidden`` contains the request token and ``FORM_SUBMIT``. Without these fields, the
+   filter form cannot be submitted - override it only deliberately and continue to output both fields.
+
 See also :ref:`new_in_mm250`.
 
 

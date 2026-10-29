@@ -94,6 +94,11 @@ a filter widget extends the standard template with
 ``{% extends "@Contao/metamodels/filter/default.html.twig" %}`` and overrides the blocks
 ``formlabel`` and ``formfield``.
 
+**Blocks in the wrapper templates (from 2.5.2):** The templates ``mm_filter_default``, ``mm_clearall_default`` and
+``mm_pagination`` are also divided into blocks (for the filter, e.g. ``headline``, ``filter`` and ``submit``). A custom
+template can extend the default template via ``{% extends "@Contao/mm_filter_default.html.twig" %}`` and override only
+the desired block. Details and example: :ref:`component_templates_twig-blocks`.
+
 **Existing overrides:** An existing override of a **flat** template name in the project's
 ``templates/`` folder (or in a theme folder) — e.g. ``templates/metamodel_prerendered.html5`` — still
 **takes precedence** over a shipped Twig template. Existing customizations therefore continue to
@@ -599,6 +604,24 @@ project's ``templates/`` directory; they will be dropped in MetaModels 3.0.
       them available to select and consequently could never have deselected them either. This
       affected the ``tags`` attribute as well as Tags references to another MetaModel.
 
+* Single select [Select] and multi-select [Tags] with a **MetaModel** as source
+    * **Additional attributes per render setting (NEW):** Up to 2.4, MetaModels always loaded **all** attributes of
+      the selected record of the target MetaModel and rendered each of them with its default template -
+      even if the output only needs some of them. From 2.5, only the **base attributes** are loaded at first
+      (value, alias, ID and sorting column of the attribute). Which further attributes of the target MetaModel
+      are available in the ``raw`` and ``text`` nodes of the entry is selected in the render setting of the
+      attribute (field "Additional attributes", section "Advanced").
+    * Because the selection applies **per render setting**, list and detail page can load different attributes:
+      the list only the bare minimum, the detail page more.
+    * **Nothing changes for existing output.** If a render setting has no selection yet - this applies to
+      all existing ones, but also to those newly created in bulk - all attributes are loaded as before. In the
+      backend, all attributes are then ticked. Once the selection is saved, it applies exactly as saved; if **no**
+      attributes are ticked, only the base attributes are loaded (fastest).
+    * Please note: If you deselect attributes, they are no longer delivered in the entry - a template may then
+      only access the selected attributes (e.g. ``raw`` of the select attribute).
+    * Applies only if the attribute refers to a **MetaModel**. For a **Contao table** and for Translated
+      Select and Translated Tags, the complete row is always loaded; the option does not exist there.
+
 * Levenshtein (levenshtein)
     * **Spelling corrected throughout:** The attribute type had been called ``levensthein`` — with
       the ``h`` and ``t`` swapped — since its very first version. The class names, Composer package,
@@ -789,6 +812,12 @@ upgrading to MM 2.5:
   custom CSS that embeds a MetaModels symbol as a background image, or custom DCA entries pointing to
   a ``.png`` path under ``bundles/metamodels…/images/``. The extension needs to be changed to
   ``.svg`` there
+* **Single select [Select] and multi-select [Tags] with a MetaModel as source:** the attributes of the selected
+  record in the ``raw`` and ``text`` nodes are selected per render setting (field "Additional attributes"). Nothing
+  needs to be done: without a selection, all attributes are loaded as before. Only those who want to speed up the
+  output and deselect attributes for that purpose need to adjust: templates may then only access the selected
+  attributes. The new column ``select_attributes`` or ``tag_attributes`` in ``tl_metamodel_rendersetting`` is
+  created by the database update
 * **File attributes:** the sort columns ``<column-name>__sort`` and ``value_sorting`` are migrated
   into the value and then **deleted** — be sure to make a backup beforehand, as deleting the columns
   cannot be undone. Custom code or evaluations that access these columns directly must be adjusted;

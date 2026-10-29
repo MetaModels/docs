@@ -29,6 +29,8 @@ All extensions created and supported directly by the MM team can be found on
     changelanguage-bridge
     erd-viewer
     health-check
+    contao-api
+    mcp-admin
 
 
 Other Known Extensions

@@ -71,8 +71,7 @@ the attribute offers the following specific options:
 Settings in Render Settings
 -----------------------------
 
-The single select attribute has no specific render settings. In the attribute list of a
-render setting, the usual options are available:
+The following options are available in the attribute list of a render setting:
 
 .. list-table::
    :header-rows: 1
@@ -84,6 +83,24 @@ render setting, the usual options are available:
      - Selection of a custom template for the output of the linked value.
    * - CSS class
      - Optional CSS class added to the output element.
+   * - Additional attributes (since MM 2.5)
+     - Only for a MetaModel as source table: attributes of the target MetaModel that are loaded in addition to the
+       base attributes (value, alias, ID and selection sorting) and provided in the value of the selected
+       entry (nodes ``raw`` and ``text``). See below.
+
+**Additional attributes (since MM 2.5)**
+
+From the selected record of the target MetaModel, the **base attributes** are always loaded - the columns
+selected in the attribute settings as value column, alias column, ID column and selection sorting. All other
+attributes of the target MetaModel can be ticked per render setting so that they are available as well, e.g.
+for output in the detail view. Because the selection is made in the render setting, list and detail page can
+load different attributes.
+
+* If **no selection** has been saved yet (for existing render settings and for those created in bulk),
+  **all** attributes are loaded as before; in the backend, all are then ticked.
+* If **no** attributes are ticked and this is saved, only the base attributes are loaded. This is the
+  fastest option; a template may then only access these.
+* With a Contao table as source table, the option does not exist; the complete row is always loaded.
 
 
 Settings in the Input Form

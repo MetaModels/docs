@@ -15,6 +15,8 @@ in the Contao "/templates" folder.
 
 The template is extended with the following lines at the top:
 
+HTML5:
+
 .. code-block:: php
    :linenos:
 
@@ -24,6 +26,14 @@ The template is extended with the following lines at the top:
        dump($this->data);
    }
    ?>
+
+Twig (from MM 2.5):
+
+.. code-block:: twig
+   :linenos:
+
+   {# The dump tag sends the output to the Symfony toolbar, the dump() function would print it into the page. #}
+   {% dump data %}
 
 The page must then be viewed in the frontend in debug mode. To do this, enable debug
 mode in the backend header, or for persistent debug mode, create a `.env` or `.env.local`
