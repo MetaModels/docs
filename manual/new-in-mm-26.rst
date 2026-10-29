@@ -5,9 +5,9 @@ Changes and Features in MM 2.6
 
 The following is an overview of the changes and features in MetaModels 2.6, made possible by the
 "**early adopter program**" (EAP) — more information under **Fundraising** on the
-`MM website <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-5>`_.
+`MM website <https://now.metamodel.me/de/unterstuetzer/fundraising#metamodels_2-6>`_.
 
-For a **check after upgrading** to MM 2.5, see :ref:`further notes below <check_upgrade_mm250>`.
+For a **check after upgrading** to MM 2.6, see :ref:`further notes below <check_upgrade_mm260>`.
 
 
 General and Core
