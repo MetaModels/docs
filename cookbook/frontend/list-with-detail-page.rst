@@ -25,7 +25,7 @@ Four settings are important:
 
 * **Fields for the alias**: title and start date. The date keeps the alias distinguishable even if two events have the
   same title.
-* **Required fields**: The attributes the alias is built from are set to "Mandatory field" in the input mask. If one
+* **Required fields**: The attributes the alias is built from are set to "Mandatory" in the input mask. If one
   of them stays empty, the alias is incomplete and changes as soon as it is filled later - and with it the link to the
   detail page.
 * **Unique values**: The option in the general attribute settings ensures that the alias occurs only once.
