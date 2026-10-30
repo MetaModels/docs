@@ -119,7 +119,8 @@ The MCP administration adds the following elements to the Contao server:
        filters.
    * - ``metamodels_describe``
      - Tool
-     - The configuration of a MetaModel: attributes, input masks with fields, render settings, filters.
+     - The configuration of a MetaModel: attributes, input masks with fields and view conditions,
+       render settings, filters.
    * - ``metamodels_check_types``
      - Tool
      - Checks the types a task needs: missing ones are named together with the ``composer require`` command.
@@ -148,6 +149,8 @@ Examples of tasks for the agent:
 * *"I need a MetaModel for events with title, date, location and a price. Which packages do I need?"*
 * *"Create the MetaModel and show me the plan first."*
 * *"Show me all employees of the Sales department."* (via the Contao API)
+
+A detailed example is in the cookbook: :ref:`Event management with an AI agent <rst_cookbook_mcp_event-management>`.
 
 
 Checking packages and access
@@ -181,6 +184,16 @@ The process consists of three steps:
 A MetaModel needs an input mask and render settings that are assigned to the backend users so that it can be
 opened in the backend. Both are created automatically for the first MetaModel.
 
+A field of the input mask can be tied to a :ref:`view condition <component_dca_visibility-conditions>`, e.g. the end
+date of an event only if the checkbox "Multi-day" is set. The agent creates it on the field (``conditions``). The
+following applies:
+
+* The conditions of one level are linked with AND, a ``conditionand`` wrapper is not needed.
+* The field of the attribute the condition refers to (here "Multi-day") needs the option "Submit on change". Without it
+  the backend shows the effect only after saving. The planner points this out.
+* The types come from the core: *Property value is*, *Property contains one of*, *Property is visible* and the
+  containers *AND*, *OR* and *NOT*.
+
 After creation, the Contao API knows the MetaModel immediately. To make it appear in the frontend, the agent creates a page,
 an article and a content element of the type *MetaModel list* (``metamodel_content``).
 
@@ -189,7 +202,7 @@ The description is the **desired state**, also for existing items: the plan show
 everything else remains untouched.
 
 Not supported (reported as a problem): a different type or a different column for an existing attribute,
-a different type or a different attribute for an existing filter rule, adding languages, switching variants
+a different type or a different attribute for an existing filter rule or view condition, adding languages, switching variants
 and changing the order. Nothing is deleted — except when reverting a write operation.
 
 
@@ -255,3 +268,56 @@ Configuration
            ttl: 86400
 
 ``journal_dir`` defines where the journals of the write operations are stored. ``write`` enables writing.
+
+
+Tips and Frequently Asked Questions
+-----------------------------------
+
+A complete example step by step is in the cookbook under
+:ref:`Event management with an AI agent <rst_cookbook_mcp_event-management>`.
+
+**What is the best way to proceed?**
+
+* In small steps, checking the result after each step (backend, frontend).
+* Have the agent **plan** first ("Plan …, don't write anything yet"), read and correct the plan, and only then apply it.
+* Say what should **not** happen ("Pages and records come in the next step").
+* Have the agent state the ``journal_id`` after each write operation.
+* Have it ask when something is unclear: "Where something is not possible with the tools, tell me."
+
+**The agent does not find the tools.**
+Some agents load the tools only after a few seconds. In the prompt, name the server (e.g. "use the MCP server contao")
+and give its address. If the login has expired, logging in again helps (with Codex ``codex mcp login contao``).
+
+**The agent reports that a type is not installed.**
+Then a package is missing, for example for multilingualism (``attribute_translated*``). The agent names the package and
+the access. You install it yourself and have the types checked again with ``metamodels_check_types``. The agent should
+not fall back to a variant that misses the task (such as monolingual instead of multilingual).
+
+**Should you say "multilingual"?**
+Yes, with the languages and the default language ("DE, EN, FR - DE is default"). This includes which fields should be
+translated and which apply to all languages (e.g. contact fields).
+
+**What can't the agent do?**
+
+* Write templates (e.g. a "Cancelled" badge in the output),
+* change the order of attributes and fields, delete something and rename columns,
+* add languages and switch variants,
+* install packages.
+
+It should say so and name a way in the backend. If it does not, ask for it.
+
+**The data is in the backend, but the detail links are missing.**
+MetaModels generates the alias when saving in the backend. Anyone who creates records via the Contao API must supply
+the alias value. The attributes the alias is built from (e.g. title and date) should be mandatory fields, otherwise the
+alias is incomplete and changes later (see :ref:`List with Detail Page <rst_cookbook_frontend_list-with-detail-page>`).
+
+**The list also shows unpublished entries.**
+The filter needs the *Checkbox status* rule (package ``attribute_checkbox``) on the attribute "published". The
+"Yes / No" rule (``filter_checkbox``) is a widget for the visitors and only filters when someone uses it.
+
+**What if the agent's answer changes after an update?**
+The help (``metamodels://guide/overview``) and the planner's notes are loaded at the start of the conversation. Ask the
+agent to reload them after the system or the extension has been updated.
+
+**Is this suitable for live sites?**
+No, writing is meant for development systems. The agent acts with the rights of the backend user.

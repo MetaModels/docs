@@ -21,10 +21,13 @@ The entry on the detail page is found via an alias that is part of the URL, e.g.
 ``/event/forum-for-sport-2026-11-07``. For this, an :ref:`Alias <component_attribute_alias>` attribute is created
 - for a multilingual MetaModel :ref:`Translated Alias <component_attribute_translatedalias>`.
 
-Three settings are important:
+Four settings are important:
 
 * **Fields for the alias**: title and start date. The date keeps the alias distinguishable even if two events have the
   same title.
+* **Required fields**: The attributes the alias is built from are set to "Mandatory field" in the input mask. If one
+  of them stays empty, the alias is incomplete and changes as soon as it is filled later - and with it the link to the
+  detail page.
 * **Unique values**: The option in the general attribute settings ensures that the alias occurs only once.
 * **Always update**: The alias is regenerated on every save. Without this option, an alias that has been assigned once
   stays even if the title changes.

@@ -19,11 +19,11 @@ links to forum posts or other websites to the following email: |manual@metamodel
     inputmask/index.rst
     filter/index.rst
     frontend/index.rst
+    mcp/index.rst
     templates/index.rst
     tips/index.rst
     specials/index.rst
     other-tutorials/index.rst
-    reference/index.rst
 
 .. _manual@metamodel.me: manual\@metamodel.me?Subject=My%20recipe%20for%20the%20MM%20Cookbook&Body=My%20recipe%3A%0A
 
