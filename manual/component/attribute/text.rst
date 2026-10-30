@@ -87,7 +87,7 @@ When the text attribute is added to an input form, the following options are ava
 
    * - Option
      - Description
-   * - Required field
+   * - Mandatory
      - Makes the field a required field.
    * - Regular expression
      - Validation of input with a predefined regular expression.

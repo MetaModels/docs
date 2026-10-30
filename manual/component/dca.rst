@@ -71,7 +71,7 @@ Options of the Input Field
   Legend: subdivision of the input panel ("green line") |br|
   Attribute: display of attribute options
 * **Function-related settings**: |br|
-  Activation of "read only" or "required field" |br|
+  Activation of "read only" or "mandatory" |br|
   Further options depending on attribute type, e.g. input validation, TinyMCE activation, etc.
 * **Display options**: |br|
   Specification of Contao CSS backend classes, e.g. "w50" for 50% width

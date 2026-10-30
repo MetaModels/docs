@@ -111,7 +111,7 @@ When the checkbox attribute is added to an input form, the following options are
 
    * - Option
      - Description
-   * - Required field
+   * - Mandatory
      - Makes the field a required field (rarely useful for checkboxes, since an unchecked
        box already corresponds to a defined value).
    * - Submit on change

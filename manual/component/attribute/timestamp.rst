@@ -100,7 +100,7 @@ When the timestamp attribute is added to an input form, the following options ar
 
    * - Option
      - Description
-   * - Required field
+   * - Mandatory
      - Makes the field a required field.
    * - Date and time handling
      - Defines which part of the timestamp is set to 0 when saving. Important for

@@ -137,7 +137,7 @@ When the attribute is added to an input form, the following options are availabl
 
    * - Option
      - Description
-   * - Required field
+   * - Mandatory
      - Makes the field a required field.
    * - Show empty option
      - Displays an empty selection option.

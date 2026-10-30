@@ -123,7 +123,7 @@ When the token attribute is added to an input form, the field is fundamentally r
    * - Searchable
      - The attribute is available in the backend as a search field.
 
-.. note:: The options "Required field", "Always save", and "Filterable" are not available
+.. note:: The options "Mandatory", "Always save", and "Filterable" are not available
    for the token attribute, as the field is always saved internally and is read-only.
 
 

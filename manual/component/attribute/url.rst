@@ -95,7 +95,7 @@ When the URL attribute is added to an input form, the following options are avai
 
    * - Option
      - Description
-   * - Required field
+   * - Mandatory
      - Makes the field a required field.
 
 

@@ -109,7 +109,7 @@ When the attribute is added to an input form, the following options are availabl
 
    * - Option
      - Description
-   * - Required field
+   * - Mandatory
      - Makes the field a required field.
    * - Submit on change
      - The input form is reloaded via Ajax when the checkbox is toggled

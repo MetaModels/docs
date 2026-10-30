@@ -92,7 +92,7 @@ When the country attribute is added to an input form, the following options are 
 
    * - Option
      - Description
-   * - Required field
+   * - Mandatory
      - Makes the field a required field.
    * - Show empty option
      - Displays an empty selection option at the beginning of the country list so that

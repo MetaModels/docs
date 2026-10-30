@@ -114,7 +114,7 @@ When the attribute is added to an input form, the following options are availabl
 
    * - Option
      - Description
-   * - Required field
+   * - Mandatory
      - Makes the field a required field.
    * - Always save
      - The field is saved even if its value has not changed. Set automatically when

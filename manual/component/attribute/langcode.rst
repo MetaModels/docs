@@ -92,7 +92,7 @@ When the language code attribute is added to an input form, the following option
 
    * - Option
      - Description
-   * - Required field
+   * - Mandatory
      - Makes the field a required field.
    * - Show empty option
      - Displays an empty selection option so that no language code is pre-selected.

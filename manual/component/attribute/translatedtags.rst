@@ -140,7 +140,7 @@ When the attribute is added to an input form, the following options are availabl
 
    * - Option
      - Description
-   * - Required field
+   * - Mandatory
      - Makes the field a required field.
 
 **Overview (backend filter and search)**

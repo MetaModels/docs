@@ -129,7 +129,7 @@ When the alias attribute is added to an input form (DCA setting), the following 
 
    * - Option
      - Description
-   * - Required field
+   * - Mandatory
      - Makes the field a required field. If "Unique values" is active in the attribute
        settings, this option is set automatically.
    * - Always save
