@@ -179,3 +179,18 @@ system has changed since the conversation started.
 As long as records are in the tables, ``metamodels_undo`` refuses to revert the MetaModels. Pages, articles and content
 elements are not in the journal, they are created via the Contao API. More under
 :ref:`Reverting <rst_extended_mcp-admin>`.
+
+
+How it can continue
+-------------------
+
+The recipe ends with the **setup**: MetaModels, input mask, render settings, filters, pages and sample data.
+**Adapting the templates** is not part of it and was not covered in the test. It is the next step, because the output in
+the frontend then corresponds to the default of the render setting. For example:
+
+* a note "Cancelled" for events with the checkbox ``cancelled`` set, in the list and on the detail page,
+* the presentation of image, date and place in the list and the structure of the detail page,
+* classes and design for your own layout.
+
+The tools do not write templates. You create them by hand, see :ref:`Templates <rst_cookbook_templates_index>`, or
+discuss them with the agent in a separate step, stating what the template should show.
