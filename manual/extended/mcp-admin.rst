@@ -225,7 +225,7 @@ their attribute and filter types therefore comes from a metadata file of the rep
   — just a reference, the text stays in the manual.
 
 The file is published at ``https://metamodels.github.io/mcp-metadata/metadata.json``. The extension fetches it
-from there (https only), keeps it for one day and remembers the last good version. If the server is not reachable,
+from there (https only), keeps it for one day and remembers the last valid version. If the server is not reachable,
 the file shipped with the extension is used.
 
 A system without internet access, or one that must not send such requests, disables fetching:

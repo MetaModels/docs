@@ -58,11 +58,11 @@ Version Overview
 
 * C 6.x + MM 3.0 + PHP 8.x - currently in planning...
 * :ref:`C 6.3 + MM 2.6 + PHP 8.4 <install_mm260>` - currently testing with Contao 6.x-dev
-* :ref:`C 5.7 + MM 2.5 + PHP 8.4 <install_mm250>` - currently testing with Contao 5.7
+* :ref:`C 5.7 + MM 2.5 + PHP 8.4 <install_mm250>` - access via "EAP"
 * :ref:`C 5.3 + MM 2.4 + PHP 8.2 <install_mm240>` - access via "EAP"
 * :ref:`C 4.13 + MM 2.3 + PHP 8.1 <install_mm-old>`
 * :ref:`C 4.9 + MM 2.2 + PHP 7.4 <install_mm-old>`
-* :ref:`C 4.4 + MM 2.1 + PHP 7.2/7.4 <install_mm-old>`
+* :ref:`C 4.4 + MM 2.1 + PHP 7.2 <install_mm-old>`
 * :ref:`C 3.5 + MM 2.0 + PHP 5.6 <install_mm-old>`
 
 

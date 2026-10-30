@@ -48,13 +48,14 @@ Types of Filter Rules
 * **OR condition** (core): |br|
   Container for further filter rules with OR link; option to execute only the first matching rule
   (checkbox "Stop after first match")
-* **Checkbox status** (filter_checkbox): |br|
-  Checks an attribute value for 1; (formerly "Published status"); own template mm_filteritem_checkbox(.html5)
-* **Translated checkbox status** (filter_checkbox): |br|
-  Checks a translated attribute value for 1; (formerly "Translated published status"); own template
-  mm_filteritem_checkbox(.html5)
+* **Checkbox status** (attribute_checkbox): |br|
+  Checks an attribute value for 1; (formerly "Published status"); the rule for "only published items", without a
+  frontend widget
+* **Translated checkbox status** (attribute_translatedcheckbox): |br|
+  Checks a translated attribute value for 1; (formerly "Translated published status"); without a frontend widget
 * **Yes / No** (filter_checkbox): |br|
-  Yes/No selection, e.g. as radio buttons
+  Yes/No selection for the visitors, e.g. as radio buttons; a widget that only filters once a choice is made;
+  own template mm_filteritem_checkbox(.html5)
 * **Value from/to for one field** (filter_fromto): |br|
   From/to selection for values of an attribute value
 * **Value from/to for a date field** (filter_fromto): |br|

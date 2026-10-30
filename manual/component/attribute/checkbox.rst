@@ -44,7 +44,7 @@ the checkbox attribute offers the following specific options:
        This allows the publication status of a record to be toggled directly with a click.
        The column name ``published`` is typically used for this purpose. The actual filtering
        of published records in the frontend must be configured separately via a filter set
-       with the "Checkbox status" filter rule.
+       with the :ref:`"Checkbox status" <component_filter_checkbox>` filter rule.
    * - Inverted display option
      - Reverses the toggle status of the icon: an enabled checkbox (value ``1``) then shows
        the inactive symbol, a disabled one shows the active symbol. Useful for example for a
@@ -141,9 +141,9 @@ The checkbox attribute can be used with the following filter rules:
 
    * - Filter rule
      - Note
-   * - Checkbox status
-     - Checks whether the checkbox value equals ``1``. Typically used for publication control.
-       The filter rule offers two additional options:
+   * - :ref:`Checkbox status <component_filter_checkbox>`
+     - Checks whether the checkbox value equals ``1`` (package ``attribute_checkbox``). Used for publication
+       control, without a frontend widget. The filter rule offers two additional options:
 
        * **Allow override** — A URL parameter can override the filter rule
          (e.g. for preview links).
@@ -152,6 +152,9 @@ The checkbox attribute can be used with the following filter rules:
    * - Simple lookup
      - Filters by a specific checkbox value via a URL parameter; useful when visitors
        should be able to filter by active/inactive themselves.
+   * - Yes / No
+     - Widget for the visitors (package ``filter_checkbox``, :ref:`see filter rule <component_filter_yes-no>`):
+       the visitors choose yes or no themselves. Not suitable for publication control.
 
 
 Special Functions
@@ -162,7 +165,8 @@ Special Functions
 When "Toggle icon" is active, MetaModels registers a toggle operation in the backend list view.
 Clicking the icon switches the record's value directly between ``1`` and ``''`` without having
 to open the edit form. Filtering published records in the frontend must be done via a separate
-filter set with the "Checkbox status" filter rule (package ``filter_checkbox``).
+filter set with the :ref:`"Checkbox status" <component_filter_checkbox>` filter rule (package ``attribute_checkbox``) -
+not with the "Yes / No" rule, which is a widget for the visitors.
 
 **Inverted mode**
 
