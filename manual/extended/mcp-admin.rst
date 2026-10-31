@@ -68,6 +68,13 @@ With Codex, this looks as follows:
    codex mcp add contao --url https://example.org/contao/mcp
    codex mcp login contao
 
+With Claude Code the server is registered as an HTTP server. You start the login in the program with ``/mcp``: select
+the server, *Authenticate*, log in in the browser and agree.
+
+.. code-block:: bash
+
+   claude mcp add --transport http contao https://example.org/contao/mcp
+
 Contao only allows clients that identify themselves with a public document (*Client ID Metadata Document*) and
 whose domain is approved. ``chatgpt.com`` (Codex), ``claude.ai`` and ``vscode.dev`` are preconfigured. Further clients
 are approved with:
@@ -79,7 +86,8 @@ are approved with:
        cimd_trusted_domains: ['example.org']
 
 The server fetches the client's document from the internet itself — the system needs an outgoing
-connection for this. Login and workflow have been tested with Codex; a test with Claude is still pending.
+connection for this. Login and workflow have been tested with Codex and with Claude Code (reading, writing, planning,
+applying and reverting).
 
 .. note:: For calling ``contao_api_execute`` (reading and writing data), Codex requires a confirmation for each call,
    because the tool is not marked as *read-only*.
@@ -184,6 +192,12 @@ The process consists of three steps:
 A MetaModel needs an input mask and render settings that are assigned to the backend users so that it can be
 opened in the backend. Both are created automatically for the first MetaModel.
 
+If the MetaModel should appear in its **own navigation group** in the backend, the agent sets the backend section on the
+input mask. The group itself is configuration (``meta_models_core.be_sections`` in ``config/config.yaml``, see
+:ref:`Own section in the backend navigation <rst_cookbook_tips_backend-section>`) and the agent cannot write it. It
+names what has to be entered. Then clear the cache. Without the group the MetaModel does not appear in the
+navigation.
+
 A field of the input mask can be tied to a :ref:`view condition <component_dca_visibility-conditions>`, e.g. the end
 date of an event only if the checkbox "Multi-day" is set. The agent creates it on the field (``conditions``). The
 following applies:
@@ -222,6 +236,25 @@ it only shows what would happen. It refuses to revert and changes nothing if
 
 Tables and columns remain; the database update deletes nothing. A journal can be reverted
 once. All write operations are recorded in Contao's system log.
+
+
+Templates
+---------
+
+Templates are not written by the MCP administration but by Contao's MCP server with its template tools
+(``contao_template_*``): find and read templates, check the code, determine the users of a template, create and save an
+override, and create, compare and restore restore points. This way the agent can also override the templates of
+MetaModels, for example a block of the page navigation (``mm_pagination``) or of the filter (``mm_filter_default``). The
+:ref:`Twig blocks <component_templates_twig-blocks>` of these templates remain accessible in the override.
+
+Important:
+
+* The agent creates a **restore point** before every change. It applies to the whole ``templates/`` directory and is
+  stored in the application cache - it is not a permanent backup.
+* The check of the code only shows that the template can be compiled. Whether the output is correct is shown only by
+  the page in the frontend.
+* The analysis of the users does not find the templates of MetaModels: MetaModels loads them from PHP, not via Twig. The
+  agent then reports only unresolvable references. Which lists use a template has to be checked in the frontend.
 
 
 Knowledge base (metadata)
@@ -299,7 +332,8 @@ translated and which apply to all languages (e.g. contact fields).
 
 **What can't the agent do?**
 
-* Write templates (e.g. a "Cancelled" badge in the output),
+* Adapt templates only with Contao's template tools (see above), not with the MCP administration (e.g. a "Cancelled"
+  badge in the output),
 * change the order of attributes and fields, delete something and rename columns,
 * add languages and switch variants,
 * install packages.

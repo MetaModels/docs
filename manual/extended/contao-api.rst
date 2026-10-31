@@ -116,6 +116,9 @@ The values are converted into a suitable JSON format per attribute type, e.g. nu
 multi-selects as a list and files as a list of UUIDs. The response is a Hydra collection with
 ``totalItems`` and the links to the pages.
 
+Attributes of the type *Timestamp* (date, time) are output and expected as a **Unix timestamp**: an integer in seconds,
+e.g. ``1798675200`` for 31.12.2026, 00:00 UTC.
+
 
 Multilingual MetaModels
 -----------------------
@@ -146,6 +149,10 @@ validated before saving:
 * The **search index** of Contao's backend search is updated (only if ``contao.backend_search`` is enabled
   and the worker is running), as is the index of the :ref:`Loupe filter <rst_extended_loupe>`. An error there does
   not abort saving; it is noted as a warning in the log.
+* The **HTTP cache** is informed as in the backend: after saving and deleting, the cache tags of the table
+  (``contao.db.<table>``) and of the item (``contao.db.<table>.<id>``) expire. The lists of MetaModels (module and
+  content element) carry both tags, so that new items, items that only match the filter after a change, and empty lists
+  expire in the cache as well. Without an HTTP cache with tag support nothing happens.
 
 Other extensions can react to saving and deleting: for this, the interface triggers the Symfony events
 ``metamodels.contao-api.item-saved`` (arguments ``metamodel`` and ``created``) and
@@ -163,6 +170,25 @@ base item) and ``vargroup`` (the ID of the base item).
 * The **shared attributes** are changed on the base item and passed on to the variants.
 * The ``vargroup`` of an existing item cannot be changed.
 * When a base item is deleted, its variants are deleted as well.
+
+
+Fields with the MultiColumnWizard
+---------------------------------
+
+Contao's API bundle does not know the MultiColumnWizard. The bundle ``menatwork/contao-multicolumnwizard-bundle``
+therefore ships its own converter (from version 3.8, currently the ``develop`` branch), which it loads only when the API
+bundle is active. This way fields with this widget appear in Contao's resources (``/contao/api/dc/…``), for example the
+parameters of a MetaModels module or content element:
+
+* A field is a **list of objects**, one property per column. Each column is converted like the widget it uses in the
+  backend (text, select, file, etc.). ``minCount`` and ``maxCount`` of the widget count as the minimum and maximum
+  number of rows.
+* When writing, the widget checks every cell as in the backend (e.g. mandatory fields); errors are in the response with
+  the path of the cell (``422``).
+* Not supported are fields whose columns come from a function (``columnsCallback``) and fields with a column for which
+  there is no converter. They are missing in the interface so that no values are lost when writing.
+* If a column is read-only, the whole field is read-only: when adding, removing or re-sorting rows, the value of this
+  column could not be preserved.
 
 
 Known limitations
