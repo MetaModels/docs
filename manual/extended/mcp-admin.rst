@@ -198,6 +198,15 @@ input mask. The group itself is configuration (``meta_models_core.be_sections`` 
 names what has to be entered. Then clear the cache. Without the group the MetaModel does not appear in the
 navigation.
 
+For **checkboxes** the agent sets two things itself:
+
+* The field of a new checkbox in the input mask gets the CSS classes ``w50 cbx m12`` so that it lines up with the fields
+  next to it. A ``tl_class`` given in the settings of the field replaces them.
+* If a filter uses the checkbox as "published" (rule ``checkbox_published`` or ``translatedcheckbox_published``), the
+  agent switches on the option **Toggle icon** (``check_publish``) on the attribute. The list in the backend then shows
+  the usual eye for toggling. With ``"check_publish": false`` in the settings of the attribute it stays off. This also
+  applies to an existing attribute that still lacks the option.
+
 A field of the input mask can be tied to a :ref:`view condition <component_dca_visibility-conditions>`, e.g. the end
 date of an event only if the checkbox "Multi-day" is set. The agent creates it on the field (``conditions``). The
 following applies:
