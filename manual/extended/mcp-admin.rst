@@ -207,6 +207,11 @@ For **checkboxes** the agent sets two things itself:
   the usual eye for toggling. With ``"check_publish": false`` in the settings of the attribute it stays off. This also
   applies to an existing attribute that still lacks the option.
 
+A new **alias** attribute (``alias`` and ``translatedalias``) starts, as in the backend, with the options **Unique
+values** (``isunique``) and **Always update** (``force_alias``, ``force_talias`` for the translated alias). In a
+MetaModel with variants the agent does not set them, since unique values are not possible there. With ``false`` in the
+settings of the attribute an option stays off. Other attribute types do not get these defaults.
+
 A field of the input mask can be tied to a :ref:`view condition <component_dca_visibility-conditions>`, e.g. the end
 date of an event only if the checkbox "Multi-day" is set. The agent creates it on the field (``conditions``). The
 following applies:
