@@ -208,7 +208,7 @@ For **checkboxes** the agent sets two things itself:
   applies to an existing attribute that still lacks the option.
 
 A new **alias** attribute (``alias`` and ``translatedalias``) starts, as in the backend, with the options **Unique
-values** (``isunique``) and **Always update** (``force_alias``, ``force_talias`` for the translated alias). In a
+values** (``isunique``) and **Force alias regenerating** (``force_alias``, ``force_talias`` for the translated alias). In a
 MetaModel with variants the agent does not set them, since unique values are not possible there. With ``false`` in the
 settings of the attribute an option stays off. Other attribute types do not get these defaults.
 

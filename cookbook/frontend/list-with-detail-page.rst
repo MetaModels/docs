@@ -29,7 +29,7 @@ Four settings are important:
   of them stays empty, the alias is incomplete and changes as soon as it is filled later - and with it the link to the
   detail page.
 * **Unique values**: The option in the general attribute settings ensures that the alias occurs only once.
-* **Always update**: The alias is regenerated on every save. Without this option, an alias that has been assigned once
+* **Force alias regenerating**: The alias is regenerated on every save. Without this option, an alias that has been assigned once
   stays even if the title changes.
 
 .. note:: The alias is generated when saving in the backend. Anyone who creates entries in another way (e.g. via the
