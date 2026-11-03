@@ -3,6 +3,8 @@
 Event Management with an AI Agent
 =================================
 
+**As of: 03.11.2026**
+
 This recipe shows how an AI agent sets up a complete event management via :ref:`MCP <rst_extended_mcp-admin>`:
 multilingual MetaModels, input mask, render settings, filters, pages and sample data. It is a **conversation in
 steps**, not a script: the agent works best when it is guided in small steps and the result is checked after each step.
@@ -25,6 +27,15 @@ Prerequisites
   of the backend user - it is meant for development and test systems, not for a live site.
 * In the first prompt, give the address of the site and of the MCP server - e.g. ``https://example.org/`` and
   ``https://example.org/contao/mcp``.
+* With Claude, it is best to start the agent in the **console** (``claude`` in the project folder) and to check with
+  ``/mcp`` before the first prompt that the server reports *connected* and *authenticated*. In the test, the desktop app
+  lost the connection several times, see :ref:`MCP administration <rst_extended_mcp-admin>`. A ``codex mcp login contao``
+  (Codex) or ``/mcp`` (Claude) is enough if the login has expired.
+* The agent needs the **whole task in the session**. If you start a new session after an interruption, give the wish from
+  step 1 and the decisions from the plan again.
+* If the pages are to be created in several languages, Contao needs one **start page** (root page) per language. Without
+  it the agent does not create pages for this language and asks - the texts of the events are multilingual anyway. You
+  create the start page beforehand or have the agent create it as a separate step.
 
 
 1. Describe the wish and have it checked
@@ -94,6 +105,9 @@ This is the right moment for corrections:
    with metamodels_describe for all three and tell me the journal_id of each write operation.
    Pages and records come in the next step.
 
+The agent applies the MetaModels one after the other: first categories and tags, then the events, because these refer to
+them. If it reports that a plan is outdated, it plans again - this is normal and not an error.
+
 **What to check:** Are the three MetaModels visible in the backend and can they be opened? If not, the assignment to the
 backend is missing - then ask the agent to check and complete the ``assignments`` with ``metamodels_describe``.
 
@@ -116,6 +130,12 @@ alias is built, are not mandatory fields, the planner points this out as well.
 .. tip:: If the agent looks for a tool in the Contao API, a **single word in the singular** helps as a search term
    (e.g. "page" instead of "create pages").
 
+If there are already pages for list and detail (e.g. from an earlier attempt), the agent keeps using them instead of
+creating duplicates, and says so. You should know beforehand which pages exist, otherwise it remains unclear what comes
+from it (important when reverting, see step 7). The filters are placed before the list in the same article, the detail
+page is hidden and requires an item (``requireItem``). The filters work via the **address** (``/category/workshop``,
+``/tag/music``, ``/date/2026-11-01,2026-11-30``), not via ``?category=workshop``.
+
 For the pages and content elements the agent needs the Contao API. Codex asks for confirmation on every call of
 ``contao_api_execute``.
 
@@ -137,6 +157,9 @@ write operations. This takes a while.
 .. warning:: MetaModels generates the **alias** only when saving in the backend. Via the Contao API the agent must supply
    the value, otherwise the detail links are missing, see
    :ref:`List with Detail Page <rst_cookbook_frontend_list-with-detail-page>`.
+   In the test the alias remained empty after creating. Only a second write operation (``PATCH``) built it from title and
+   start date (e.g. ``climate-conference-2026-2026-11-20``); values supplied by the agent were overwritten in the process.
+   After creating, have it check that every event has an alias in every language.
 
 
 6. Check the output and improve
@@ -160,9 +183,19 @@ Open the list page in the browser and check it. Typical improvements and the mat
    * - The links end in ``/published/1``.
      - "Find the cause: the links should be /en/event/<alias>, an unpublished event should not appear even via a
        bookmarked link, the aliases should be built in the backend from title and start date."
-   * - The "Cancelled" badge is missing.
-     - That is a matter of the template, the tools do not write templates - see
-       :ref:`Templates <rst_cookbook_templates_index>`.
+   * - The "Cancelled" badge is missing, or it says "Cancelled: 1".
+     - "Build the note "Cancelled" in the list: instead of "Cancelled: 1", cancelled events should show a clearly
+       visible note, the others nothing. Use a template for this." The MCP administration does not write templates, the
+       agent creates the file with Contao's template tools or writes it itself and enters it in the render setting of the
+       list. See below and :ref:`Templates <rst_cookbook_templates_index>`.
+   * - The detail page still says "Cancelled: 1".
+     - The agent changes only what was asked. With "Do this on the detail page too" it switches the render setting of the
+       detail page.
+   * - There are no pages for one language.
+     - The start page of this language is missing, see prerequisites.
+   * - The filter above the list is missing or does nothing.
+     - "Check whether the filter element is above the list, and call the list with /category/workshop." The filters are a
+       content element of their own and work via the address, not via ``?category=``.
 
 For corrections, ask the agent to **reload the help and the planner's notes** (``metamodels://guide/overview``) if the
 system has changed since the conversation started.
@@ -179,6 +212,74 @@ system has changed since the conversation started.
 As long as records are in the tables, ``metamodels_undo`` refuses to revert the MetaModels. Pages, articles and content
 elements are not in the journal, they are created via the Contao API. More under
 :ref:`Reverting <rst_extended_mcp-admin>`.
+
+In the test, reverting went like this, and this is how you should guide it:
+
+1. The agent shows the journal (here five entries) and checks each entry without ``confirm``.
+2. It reports that the configuration only reverts when the tables are empty, and first deletes its content elements,
+   articles, pages, the image size and the template file, then the records (for translated MetaModels with ``lang``).
+3. Then it reverts the journal entries, the newest first.
+4. It checks the result (number of MetaModels, pages, content elements) and says what remains.
+
+What remained are the **empty tables** ``mm_event_categories``, ``mm_event_tags`` and ``mm_event_events`` (``DROP TABLE``
+by hand if you do not want them) and the pages that existed before. The agent did not delete them itself and said so -
+that is how it should be. The instruction "revert everything" is, however, broad: the agent deleted the sample data and
+its pages along with it without asking. If you do not want that, add it ("The records stay").
+
+
+What came out of the test
+-------------------------
+
+The procedure was played through with Claude Code in the console (packages ``attribute_translated*`` installed, writing
+enabled):
+
+* **Planning:** Three plans, tables and database commands, nothing written. The agent itself reported what remains open
+  (date filter, note "Cancelled", image size).
+* **Applying:** Three MetaModels (de, en, fr), categories and tags, seven sample events in three languages, list and
+  detail page, the condition for the end date in the backend. All statements of the agent matched the database.
+* **Frontend:** The list showed the published events in descending order by date, without the draft. The filters by
+  category, tag and date range worked via the address.
+* **Note "Cancelled":** A template showed a red badge only for the cancelled event, otherwise nothing.
+* **Reverting:** All journal entries could be reverted, the numbers matched the state before.
+
+The hurdles and how to get around them:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 35 65
+
+   * - Hurdle
+     - What helps
+   * - Packages for multilingualism are missing.
+     - The agent names them and installs nothing. You install them, update the database and have the types checked again
+       with ``metamodels_check_types`` before continuing.
+   * - The tools are missing in the session or disappear.
+     - Check ``/mcp`` in the console, log in again, start a **new** session, give the task completely. Do not use the
+       desktop app for the test.
+   * - The token expires (60 minutes).
+     - In the console the client renews it itself. On errors like ``401`` log in again.
+   * - The planner demands ``fe_memberAttribut``.
+     - The agent enters an arbitrary column. No effect as long as the member permissions are off.
+   * - The date filter does not find multi-day events that begin before the period.
+     - The filter ``fromtodate`` checks only the start date. For overlaps you need a filter over start and end
+       (``rangedate``) - decide deliberately and record it in the plan.
+   * - The alias field is empty after creating.
+     - Have the alias checked after creating. MetaModels builds it when writing from title and start date and
+       overwrites supplied values.
+   * - No pages in the third language.
+     - The start page of this language is missing.
+   * - "Cancelled: 1" instead of a note.
+     - A template for the attribute, see step 6. The tools have no dry run for ``contao_template_create_override``: the
+       agent should say beforehand which file will be created, and afterwards check that no empty override was created
+       for all checkboxes.
+   * - Reverting refuses.
+     - First delete records, then ``metamodels_undo``, newest entry first. The empty tables remain.
+   * - The journal records only a part.
+     - Pages, content elements, image sizes, records and template files are not in it. Have the agent name what it
+       created, and check ``git status`` and the page structure.
+
+If you want to repeat the test, back up the database, ``files/`` and the journal beforehand and restore them when no
+session of the agent is running.
 
 
 How it can continue

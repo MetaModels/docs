@@ -75,6 +75,18 @@ the server, *Authenticate*, log in in the browser and agree.
 
    claude mcp add --transport http contao https://example.org/contao/mcp
 
+.. note:: **Claude: better in the console than in the desktop app.** In the test the connection was stable in the console
+   (``claude`` in the project folder), including the renewal of the token after about an hour. In the desktop app it broke
+   off several times: overnight, after a restart of the database and once in the middle of the session, each time without an
+   error in the server. There is no ``/mcp`` there, and the *Connectors* page requires a public https address - a system on
+   ``127.0.0.1`` cannot be entered there. If you want to use the app, add the server with ``claude mcp add`` (or create a
+   ``.mcp.json`` in the project folder), log it in once in the console with ``/mcp`` and then start a **new** session in
+   the app.
+
+   Before the first prompt, check in the console with ``/mcp`` that the server reports *connected* and *authenticated*.
+   A running session does not reload the server: if it was not reachable when the session started (database restarted,
+   login expired), even a *Reconnect* does not help, only a new session.
+
 Contao only allows clients that identify themselves with a public document (*Client ID Metadata Document*) and
 whose domain is approved. ``chatgpt.com`` (Codex), ``claude.ai`` and ``vscode.dev`` are preconfigured. Further clients
 are approved with:
@@ -251,6 +263,22 @@ it only shows what would happen. It refuses to revert and changes nothing if
 Tables and columns remain; the database update deletes nothing. A journal can be reverted
 once. All write operations are recorded in Contao's system log.
 
+**What the journal does not know.** It contains only what ``metamodels_apply`` has written. Records, pages, articles,
+content elements, image sizes and template files are created via the Contao API or by hand and are not in it.
+If a test is to be reverted **completely**, proceed in this order and have the agent show each step before it executes it:
+
+1. Remove the content elements, articles and pages that the agent created, as well as a created image size and a
+   template file. Anything existing that the agent only used stays.
+2. Delete the records of the MetaModels (for translated MetaModels per language, with ``lang``). Only then does
+   ``metamodels_undo`` allow the MetaModels.
+3. Start ``metamodels_undo`` with the **newest** entry of the journal and go backwards. First without ``confirm``,
+   which shows what would happen.
+4. Delete the empty tables (``DROP TABLE``) by hand if they bother you. ``metamodels_migrate_schema`` never deletes,
+   and a later ``contao:migrate`` may show them as superfluous.
+
+The agent should say beforehand what it wants to delete. It may understand an instruction "revert everything" as
+including the sample data and pages it created itself.
+
 
 Templates
 ---------
@@ -269,6 +297,16 @@ Important:
   the page in the frontend.
 * The analysis of the users does not find the templates of MetaModels: MetaModels loads them from PHP, not via Twig. The
   agent then reports only unresolvable references. Which lists use a template has to be checked in the frontend.
+* ``contao_template_create_override`` has **no dry run**. If the agent sends ``dry_run: true`` anyway, the parameter is
+  ignored without a message and the file is created. In the test this was an empty override for
+  ``checkbox.html.twig``, which would have affected all checkboxes of the site. The agent noticed it and deleted it. Instruct
+  it to say before every creation which file will be created, and afterwards to check ``git status`` or the folder
+  ``templates/``.
+* For the template of a **single attribute** (e.g. a badge only when a checkbox is set) the tools offer no variant. The
+  agent then writes the file itself and enters the name in the render setting of the attribute (journal: one change, the
+  file is not in it). In the test both worked: a Twig template under ``templates/metamodels/attribute/`` and a classic
+  ``.html5`` directly in ``templates/`` (name ``mm_attr_<type>_…``). The file lies outside the journal and remains when
+  reverting.
 
 
 Knowledge base (metadata)
@@ -334,6 +372,26 @@ A complete example step by step is in the cookbook under
 **The agent does not find the tools.**
 Some agents load the tools only after a few seconds. In the prompt, name the server (e.g. "use the MCP server contao")
 and give its address. If the login has expired, logging in again helps (with Codex ``codex mcp login contao``).
+
+**The tools are gone in the middle of the conversation.**
+The server is reachable, but the session has lost the tools (most often in the desktop app, see above). Check the status
+in the console with ``/mcp``, log in again if necessary and start a **new session**. There, give the task again
+**completely**, because the new session knows neither the wish nor the previous plan. Until then, only what is in the
+journal (``metamodels_journal``) has been written.
+
+**The plan is suddenly outdated.**
+If the agent writes several plans one after the other or in parallel, an earlier plan can become invalid (the order of
+the rows has changed). The agent recognizes this and plans again, you do not have to do anything. Therefore have it apply
+the MetaModels one after the other: first categories and tags, then the events.
+
+**The agent offers a dummy column (``fe_memberAttribut``).**
+In the input mask the planner demands a field that is only needed for member permissions in the frontend. The agent fills
+it with an arbitrary column; this has no effect as long as the member permissions are off.
+
+**A test is to be repeated.**
+The journal is not enough for that (see :ref:`Reverting <rst_extended_mcp-admin>`). On a test system, back up the
+database, ``files/`` and the directory ``var/mm_mcp_admin/journal`` beforehand and restore them - not while a session of
+the agent is running.
 
 **The agent reports that a type is not installed.**
 Then a package is missing, for example for multilingualism (``attribute_translated*``). The agent names the package and
