@@ -67,15 +67,15 @@ Version Overview
 
 
 .. _install_mm260:
-Installation of MM 2.6 for Contao 6.x and PHP 8.4
+Installation of MM 2.6 for Contao 6.3 and PHP 8.4
 -------------------------------------------------
 
-MetaModels 2.6 requires Contao 6.x and PHP 8.4 and of course brings
+MetaModels 2.6 requires Contao 6.3 (currently 6.x-dev until 6.3 is available) and PHP 8.4 and of course brings
 :ref:`all changes and features from MM 2.5 <new_in_mm250>`.
 
 The installation requirements for MetaModels 2.6 are:
 
-* a running Contao 6.x
+* a running Contao 6.x-dev until 6.3 is available
 * PHP 8.4 or higher
 * At least MySQL 5.7.6 or MariaDB 10.4.3
 * ``memory_limit`` 512MB or more (recommended)
