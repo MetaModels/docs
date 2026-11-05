@@ -132,7 +132,7 @@ The MCP administration adds the following elements to the Contao server:
      - The settings a type knows: input, rules, defaults, selection values and labels.
    * - ``metamodels_search_catalog``
      - Tool
-     - Finds types, extensions and manual pages for a task, from a few words in any language.
+     - Finds types, extensions and manual pages for a task, from a few words. The language of the words is given in the ``language`` parameter (default ``en``).
    * - ``metamodels_list``
      - Tool
      - All MetaModels with table, languages and the number of attributes, input masks, render settings and
@@ -317,10 +317,18 @@ their attribute and filter types therefore comes from a metadata file of the rep
 `MetaModels/mcp-metadata <https://github.com/MetaModels/mcp-metadata>`_:
 
 * per package: whether it is freely available or in the early adopter program, where to get access, a short description,
-  keywords and the page in the manual,
-* per type: the package, a short description, keywords in the languages of the users and the manual page,
+  keywords (per language) and the page in the manual,
+* per type: the package, a short description, keywords per language and the manual page,
 * per article: a page of the manual on a topic or a cookbook recipe with title, path and keywords
   — just a reference, the text stays in the manual.
+
+The keywords are kept in a separate list per language, ``en`` is mandatory, each list has at most 12 entries::
+
+    "keywords": {"en": ["date", "time"], "de": ["datum", "uhrzeit", "termin"]}
+
+The lists are deliberately not mixed, because a word can mean something different depending on the language. In the search,
+the keywords of the given language count fully, the English ones as a fallback with half weight; keywords of other languages
+are not searched. The former flat array is no longer read.
 
 The file is published at ``https://metamodels.github.io/mcp-metadata/metadata.json``. The extension fetches it
 from there (https only), keeps it for one day and remembers the last valid version. If the server is not reachable,
