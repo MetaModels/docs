@@ -24,7 +24,7 @@ The most important new features are:
 * **API and MCP for AI agents**: The records of the MetaModels are accessible via the Contao API (read, create,
   change, delete — with the permissions and validation of the backend), see :ref:`Contao API <rst_extended_contao-api>`.
   Via Contao's MCP server, an AI agent can also read and set up MetaModels, see
-  :ref:`MCP administration <rst_extended_mcp-admin>`.
+  :ref:`MCP administration <rst_extended_mcp-admin>` or :ref:`rst_cookbook_mcp_event-management`
 * **Blocks in the wrapper templates**: The templates ``mm_filter_default``, ``mm_clearall_default`` and
   ``mm_pagination`` are divided into Twig blocks (since MetaModels 2.5.2, also included in 2.6). A custom template
   extends the default template and overrides only the desired block, see :ref:`component_templates_twig-blocks`.

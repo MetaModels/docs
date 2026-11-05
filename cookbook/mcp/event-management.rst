@@ -1,7 +1,7 @@
 .. _rst_cookbook_mcp_event-management:
 
-Event Management with an AI Agent
-=================================
+Creating Event Management with an AI Agent
+==========================================
 
 **As of: 03.11.2026**
 
